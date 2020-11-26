@@ -23,7 +23,7 @@ namespace Ethyme
 		{
 			if (payload["t"].get<std::string>() == "MESSAGE_CREATE")
 			{
-				std::shared_ptr<const Events::MessageCreate> msg(new Events::MessageCreate(payload["d"]));
+				std::shared_ptr<const Events::MessageCreate> msg(new Events::MessageCreate(payload["d"], shared_from_this()));
 				for (auto& handler : m_eventsHandlers[EventType::MessageCreate])
 					handler.second(
 						std::dynamic_pointer_cast<const Events::Event>(msg)

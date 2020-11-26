@@ -5,12 +5,12 @@ project ("ethyme.cpp")
 find_package(cpr CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
 find_package(websocketpp CONFIG REQUIRED)
+find_package(OpenSSL REQUIRED)
 
-find_path(BOOST_RANDOM_INCLUDE_DIR boost/random/random_device.h)
+find_path(BOOST_RANDOM_INCLUDE_DIR boost/cxx11_char_types.hpp)
 find_library(BOOST_RANDOM_LIBRARY boost_random-vc140-mt.lib)
 include_directories(${BOOST_RANDOM_INCLUDE_DIR})
 link_libraries(${BOOST_RANDOM_LIBRARY})
-find_package(OpenSSL REQUIRED)
 
 add_library (${PROJECT_NAME}
 	"src/ethyme.cpp"
@@ -18,16 +18,18 @@ add_library (${PROJECT_NAME}
 	"include/common.hpp"
 	"include/constants.hpp"
 
-	"src/structures/entity.cpp"
 	"src/structures/message.cpp"
-	"src/structures/user.cpp"
+	"src/structures/collection.cpp"
+	"src/structures/entity.cpp"
 	"src/structures/snowflake.cpp"
+	"src/structures/user.cpp"
+	"src/structures/channel.cpp"
 
 	"src/client.cpp"
 	"src/websocketmessage.cpp"
 
 	"src/events/messagecreate.cpp"
-)
+	)
 
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 

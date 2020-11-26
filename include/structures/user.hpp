@@ -3,12 +3,14 @@
 #include "common.hpp"
 #include "entity.hpp"
 
+DefineClient
+
 namespace Ethyme::Structures
 {
 	class User : public Entity
 	{
 	public:
-		User(const nlohmann::json& data);
+		User(const nlohmann::json& data, const std::shared_ptr<Ethyme::Client>& client);
 
 		const bool& Bot() const;
 		const std::string& Discriminator() const;

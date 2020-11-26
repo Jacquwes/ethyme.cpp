@@ -6,6 +6,8 @@ namespace Ethyme::Structures
 		: m_id(id)
 	{}
 
-	Snowflake::operator const std::string()& { return m_id; }
-	Snowflake::operator const uint64_t()& { return std::stoull(m_id); }
+	Snowflake::operator const std::string() const& { return m_id; }
+	Snowflake::operator const uint64_t() const& { return std::stoull(m_id); }
+
+	const std::string& Snowflake::ToString() const { return m_id; }
 }

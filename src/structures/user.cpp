@@ -6,10 +6,10 @@ namespace Ethyme::Structures
 	const std::string& User::Discriminator() const { return m_discriminator; }
 	const std::string& User::Username() const { return m_username; }
 
-	User::User(const nlohmann::json& data)
-		: Entity(data["id"].get<std::string>())
-		, m_bot(data["bot"].get<bool>())
-		, m_discriminator(data["discriminator"].get<std::string>())
-		, m_username(data["username"].get<std::string>())
+	User::User(const nlohmann::json& data, const std::shared_ptr<Ethyme::Client>& client)
+		: Entity(data["id"], client)
+		, m_bot(data["bot"])
+		, m_discriminator(data["discriminator"])
+		, m_username(data["username"])
 	{}
 }

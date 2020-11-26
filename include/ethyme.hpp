@@ -1,9 +1,14 @@
 ﻿#pragma once
 
-#include "common.hpp"
 #include "client.hpp"
+#include "common.hpp"
+#include "constants.hpp"
 
 #include "events/messagecreate.hpp"
 
+#include "structures/channel.hpp"
+#include "structures/collection.hpp"
+#include "structures/entity.hpp"
 #include "structures/message.hpp"
+#include "structures/snowflake.hpp"
 #include "structures/user.hpp"

@@ -25,6 +25,7 @@ namespace Ethyme
 	};
 
 	class Client
+		: public std::enable_shared_from_this<Client>
 	{
 	public:
 		enum class ConnectionState
@@ -39,9 +40,9 @@ namespace Ethyme
 		const std::string& addHandler(EventType, std::function<void(std::shared_ptr<const Events::Event>)> callback, const std::string& id = GenerateRandomId());
 		void Start();
 
-		const websocketpp::lib::error_code& ErrorCode();
-		const std::string& Token();
-		std::shared_ptr<Structures::User> User();
+		const websocketpp::lib::error_code& ErrorCode() const;
+		const std::string& Token() const;
+		std::shared_ptr<Structures::User> User() const;
 
 	private:
 		enum Opcodes

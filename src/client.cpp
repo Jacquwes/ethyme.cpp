@@ -9,9 +9,9 @@ namespace Ethyme
 		, m_sequenceNumber(0)
 	{}
 
-	const websocketpp::lib::error_code& Client::ErrorCode() { return ec; }
-	const std::string& Client::Token() { return m_token; }
-	std::shared_ptr<Structures::User> Client::User() { return m_user; }
+	const websocketpp::lib::error_code& Client::ErrorCode() const { return ec; }
+	const std::string& Client::Token() const { return m_token; }
+	std::shared_ptr<Structures::User> Client::User() const { return m_user; }
 
 	const std::string& Client::addHandler(EventType eventType, std::function<void(std::shared_ptr<const Events::Event>)> callback, const std::string& id)
 	{
