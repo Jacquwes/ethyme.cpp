@@ -1,5 +1,8 @@
 #include "client.hpp"
 
+#include "structures/channels/textchannel.hpp"
+#include "structures/message.hpp"
+
 namespace Ethyme
 {
 	void Client::SendHeartbeat(websocketpp::connection_hdl handler)
@@ -21,13 +24,23 @@ namespace Ethyme
 		{
 		case Dispatch:
 		{
-			if (payload["t"].get<std::string>() == "MESSAGE_CREATE")
+			if (payload["t"].get<std::string>() == "READY")
 			{
-				std::shared_ptr<const Events::MessageCreate> msg(new Events::MessageCreate(payload["d"], shared_from_this()));
+				for (auto& guild : payload["d"]["guilds"])
+				{
+					auto response = cpr::Get(
+						cpr::Url(Constants::API::Guilds + guild["id"].get<std::string>() + "/channels"),
+						cpr::Header{ { "Authorization", m_token } }).text;
+					auto& channels = nlohmann::json::parse(response);
+					for (const auto& channel : channels)
+						m_channels.Add(Structures::TextChannel(channel, *this).As<Structures::Channel>());
+				}
+			}
+			else if (payload["t"].get<std::string>() == "MESSAGE_CREATE")
+			{
+				Events::MessageCreate event(Events::MessageCreate(payload["d"], *this));
 				for (auto& handler : m_eventsHandlers[EventType::MessageCreate])
-					handler.second(
-						std::dynamic_pointer_cast<const Events::Event>(msg)
-					);
+					handler.second(*(Events::Event*)&event);
 			}
 			break;
 		}

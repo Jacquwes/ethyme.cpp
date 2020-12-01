@@ -6,7 +6,8 @@
 #include "events/event.hpp"
 #include "events/messagecreate.hpp"
 
-#include "structures/message.hpp"
+#include "structures/collection.hpp"
+#include "structures/channel.hpp"
 #include "structures/user.hpp"
 
 namespace Ethyme
@@ -25,7 +26,6 @@ namespace Ethyme
 	};
 
 	class Client
-		: public std::enable_shared_from_this<Client>
 	{
 	public:
 		enum class ConnectionState
@@ -37,12 +37,15 @@ namespace Ethyme
 
 		Client(const std::string& token);
 
-		const std::string& addHandler(EventType, std::function<void(std::shared_ptr<const Events::Event>)> callback, const std::string& id = GenerateRandomId());
+		const std::string& addHandler(EventType, std::function<void(const Events::Event&)> callback, const std::string& id = GenerateRandomId());
 		void Start();
 
 		const websocketpp::lib::error_code& ErrorCode() const;
 		const std::string& Token() const;
-		std::shared_ptr<Structures::User> User() const;
+		const Structures::User& User() const;
+
+		const Structures::Collection<Structures::Channel>& Channels() const;
+		const Structures::Collection<Structures::User>& Users() const;
 
 	private:
 		enum Opcodes
@@ -53,12 +56,15 @@ namespace Ethyme
 			Hello = 10,
 		};
 
+		Structures::Collection<Structures::Channel> m_channels;
+		Structures::Collection<Structures::User> m_users;
+
 		static std::string GenerateRandomId();
 
-		std::unordered_map<EventType, std::unordered_map<std::string, std::function<void(std::shared_ptr<const Events::Event>)>>> m_eventsHandlers;
+		std::unordered_map<EventType, std::unordered_map<std::string, std::function<void(const Events::Event&)>>> m_eventsHandlers;
 
 		std::string m_token;
-		std::shared_ptr<Structures::User> m_user;
+		Structures::User m_user;
 
 		WebsocketClient m_ws;
 		websocketpp::lib::error_code ec;

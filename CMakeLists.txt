@@ -18,12 +18,13 @@ add_library (${PROJECT_NAME}
 	"include/common.hpp"
 	"include/constants.hpp"
 
-	"src/structures/message.cpp"
 	"src/structures/collection.cpp"
 	"src/structures/entity.cpp"
 	"src/structures/snowflake.cpp"
 	"src/structures/user.cpp"
 	"src/structures/channel.cpp"
+	"src/structures/channels/textchannel.cpp"
+	"src/structures/message.cpp"
 
 	"src/client.cpp"
 	"src/websocketmessage.cpp"

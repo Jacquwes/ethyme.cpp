@@ -12,3 +12,5 @@
 #include "structures/message.hpp"
 #include "structures/snowflake.hpp"
 #include "structures/user.hpp"
+
+#include "structures/channels/textchannel.hpp"

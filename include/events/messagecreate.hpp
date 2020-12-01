@@ -4,18 +4,21 @@
 #include "event.hpp"
 #include "../structures/message.hpp"
 
-DefineClient
+namespace Ethyme
+{
+	class Client;
+}
 
 namespace Ethyme::Events
 {
 	class MessageCreate : public Event
 	{
 	public:
-		MessageCreate(const nlohmann::json& data, Client_);
+		MessageCreate(const nlohmann::json& data, const Ethyme::Client& client);
 
-		std::shared_ptr<const Structures::Message> Message() const;
+		const Structures::Message& Message() const;
 
 	private:
-		std::shared_ptr<const Structures::Message> m_message;
+		Structures::Message m_message;
 	};
 }

@@ -1,5 +1,9 @@
 #include "client.hpp"
 
+#include "structures/channel.hpp"
+#include "structures/collection.hpp"
+#include "structures/user.hpp"
+
 namespace Ethyme
 {
 	Client::Client(const std::string& token)
@@ -7,13 +11,27 @@ namespace Ethyme
 		, m_connectionState(ConnectionState::Disconnected)
 		, m_heartbeatInterval(0)
 		, m_sequenceNumber(0)
+		, m_user(Structures::User(nlohmann::json::parse(cpr::Get(
+			cpr::Url(Constants::API::CurrentUser),
+			cpr::Header{ { "Authorization", m_token } }
+		).text), *this))
 	{}
 
 	const websocketpp::lib::error_code& Client::ErrorCode() const { return ec; }
 	const std::string& Client::Token() const { return m_token; }
-	std::shared_ptr<Structures::User> Client::User() const { return m_user; }
+	const Structures::User& Client::User() const { return m_user; }
 
-	const std::string& Client::addHandler(EventType eventType, std::function<void(std::shared_ptr<const Events::Event>)> callback, const std::string& id)
+	const Structures::Collection<Structures::Channel>& Client::Channels() const
+	{
+		return m_channels;
+	}
+
+	const Structures::Collection<Structures::User>& Client::Users() const
+	{
+		return m_users;
+	}
+
+	const std::string& Client::addHandler(EventType eventType, std::function<void(const Events::Event&)> callback, const std::string& id)
 	{
 		m_eventsHandlers[eventType][id] = callback;
 		return id;

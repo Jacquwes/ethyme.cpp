@@ -2,9 +2,9 @@
 
 namespace Ethyme::Events
 {
-	MessageCreate::MessageCreate(const nlohmann::json& data, Client_)
-		: m_message(new Structures::Message(data, client))
+	MessageCreate::MessageCreate(const nlohmann::json& data, const Ethyme::Client& client)
+		: m_message(Structures::Message(data, client))
 	{}
 
-	std::shared_ptr<const Structures::Message> MessageCreate::Message() const { return m_message; }
+	const Structures::Message& MessageCreate::Message() const { return m_message; }
 }
