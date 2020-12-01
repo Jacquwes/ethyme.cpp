@@ -1,6 +1,6 @@
 #include "client.hpp"
 
-#include "structures/channel.hpp"
+#include "structures/channels/channel.hpp"
 #include "structures/collection.hpp"
 #include "structures/user.hpp"
 

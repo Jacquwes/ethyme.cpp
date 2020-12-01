@@ -1,4 +1,4 @@
-#include "structures/channel.hpp"
+#include "structures/channels/channel.hpp"
 
 namespace Ethyme::Structures
 {

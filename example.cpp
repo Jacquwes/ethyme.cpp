@@ -15,7 +15,6 @@ int main()
 
 			if (!message.Author().Bot())
 				message.Channel().Send(message.Content());
-			return;
 		});
 
 	try

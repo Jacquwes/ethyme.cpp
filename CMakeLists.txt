@@ -22,7 +22,7 @@ add_library (${PROJECT_NAME}
 	"src/structures/entity.cpp"
 	"src/structures/snowflake.cpp"
 	"src/structures/user.cpp"
-	"src/structures/channel.cpp"
+	"src/structures/channels/channel.cpp"
 	"src/structures/channels/textchannel.cpp"
 	"src/structures/message.cpp"
 
