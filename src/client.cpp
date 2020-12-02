@@ -87,6 +87,12 @@ namespace Ethyme
 										message.Channel().Send("<@" + message.Author().Id().ToString() + ">, \"" + argument + "\" is not a valid boolean argument.");
 										return;
 									}
+									break;
+								}
+								case t::String:
+								{
+									std::get<std::string>(parsedArguments[currentArgument].Value) += argument + " ";
+									break;
 								}
 								}
 							}

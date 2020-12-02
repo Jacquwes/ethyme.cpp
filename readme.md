@@ -4,6 +4,14 @@ A C++17 wrapper for Discord's API. Uses websocketpp and cpr.
 
 Example available at [example.cpp](/example.cpp)
 
+## How to use a bot
+
+If your bot has a command "test" with arguments "bot" and "desc", it should be used this way:
+
+`!test --bot false --desc this i a string.`
+
+The order of the arguments doesn't matter.
+
 ## Installation
 
 ### Deps
