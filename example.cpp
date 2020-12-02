@@ -2,20 +2,26 @@
 
 #include <iostream>
 
+using namespace Ethyme;
+using namespace Commands;
+
 int main()
 {
 	Ethyme::Client client("Bot token");
 
-	client.addHandler(Ethyme::EventType::MessageCreate,
-		[&](const Ethyme::Events::Event& event)
+	client.SetPrefix("!");
+	client.AddCommand("test", Ethyme::Commands::Command(
+		[&](const Ethyme::Structures::Message& message, std::unordered_map<std::string, Ethyme::Commands::Command::Argument> arguments)
 		{
-			auto msgCreate = *(Ethyme::Events::MessageCreate*)&event;
-
-			auto& message = msgCreate.Message();
-
-			if (!message.Author().Bot())
-				message.Channel().Send(message.Content());
-		});
+			message.Channel().Send("bot: " + std::string(std::holds_alternative<bool>(arguments["bot"].Value) ? std::get<bool>(arguments["bot"].Value) ?  "true" : "false" : "false"));
+		},
+		{
+			{
+				"bot",
+				Command::Argument::ArgumentType::Bool,
+			}
+		}
+	));
 
 	try
 	{

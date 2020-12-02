@@ -3,6 +3,8 @@
 #include "common.hpp"
 #include "constants.hpp"
 
+#include "commands/command.hpp"
+
 #include "events/event.hpp"
 #include "events/messagecreate.hpp"
 
@@ -35,9 +37,11 @@ namespace Ethyme
 			Disconnected,
 		};
 
-		Client(const std::string& token);
+		Client(const std::string& token, bool useCommands = true);
 
-		const std::string& addHandler(EventType, std::function<void(const Events::Event&)> callback, const std::string& id = GenerateRandomId());
+		void AddCommand(const std::string& name, const Commands::Command& command);
+		const std::string& AddHandler(EventType, std::function<void(const Events::Event&)> callback, const std::string& id = GenerateRandomId());
+		void SetPrefix(const std::string& prefix);
 		void Start();
 
 		const websocketpp::lib::error_code& ErrorCode() const;
@@ -56,6 +60,8 @@ namespace Ethyme
 			Hello = 10,
 		};
 
+		std::unordered_map<std::string, Commands::Command> m_commands;
+
 		Structures::Collection<Structures::Channel> m_channels;
 		Structures::Collection<Structures::User> m_users;
 
@@ -63,6 +69,7 @@ namespace Ethyme
 
 		std::unordered_map<EventType, std::unordered_map<std::string, std::function<void(const Events::Event&)>>> m_eventsHandlers;
 
+		std::string m_prefix;
 		std::string m_token;
 		Structures::User m_user;
 

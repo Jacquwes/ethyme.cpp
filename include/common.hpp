@@ -1,5 +1,8 @@
 #pragma once
 
+#include <cstring>
+
+#include <algorithm>
 #include <chrono>
 #include <functional>
 #include <future>
@@ -10,6 +13,7 @@
 #include <string>
 #include <thread>
 #include <unordered_map>
+#include <variant>
 #include <vector>
 
 #include "cpr/cpr.h"

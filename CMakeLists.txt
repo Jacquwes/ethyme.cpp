@@ -30,7 +30,8 @@ add_library (${PROJECT_NAME}
 	"src/websocketmessage.cpp"
 
 	"src/events/messagecreate.cpp"
-	)
+	"src/commands/command.cpp"
+)
 
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 

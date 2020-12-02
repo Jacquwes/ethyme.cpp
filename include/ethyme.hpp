@@ -4,6 +4,8 @@
 #include "common.hpp"
 #include "constants.hpp"
 
+#include "commands/command.hpp"
+
 #include "events/messagecreate.hpp"
 
 #include "structures/collection.hpp"
