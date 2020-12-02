@@ -36,7 +36,7 @@ namespace Ethyme
 						m_channels.Add(Structures::TextChannel(channel, *this).As<Structures::Channel>());
 				}
 			}
-			else if (payload["t"].get<std::string>() == "MESSAGE_CREATE")
+			else if (payload["t"].get<std::string>() == "MESSAGE_CREATE" || payload["t"].get<std::string>() == "MESSAGE_UPDATE")
 			{
 				Events::MessageCreate event(Events::MessageCreate(payload["d"], *this));
 				for (auto& handler : m_eventsHandlers[EventType::MessageCreate])

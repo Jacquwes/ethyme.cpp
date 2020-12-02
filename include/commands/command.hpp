@@ -21,13 +21,13 @@ namespace Ethyme::Commands
 				Double,
 				Bool,
 			} Type;
-
+			bool Required = false;
 			std::variant<std::string, int, double, bool> Value;
 		};
 
 		Command();
 		Command(const Command& command);
-		Command(std::function<void(const Structures::Message&, std::unordered_map<std::string, Argument>)> callback, const std::initializer_list<std::pair<std::string, Argument::ArgumentType>>& arguments = {});
+		Command(std::function<void(const Structures::Message&, std::unordered_map<std::string, Argument>)> callback, const std::unordered_map<std::string, Argument>& arguments = {});
 
 		Command& SetArgument(const std::string& name, const Argument& argument);
 		const std::unordered_map<std::string, Commands::Command::Argument>& Arguments() const;

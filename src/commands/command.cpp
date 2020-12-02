@@ -14,7 +14,7 @@ namespace Ethyme::Commands
 			m_arguments[arg.first] = { arg.second };
 	}
 
-	Command::Command(std::function<void(const Structures::Message&, std::unordered_map<std::string, Argument> arguments)> callback, const std::initializer_list<std::pair<std::string, Argument::ArgumentType>>& arguments)
+	Command::Command(std::function<void(const Structures::Message&, std::unordered_map<std::string, Argument> arguments)> callback, const std::unordered_map<std::string, Argument>& arguments)
 		: m_callback(callback)
 	{
 		for (auto& arg : arguments)
