@@ -18,6 +18,8 @@ add_library (${PROJECT_NAME}
 	"include/common.hpp"
 	"include/constants.hpp"
 
+	"src/commands/command.cpp"
+
 	"src/structures/collection.cpp"
 	"src/structures/entity.cpp"
 	"src/structures/snowflake.cpp"
@@ -27,10 +29,10 @@ add_library (${PROJECT_NAME}
 	"src/structures/message.cpp"
 
 	"src/client.cpp"
+	"src/commandhandler.cpp"
 	"src/websocketmessage.cpp"
 
 	"src/events/messagecreate.cpp"
-	"src/commands/command.cpp"
 )
 
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
@@ -48,7 +50,7 @@ project("example")
 add_executable (${PROJECT_NAME} "example.cpp")
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 
-target_include_directories(${PROJECT_NAME} PRIVATE "./include")
+include_directories("./include")
 
 target_link_libraries(${PROJECT_NAME} PRIVATE ethyme.cpp)
 target_link_libraries(${PROJECT_NAME} PRIVATE cpr)

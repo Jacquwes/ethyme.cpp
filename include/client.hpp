@@ -39,7 +39,7 @@ namespace Ethyme
 
 		Client(const std::string& token, bool useCommands = true);
 
-		void AddCommand(const std::string& name, const Commands::Command& command);
+		void AddCommand(const std::string& name, Command command);
 		const std::string& AddHandler(EventType, std::function<void(const Events::Event&)> callback, const std::string& id = GenerateRandomId());
 		void SetPrefix(const std::string& prefix);
 		void Start();
@@ -60,7 +60,8 @@ namespace Ethyme
 			Hello = 10,
 		};
 
-		std::unordered_map<std::string, Commands::Command> m_commands;
+		void SetupCommandHandler();
+		std::unordered_map<std::string, Command> m_commands;
 
 		Structures::Collection<Structures::Channel> m_channels;
 		Structures::Collection<Structures::User> m_users;

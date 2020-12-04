@@ -7,36 +7,37 @@ namespace Ethyme::Structures
 	class Message;
 }
 
-namespace Ethyme::Commands
+namespace Ethyme
 {
 	class Command
 	{
 	public:
+		enum class ArgumentType
+		{
+			Bool,
+			String,
+			Int,
+			Double,
+		};
 		struct Argument
 		{
-			enum class ArgumentType
-			{
-				String,
-				Int,
-				Double,
-				Bool,
-			} Type;
-			bool Required = false;
-			std::variant<std::string, int, double, bool> Value;
+			bool Required;
+			ArgumentType Type;
+			std::optional<std::variant<bool, std::string, int, double>> Value = std::nullopt;
 		};
 
-		Command();
-		Command(const Command& command);
-		Command(std::function<void(const Structures::Message&, std::unordered_map<std::string, Argument>)> callback, const std::unordered_map<std::string, Argument>& arguments = {});
+		Command() = default;
+		Command(const std::function<void(const Structures::Message& message, std::unordered_map<std::string, Argument> arguments)>& callback, std::unordered_map<std::string, Command::Argument> args);
+		virtual ~Command() = default;
 
-		Command& SetArgument(const std::string& name, const Argument& argument);
-		const std::unordered_map<std::string, Commands::Command::Argument>& Arguments() const;
+		std::unordered_map<std::string, Argument>& Arguments();
+		void SetArgument(const std::string& name, std::optional<std::variant<bool, std::string, int, double>> value);
+		const std::function<void(const Structures::Message& message, std::unordered_map<std::string, Argument> arguments)>& Callback() const;
 
-		std::function<void(const Structures::Message&, std::unordered_map<std::string, Argument>)> Callback() const;
-		void Execute(const Structures::Message& message, std::unordered_map<std::string, Argument> arguments);
+	protected:
+		std::unordered_map<std::string, Argument> arguments;
 
 	private:
-		std::unordered_map<std::string, Commands::Command::Argument> m_arguments;
-		std::function<void(const Structures::Message&, std::unordered_map<std::string, Argument>)> m_callback;
+		std::function<void(const Structures::Message& message, std::unordered_map<std::string, Argument> arguments)> m_callback;
 	};
 }

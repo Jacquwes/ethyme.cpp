@@ -36,10 +36,3 @@ cd build
 cmake .. -DCMAKE_TOOLCHAIN_FILE=path/to/vcpkg/scripts/buildsystems/vcpkg.cmake
 # on windows you can use -G "Visual Studio 16"
 ```
-
-## To do
-
-- [ ] Make required args real
-- [ ] Implement Int and Double argument types
-- [ ] Make commands declaration easier
-- [ ] Prevent multiple declarations for same argument

@@ -15,94 +15,10 @@ namespace Ethyme
 			cpr::Url(Constants::API::CurrentUser),
 			cpr::Header{ { "Authorization", m_token } }
 		).text), *this))
+		, m_commands()
 	{
 		if (useCommands)
-		{
-			AddHandler(EventType::MessageCreate,
-				[&](const Ethyme::Events::Event& event)
-				{
-					auto& message = (*(Events::MessageCreate*)&event).Message();
-
-					if (message.Content().rfind(m_prefix, 0)) return;
-
-					std::vector<std::string> arguments = { "" };
-					for (int i = m_prefix.size(); i < message.Content().size(); i++)
-						if (message.Content()[i] == ' ')
-							arguments.push_back("");
-						else
-							arguments.back().push_back(message.Content()[i]);
-
-					if (arguments.size() == 0) return;
-
-					std::string commandName = arguments[0];
-					arguments.erase(arguments.begin());
-
-					auto command = std::find_if(m_commands.begin(), m_commands.end(),
-						[&](const auto& command_)
-						{
-							return command_.first == commandName;
-						});
-					
-					if (command != m_commands.end())
-					{
-						std::unordered_map<std::string, Commands::Command::Argument> parsedArguments = command->second.Arguments();
-						std::string currentArgument;
-						for (auto& argument : arguments)
-						{
-							if (!argument.rfind("--", 0))
-							{
-								if (!parsedArguments.count(argument.substr(2)))
-								{
-									std::string errorMessage = "<@" + message.Author().Id().ToString() + ">, argument \"" + argument.substr(2) + "\" unknown.";
-									message.Channel().Send(errorMessage);
-									return;
-								}
-								else
-									currentArgument = argument.substr(2);
-							}
-							else
-							{
-								using t = Commands::Command::Argument::ArgumentType;
-								switch (parsedArguments[currentArgument].Type)
-								{
-								case t::Bool:
-								{
-									std::transform(argument.begin(), argument.end(), argument.begin(), [&](auto c) { return std::tolower(c); });
-									if (
-										argument == "n" ||
-										argument == "no" ||
-										argument == "false" ||
-										argument == "f"
-										)
-										parsedArguments[currentArgument].Value = false;
-									else if (
-										argument == "y" ||
-										argument == "yes" ||
-										argument == "true" ||
-										argument == "t"
-										)
-										parsedArguments[currentArgument].Value = true;
-									else
-									{
-										message.Channel().Send("<@" + message.Author().Id().ToString() + ">, \"" + argument + "\" is not a valid boolean argument.");
-										return;
-									}
-									break;
-								}
-								case t::String:
-								{
-									std::get<std::string>(parsedArguments[currentArgument].Value) += argument + " ";
-									break;
-								}
-								}
-							}
-						}
-						command->second.Execute(message, parsedArguments);
-					}
-
-
-				}, "commandHandler");
-		}
+			SetupCommandHandler();
 	}
 
 	const websocketpp::lib::error_code& Client::ErrorCode() const { return ec; }
@@ -119,7 +35,7 @@ namespace Ethyme
 		return m_users;
 	}
 
-	void Client::AddCommand(const std::string& name, const Commands::Command& command)
+	void Client::AddCommand(const std::string& name, Command command)
 	{
 		m_commands[name] = command;
 	}
