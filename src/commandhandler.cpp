@@ -92,7 +92,7 @@ namespace Ethyme
 						case t::String:
 						{
 							if (currentArgument.second->Value)
-								std::get<std::string>(*currentArgument.second->Value) += argument + (i == arguments.size() - 1 ? "" : " ");
+								std::get<std::string>(*currentArgument.second->Value) += " " + argument;
 							else
 								currentArgument.second->Value = argument;
 							break;

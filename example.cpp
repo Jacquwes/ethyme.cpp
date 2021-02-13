@@ -6,7 +6,7 @@ using namespace Ethyme;
 
 int main()
 {
-	Ethyme::Client client("Bot token");
+	Ethyme::Client client("Bot Token");
 	client.SetPrefix("!");
 
 	// Command example
