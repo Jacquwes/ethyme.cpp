@@ -49,7 +49,7 @@ int main()
 	// handler example
 	client.AddHandler(
 		Ethyme::EventType::MessageCreate,
-		[&](const Ethyme::Events::Event& event)
+		[&](Ethyme::Events::Event const& event)
 		{
 			// ugly cast
 			auto messageEvent = *(Ethyme::Events::MessageCreate*)&event;
@@ -60,6 +60,15 @@ int main()
 				message.Channel().Send("pong hahaha");
 		},
 		"handler ID" // optional, random if not specified.
+	);
+
+	client.AddHandler(
+		Ethyme::EventType::Ready,
+		[&](Ethyme::Events::Event const& event)
+		{
+			auto readyEvent = *(Ethyme::Events::Ready*)&event;
+			std::cout << readyEvent.Client().User().Username() << "#" << readyEvent.Client().User().Discriminator() << " is online!" << std::endl;
+		}
 	);
 
 	try

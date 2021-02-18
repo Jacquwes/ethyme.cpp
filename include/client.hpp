@@ -7,6 +7,7 @@
 
 #include "events/event.hpp"
 #include "events/messagecreate.hpp"
+#include "events/ready.hpp"
 
 #include "structures/collection.hpp"
 #include "structures/channels/channel.hpp"
@@ -25,6 +26,7 @@ namespace Ethyme
 	enum class EventType
 	{
 		MessageCreate,
+		Ready
 	};
 
 	class Client

@@ -34,11 +34,15 @@ namespace Ethyme
 					auto& channels = nlohmann::json::parse(response);
 					for (const auto& channel : channels)
 						m_channels.Add(Structures::TextChannel(channel, *this).As<Structures::Channel>());
+					
+					Events::Ready event{ *this };
+					for (auto& handler : m_eventsHandlers[EventType::Ready])
+						handler.second(*(Events::Event*)&event);
 				}
 			}
 			else if (payload["t"].get<std::string>() == "MESSAGE_CREATE" || payload["t"].get<std::string>() == "MESSAGE_UPDATE")
 			{
-				Events::MessageCreate event(Events::MessageCreate(payload["d"], *this));
+				Events::MessageCreate event{ payload["d"], *this };
 				for (auto& handler : m_eventsHandlers[EventType::MessageCreate])
 					handler.second(*(Events::Event*)&event);
 			}
