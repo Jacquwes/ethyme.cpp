@@ -8,7 +8,11 @@ find_package(websocketpp CONFIG REQUIRED)
 find_package(OpenSSL REQUIRED)
 
 find_path(BOOST_RANDOM_INCLUDE_DIR boost/cxx11_char_types.hpp)
+if(WIN32)
 find_library(BOOST_RANDOM_LIBRARY boost_random-vc140-mt.lib)
+else()
+find_library(BOOST_RANDOM_LIBRARY libboost_random.a)
+endif()
 include_directories(${BOOST_RANDOM_INCLUDE_DIR})
 link_libraries(${BOOST_RANDOM_LIBRARY})
 
