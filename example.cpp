@@ -18,10 +18,12 @@ int main()
 			// std::string name = "World";
 			// if (arguments["name"].Value)
 			std::string name = std::get<std::string>(*arguments["name"].Value);
-			message.Channel().Send("Hello " + name + "!");
+			std::string secondName = std::get<std::string>(*arguments["secondName"].Value);
+			message.Channel().Send("Hello " + name + " and " + secondName + "!");
 
 			// Triggered with "!greet"
-			// or "!greet --name some name"
+			// or "!greet some name --secondName hahaha"
+			// or "!greet --name some name --secondName hahaha"
 		},
 		// arguments
 		{
@@ -31,6 +33,14 @@ int main()
 					false, // required
 					Ethyme::Command::ArgumentType::String, // type
 					std::string("World") // default value, don't forget to cast
+				}
+			},
+			{
+				"secondName",
+				{
+					false,
+					Ethyme::Command::ArgumentType::String,
+					std::string("Samuel")
 				}
 			}
 		}

@@ -44,6 +44,11 @@ namespace Ethyme
 				std::pair<std::string, Command> command = *baseCommand;
 				// find command arguments
 				std::pair<std::string, Command::Argument*> currentArgument{ "", nullptr };
+				if (baseCommand->second.Arguments().size())
+				{
+					currentArgument = { command.second.Arguments().begin()->first, &command.second.Arguments().begin()->second };
+				}
+
 				std::vector<std::string> errors;
 				int i = 0;
 				for (auto& argument : arguments)
@@ -91,6 +96,8 @@ namespace Ethyme
 						}
 						case t::String:
 						{
+							if(!i)
+								currentArgument.second->Value = std::nullopt;
 							if (currentArgument.second->Value)
 								std::get<std::string>(*currentArgument.second->Value) += " " + argument;
 							else
@@ -108,7 +115,7 @@ namespace Ethyme
 							{
 								currentArgument.second->Value = std::stoi(argument);
 							}
-							catch (const std::exception& ex)
+							catch (const std::exception&)
 							{
 								errors.push_back("`" + argument + "` is not a valid number argument.");
 								currentArgument.second->Value == std::nullopt;
@@ -126,7 +133,7 @@ namespace Ethyme
 							{
 								currentArgument.second->Value = std::stod(argument);
 							}
-							catch (const std::exception& ex)
+							catch (const std::exception&)
 							{
 								errors.push_back("`" + argument + "` is not a valid number argument.");
 								currentArgument.second->Value == std::nullopt;

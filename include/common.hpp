@@ -1,5 +1,7 @@
 #pragma once
 
+#pragma warning( disable : 4267 )
+
 #include <cstring>
 
 #include <algorithm>
@@ -10,6 +12,7 @@
 #include <memory>
 #include <optional>
 #include <random>
+#include <regex>
 #include <string>
 #include <thread>
 #include <unordered_map>

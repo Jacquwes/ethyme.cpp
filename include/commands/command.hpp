@@ -21,8 +21,8 @@ namespace Ethyme
 		};
 		struct Argument
 		{
-			bool Required;
-			ArgumentType Type;
+			bool Required = false;
+			ArgumentType Type = ArgumentType::String;
 			std::optional<std::variant<bool, std::string, int, double>> Value = std::nullopt;
 		};
 

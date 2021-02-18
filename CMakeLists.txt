@@ -20,20 +20,21 @@ add_library (${PROJECT_NAME}
 
 	"src/commands/command.cpp"
 
-	"src/structures/collection.cpp"
-	"src/structures/entity.cpp"
-	"src/structures/snowflake.cpp"
-	"src/structures/user.cpp"
 	"src/structures/channels/channel.cpp"
 	"src/structures/channels/textchannel.cpp"
+	"src/structures/collection.cpp"
+	"src/structures/entity.cpp"
+	"src/structures/mentions.cpp"
 	"src/structures/message.cpp"
+	"src/structures/snowflake.cpp"
+	"src/structures/user.cpp"
 
 	"src/client.cpp"
 	"src/commandhandler.cpp"
 	"src/websocketmessage.cpp"
 
 	"src/events/messagecreate.cpp"
-)
+ )
 
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 
