@@ -3,10 +3,12 @@
 #include "client.hpp"
 #include "common.hpp"
 #include "constants.hpp"
+#include "logger.hpp"
 
 #include "commands/command.hpp"
 
 #include "events/messagecreate.hpp"
+#include "events/ready.hpp"
 
 #include "structures/collection.hpp"
 #include "structures/entity.hpp"

@@ -9,6 +9,12 @@ int main()
 	Ethyme::Client client("Bot Token");
 	client.SetPrefix("!");
 
+	Ethyme::Logger::SetLogLevel(
+		(int)Logger::Level::Debug
+		| (int)Logger::Level::Infos
+		| (int)Logger::Level::Errors
+	);
+
 	// Command example
 	client.AddCommand("greet", Ethyme::Command(
 		// callback
