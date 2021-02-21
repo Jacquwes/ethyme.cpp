@@ -2,6 +2,7 @@
 
 #include "common.hpp"
 #include "constants.hpp"
+#include "logger.hpp"
 
 #include "commands/command.hpp"
 

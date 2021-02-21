@@ -42,6 +42,7 @@ namespace Ethyme
 
 	const std::string& Client::AddHandler(EventType eventType, std::function<void(const Events::Event&)> callback, const std::string& id)
 	{
+		Logger::Debug("New event handler added: " + id);
 		m_eventsHandlers[eventType][id] = callback;
 		return id;
 	}
@@ -72,10 +73,10 @@ namespace Ethyme
 
 	void Client::Start()
 	{
+		Logger::Debug("Starting client");
 		try
 		{
-			m_ws.set_access_channels(websocketpp::log::alevel::all);
-			m_ws.clear_access_channels(websocketpp::log::alevel::frame_payload);
+			m_ws.clear_access_channels(websocketpp::log::alevel::all);
 
 			m_ws.init_asio();
 			m_ws.set_message_handler(websocketpp::lib::bind(&Client::OnWebsocketMessage, this, &m_ws, websocketpp::lib::placeholders::_1, websocketpp::lib::placeholders::_2));
@@ -91,6 +92,7 @@ namespace Ethyme
 		}
 		catch (const websocketpp::exception& e)
 		{
+			Logger::Error("Websocket error");
 			throw e;
 		}
 	}

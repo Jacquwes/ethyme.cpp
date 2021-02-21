@@ -6,6 +6,7 @@ namespace Ethyme
 {
 	void Client::SetupCommandHandler()
 	{
+		Logger::Debug("Setting up command handler");
 		AddHandler(
 			EventType::MessageCreate,
 			[&](const Events::Event& event)

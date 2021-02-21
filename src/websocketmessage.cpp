@@ -7,6 +7,7 @@ namespace Ethyme
 {
 	void Client::SendHeartbeat(websocketpp::connection_hdl handler)
 	{
+		Logger::Debug("Sending heartbeat");
 		nlohmann::json message;
 		message["op"] = Heartbeat;
 		message["d"] = m_sequenceNumber;
@@ -26,6 +27,7 @@ namespace Ethyme
 		{
 			if (payload["t"].get<std::string>() == "READY")
 			{
+				Logger::Debug("Client ready");
 				for (auto& guild : payload["d"]["guilds"])
 				{
 					auto response = cpr::Get(
@@ -50,6 +52,7 @@ namespace Ethyme
 		}
 		case Hello:
 		{
+			Logger::Debug("Client signing in");
 			m_heartbeatInterval = payload["d"]["heartbeat_interval"].get<uint32_t>();
 			m_connectionState = ConnectionState::Connecting;
 			m_heartbeatSender = std::thread([&]()
@@ -75,7 +78,7 @@ namespace Ethyme
 		}
 		default:
 		{
-			std::cout << "Unhandled payload received:" << std::to_string(opcode) << std::endl;
+			Logger::Debug("Unhandled payload received:" + std::to_string(opcode));
 			break;
 		}
 		}

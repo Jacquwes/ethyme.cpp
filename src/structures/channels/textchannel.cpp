@@ -14,7 +14,7 @@ namespace Ethyme::Structures
 		nlohmann::json body;
 		body["content"] = content;
 
-		auto f = cpr::Post(
+		cpr::Post(
 			cpr::Url{ Constants::API::Channels + Id().ToString() + "/messages" },
 			cpr::Header{
 				{ "Authorization", this->Client().Token() },
@@ -22,5 +22,7 @@ namespace Ethyme::Structures
 			},
 			cpr::Body{ body.dump() }
 		);
+
+		Logger::Debug("Message sent to " + Id());
 	}
 }

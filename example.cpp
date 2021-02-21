@@ -73,7 +73,7 @@ int main()
 		[&](Ethyme::Events::Event const& event)
 		{
 			auto readyEvent = *(Ethyme::Events::Ready*)&event;
-			std::cout << readyEvent.Client().User().Username() << "#" << readyEvent.Client().User().Discriminator() << " is online!" << std::endl;
+			Logger::Info(readyEvent.Client().User().Username() + "#" + readyEvent.Client().User().Discriminator() + " is online!");
 		}
 	);
 
