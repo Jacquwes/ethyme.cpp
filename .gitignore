@@ -342,3 +342,6 @@ healthchecksdb
 # CMake
 [Oo]ut/
 CMakeSettings.json
+
+# Doxygen
+html/
