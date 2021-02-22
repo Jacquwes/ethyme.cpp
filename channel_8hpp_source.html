@@ -77,20 +77,22 @@ $(function() {
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span>Ethyme::Structures</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="class_ethyme_1_1_structures_1_1_channel.html">    8</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_ethyme_1_1_structures_1_1_channel.html">Channel</a> : <span class="keyword">public</span> <a class="code" href="class_ethyme_1_1_structures_1_1_entity.html">Entity</a></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keyword">enum class</span> ChannelType;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <a class="code" href="class_ethyme_1_1_structures_1_1_channel.html">Channel</a>(<span class="keyword">const</span> ChannelType&amp; channelType, <span class="keyword">const</span> std::string&amp; <span class="keywordtype">id</span>, <span class="keyword">const</span> <a class="code" href="class_ethyme_1_1_client.html">Ethyme::Client</a>&amp; client);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keyword">const</span> ChannelType&amp; Type() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_ethyme_1_1_structures_1_1_channel.html">   11</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_ethyme_1_1_structures_1_1_channel.html">Channel</a> : <span class="keyword">public</span> <a class="code" href="class_ethyme_1_1_structures_1_1_entity.html">Entity</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keyword">enum class</span> ChannelType;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        ChannelType m_channelType;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    };</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <a class="code" href="class_ethyme_1_1_structures_1_1_channel.html#addc0cb0cbfb108f3c09120a91726fe74">Channel</a>(<span class="keyword">const</span> ChannelType&amp; channelType, <span class="keyword">const</span> std::string&amp; <span class="keywordtype">id</span>, <span class="keyword">const</span> <a class="code" href="class_ethyme_1_1_client.html">Ethyme::Client</a>&amp; client);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">const</span> ChannelType&amp; <a class="code" href="class_ethyme_1_1_structures_1_1_channel.html#af491141b73e496dd30e6385a03ddee29">Type</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        ChannelType m_channelType;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    };</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
 <div class="ttc" id="aclass_ethyme_1_1_client_html"><div class="ttname"><a href="class_ethyme_1_1_client.html">Ethyme::Client</a></div><div class="ttdef"><b>Definition:</b> client.hpp:34</div></div>
-<div class="ttc" id="aclass_ethyme_1_1_structures_1_1_channel_html"><div class="ttname"><a href="class_ethyme_1_1_structures_1_1_channel.html">Ethyme::Structures::Channel</a></div><div class="ttdef"><b>Definition:</b> channel.hpp:9</div></div>
+<div class="ttc" id="aclass_ethyme_1_1_structures_1_1_channel_html"><div class="ttname"><a href="class_ethyme_1_1_structures_1_1_channel.html">Ethyme::Structures::Channel</a></div><div class="ttdoc">Doll class. Inherited by all Discord channels classes.</div><div class="ttdef"><b>Definition:</b> channel.hpp:12</div></div>
+<div class="ttc" id="aclass_ethyme_1_1_structures_1_1_channel_html_addc0cb0cbfb108f3c09120a91726fe74"><div class="ttname"><a href="class_ethyme_1_1_structures_1_1_channel.html#addc0cb0cbfb108f3c09120a91726fe74">Ethyme::Structures::Channel::Channel</a></div><div class="ttdeci">Channel(const ChannelType &amp;channelType, const std::string &amp;id, const Ethyme::Client &amp;client)</div><div class="ttdoc">Channel constructor.</div><div class="ttdef"><b>Definition:</b> channel.cpp:5</div></div>
+<div class="ttc" id="aclass_ethyme_1_1_structures_1_1_channel_html_af491141b73e496dd30e6385a03ddee29"><div class="ttname"><a href="class_ethyme_1_1_structures_1_1_channel.html#af491141b73e496dd30e6385a03ddee29">Ethyme::Structures::Channel::Type</a></div><div class="ttdeci">const ChannelType &amp; Type() const</div><div class="ttdoc">Channel's type.</div><div class="ttdef"><b>Definition:</b> channel.cpp:10</div></div>
 <div class="ttc" id="aclass_ethyme_1_1_structures_1_1_entity_html"><div class="ttname"><a href="class_ethyme_1_1_structures_1_1_entity.html">Ethyme::Structures::Entity</a></div><div class="ttdef"><b>Definition:</b> entity.hpp:14</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
