@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['send_55',['Send',['../class_ethyme_1_1_structures_1_1_text_channel.html#a4ff553b5466620ae68f9eca93b6f4409',1,'Ethyme::Structures::TextChannel']]],
-  ['setargument_56',['SetArgument',['../class_ethyme_1_1_command.html#a3f894f6d4b87cac177e904f7ae8efd9d',1,'Ethyme::Command']]]
+  ['message_62',['Message',['../class_ethyme_1_1_events_1_1_message_create.html#aee19a58ec28a33fc84a449ef5e7604a0',1,'Ethyme::Events::MessageCreate']]],
+  ['messagecreate_63',['MessageCreate',['../class_ethyme_1_1_events_1_1_message_create.html#afab2461a8d02a5144bfa7b76059c30bf',1,'Ethyme::Events::MessageCreate']]]
 ];

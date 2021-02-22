@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['_7ecommand_58',['~Command',['../class_ethyme_1_1_command.html#a6326234e5e920c4fc862fc6d0b6e27cb',1,'Ethyme::Command']]]
+  ['send_67',['Send',['../class_ethyme_1_1_structures_1_1_text_channel.html#a4ff553b5466620ae68f9eca93b6f4409',1,'Ethyme::Structures::TextChannel']]],
+  ['setargument_68',['SetArgument',['../class_ethyme_1_1_command.html#a3f894f6d4b87cac177e904f7ae8efd9d',1,'Ethyme::Command']]]
 ];

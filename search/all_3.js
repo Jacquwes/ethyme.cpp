@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['logger_14',['Logger',['../class_ethyme_1_1_logger.html',1,'Ethyme']]]
+  ['find_16',['Find',['../class_ethyme_1_1_structures_1_1_collection.html#a31e4141da26a8c6bef3b7d7e729301b6',1,'Ethyme::Structures::Collection']]],
+  ['findbyid_17',['FindById',['../class_ethyme_1_1_structures_1_1_collection.html#a024cd8791ce16007c65af2f8d8a5f906',1,'Ethyme::Structures::Collection']]]
 ];
