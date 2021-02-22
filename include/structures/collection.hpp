@@ -4,15 +4,44 @@
 
 namespace Ethyme::Structures
 {
+	/**
+	 * @brief Collection manager class used by Ethyme.
+	 * @tparam T Type of objects to manage.
+	*/
 	template<typename T>
 	class Collection
 	{
 	public:
+		/**
+		 * @brief Add a new item to the collection.
+		 * @param item New item.
+		*/
 		void Add(const T& item);
+		/**
+		 * @brief Useless
+		*/
 		const T* End() const;
+		/**
+		 * @brief Find an item in the Collection.
+		 * @param predicate Function which must return true when an item has the researched property.
+		 * @return Item if found.
+		*/
 		const T& Find(std::function<bool(const T&)> predicate) const;
+		/**
+		 * @brief Find an item in the Collection with its ID.
+		 * @param id ID of the item.
+		 * @return Item if found.
+		*/
 		const T& FindById(const std::string& id) const;
+		/**
+		 * @brief Remove an item in the Collection.
+		 * @param predicate Function which must return true when an item has the researched property.
+		*/
 		void Remove(std::function<bool(const T&)> predicate);
+		/**
+		 * @brief Remove an item in the Collection with its ID.
+		 * @param id ID of the item.
+		*/
 		void RemoveById(const std::string& id);
 
 	private:

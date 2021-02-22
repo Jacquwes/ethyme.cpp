@@ -24,15 +24,24 @@ namespace Ethyme
 	using websocketpp::lib::placeholders::_2;
 	using websocketpp::lib::bind;
 
+	/**
+	 * @brief Possible events types
+	*/
 	enum class EventType
 	{
 		MessageCreate,
 		Ready
 	};
 
+	/**
+	 * @brief Represent an Ethyme Client. Use it to communicate with Discord.
+	*/
 	class Client
 	{
 	public:
+		/**
+		 * @brief State of the connection with Discord.
+		*/
 		enum class ConnectionState
 		{
 			Connected,
@@ -40,18 +49,62 @@ namespace Ethyme
 			Disconnected,
 		};
 
+		/**
+		 * @brief Client's constructor
+		 * @param token Any Discord account's token
+		 * @param useCommands Whether you want to use the built-in command handler or not
+		*/
 		Client(const std::string& token, bool useCommands = true);
 
+		/**
+		 * @brief Add a new Command to the command handler.
+		 * @param name Name of the command. Will be used to trigger the command.
+		 * @param command Command instance.
+		*/
 		void AddCommand(const std::string& name, Command command);
-		const std::string& AddHandler(EventType, std::function<void(const Events::Event&)> callback, const std::string& id = GenerateRandomId());
+		/**
+		 * @brief Add a handler to the Client.
+		 * @param eventType Type of Event to listen to.
+		 * @param callback Function called when the Event will be triggered.
+		 * @param id ID of the handler. In the future, will be used to managed short-term listerners in the future.
+		 * @return ID of the handler.
+		*/
+		const std::string& AddHandler(EventType eventType, std::function<void(const Events::Event&)> callback, const std::string& id = GenerateRandomId());
+		/**
+		 * @brief Set the prefix used for commands.
+		 * @param prefix Prefix to use.
+		*/
 		void SetPrefix(const std::string& prefix);
+		/**
+		 * @brief Connect the Client to Discord.
+		*/
 		void Start();
 
+		/**
+		 * @brief You may use it for further debugging.
+		 * @return Error code.
+		*/
 		const websocketpp::lib::error_code& ErrorCode() const;
+		/**
+		 * @brief Token used by the Client.
+		 * @return Token used by the Client.
+		*/
 		const std::string& Token() const;
+		/**
+		 * @brief Account of the Client.
+		 * @return Account of the Client.
+		*/
 		const Structures::User& User() const;
 
+		/**
+		 * @brief Collection of Channel available to the Client.
+		 * @return Channels
+		*/
 		const Structures::Collection<Structures::Channel>& Channels() const;
+		/**
+		 * @brief Collection of User available to the Client.
+		 * @return Users
+		*/
 		const Structures::Collection<Structures::User>& Users() const;
 
 	private:

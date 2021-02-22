@@ -4,6 +4,9 @@
 
 namespace Ethyme::Events
 {
+	/**
+	 * @brief Doll class inherited by events classes.
+	*/
 	class Event
 	{
 	public:
