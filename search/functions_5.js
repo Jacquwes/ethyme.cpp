@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['ready_64',['Ready',['../class_ethyme_1_1_events_1_1_ready.html#ad7e654181d6cec91a82c7a6c2b6d6d25',1,'Ethyme::Events::Ready']]],
-  ['remove_65',['Remove',['../class_ethyme_1_1_structures_1_1_collection.html#a97033e08cdf142465ca77ff976d324bd',1,'Ethyme::Structures::Collection']]],
-  ['removebyid_66',['RemoveById',['../class_ethyme_1_1_structures_1_1_collection.html#a3fa8c6fe8ad134eee539a2c90779a384',1,'Ethyme::Structures::Collection']]]
+  ['message_68',['Message',['../class_ethyme_1_1_events_1_1_message_create.html#aee19a58ec28a33fc84a449ef5e7604a0',1,'Ethyme::Events::MessageCreate']]],
+  ['messagecreate_69',['MessageCreate',['../class_ethyme_1_1_events_1_1_message_create.html#afab2461a8d02a5144bfa7b76059c30bf',1,'Ethyme::Events::MessageCreate']]]
 ];

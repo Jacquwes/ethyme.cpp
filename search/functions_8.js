@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7ecommand_70',['~Command',['../class_ethyme_1_1_command.html#a6326234e5e920c4fc862fc6d0b6e27cb',1,'Ethyme::Command']]]
+  ['type_75',['Type',['../class_ethyme_1_1_structures_1_1_channel.html#af491141b73e496dd30e6385a03ddee29',1,'Ethyme::Structures::Channel']]]
 ];
