@@ -8,6 +8,8 @@ namespace Ethyme::Structures
 	const std::string& User::Discriminator() const { return m_discriminator; }
 	const std::string& User::Username() const { return m_username; }
 
+	User::operator const std::string() const& { return m_username + "#" + m_discriminator; }
+
 	User::User(const nlohmann::json& data, const Ethyme::Client& client)
 		: Entity(data["id"], client)
 		, m_bot(data.contains("bot") ? data["bot"] : false)

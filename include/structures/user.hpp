@@ -19,6 +19,8 @@ namespace Ethyme::Structures
 		const std::string& Discriminator() const;
 		const std::string& Username() const;
 
+		operator const std::string() const&;
+
 	protected:
 		bool m_bot;
 		std::string m_discriminator;
