@@ -2,7 +2,7 @@ var searchData=
 [
   ['callback_3',['Callback',['../class_ethyme_1_1_command.html#ad5d16b0b6b7db612d86468d4edbad4b3',1,'Ethyme::Command']]],
   ['channel_4',['Channel',['../class_ethyme_1_1_structures_1_1_channel.html',1,'Ethyme::Structures']]],
-  ['client_5',['Client',['../class_ethyme_1_1_client.html',1,'Ethyme']]],
+  ['client_5',['Client',['../class_ethyme_1_1_events_1_1_ready.html#a7cf8ec9ab675f3d429a2566c981c6360',1,'Ethyme::Events::Ready::Client()'],['../class_ethyme_1_1_client.html',1,'Ethyme::Client']]],
   ['collection_6',['Collection',['../class_ethyme_1_1_structures_1_1_collection.html',1,'Ethyme::Structures']]],
   ['collection_3c_20ethyme_3a_3astructures_3a_3achannel_20_3e_7',['Collection&lt; Ethyme::Structures::Channel &gt;',['../class_ethyme_1_1_structures_1_1_collection.html',1,'Ethyme::Structures']]],
   ['collection_3c_20ethyme_3a_3astructures_3a_3auser_20_3e_8',['Collection&lt; Ethyme::Structures::User &gt;',['../class_ethyme_1_1_structures_1_1_collection.html',1,'Ethyme::Structures']]],

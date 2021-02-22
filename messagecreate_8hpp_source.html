@@ -83,20 +83,22 @@ $(function() {
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span>Ethyme::Events</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_ethyme_1_1_events_1_1_message_create.html">   14</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_ethyme_1_1_events_1_1_message_create.html">MessageCreate</a> : <span class="keyword">public</span> <a class="code" href="class_ethyme_1_1_events_1_1_event.html">Event</a></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <a class="code" href="class_ethyme_1_1_events_1_1_message_create.html">MessageCreate</a>(<span class="keyword">const</span> nlohmann::json&amp; data, <span class="keyword">const</span> <a class="code" href="class_ethyme_1_1_client.html">Ethyme::Client</a>&amp; client);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">const</span> <a class="code" href="class_ethyme_1_1_structures_1_1_message.html">Structures::Message</a>&amp; Message() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <a class="code" href="class_ethyme_1_1_structures_1_1_message.html">Structures::Message</a> m_message;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    };</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_ethyme_1_1_events_1_1_message_create.html">   17</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_ethyme_1_1_events_1_1_message_create.html">MessageCreate</a> : <span class="keyword">public</span> <a class="code" href="class_ethyme_1_1_events_1_1_event.html">Event</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <a class="code" href="class_ethyme_1_1_events_1_1_message_create.html#afab2461a8d02a5144bfa7b76059c30bf">MessageCreate</a>(<span class="keyword">const</span> nlohmann::json&amp; data, <span class="keyword">const</span> <a class="code" href="class_ethyme_1_1_client.html">Ethyme::Client</a>&amp; client);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">const</span> <a class="code" href="class_ethyme_1_1_structures_1_1_message.html">Structures::Message</a>&amp; <a class="code" href="class_ethyme_1_1_events_1_1_message_create.html#aee19a58ec28a33fc84a449ef5e7604a0">Message</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="class_ethyme_1_1_structures_1_1_message.html">Structures::Message</a> m_message;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    };</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
 <div class="ttc" id="aclass_ethyme_1_1_client_html"><div class="ttname"><a href="class_ethyme_1_1_client.html">Ethyme::Client</a></div><div class="ttdef"><b>Definition:</b> client.hpp:34</div></div>
-<div class="ttc" id="aclass_ethyme_1_1_events_1_1_event_html"><div class="ttname"><a href="class_ethyme_1_1_events_1_1_event.html">Ethyme::Events::Event</a></div><div class="ttdef"><b>Definition:</b> event.hpp:8</div></div>
-<div class="ttc" id="aclass_ethyme_1_1_events_1_1_message_create_html"><div class="ttname"><a href="class_ethyme_1_1_events_1_1_message_create.html">Ethyme::Events::MessageCreate</a></div><div class="ttdef"><b>Definition:</b> messagecreate.hpp:15</div></div>
+<div class="ttc" id="aclass_ethyme_1_1_events_1_1_event_html"><div class="ttname"><a href="class_ethyme_1_1_events_1_1_event.html">Ethyme::Events::Event</a></div><div class="ttdoc">Doll class inherited by events classes.</div><div class="ttdef"><b>Definition:</b> event.hpp:11</div></div>
+<div class="ttc" id="aclass_ethyme_1_1_events_1_1_message_create_html"><div class="ttname"><a href="class_ethyme_1_1_events_1_1_message_create.html">Ethyme::Events::MessageCreate</a></div><div class="ttdoc">Event triggered when the Client receives a message.</div><div class="ttdef"><b>Definition:</b> messagecreate.hpp:18</div></div>
+<div class="ttc" id="aclass_ethyme_1_1_events_1_1_message_create_html_aee19a58ec28a33fc84a449ef5e7604a0"><div class="ttname"><a href="class_ethyme_1_1_events_1_1_message_create.html#aee19a58ec28a33fc84a449ef5e7604a0">Ethyme::Events::MessageCreate::Message</a></div><div class="ttdeci">const Structures::Message &amp; Message() const</div><div class="ttdoc">Message.</div><div class="ttdef"><b>Definition:</b> messagecreate.cpp:9</div></div>
+<div class="ttc" id="aclass_ethyme_1_1_events_1_1_message_create_html_afab2461a8d02a5144bfa7b76059c30bf"><div class="ttname"><a href="class_ethyme_1_1_events_1_1_message_create.html#afab2461a8d02a5144bfa7b76059c30bf">Ethyme::Events::MessageCreate::MessageCreate</a></div><div class="ttdeci">MessageCreate(const nlohmann::json &amp;data, const Ethyme::Client &amp;client)</div><div class="ttdoc">Event's constructor.</div><div class="ttdef"><b>Definition:</b> messagecreate.cpp:5</div></div>
 <div class="ttc" id="aclass_ethyme_1_1_structures_1_1_message_html"><div class="ttname"><a href="class_ethyme_1_1_structures_1_1_message.html">Ethyme::Structures::Message</a></div><div class="ttdef"><b>Definition:</b> message.hpp:14</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
