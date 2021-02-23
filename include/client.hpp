@@ -4,13 +4,13 @@
 #include "constants.hpp"
 #include "logger.hpp"
 
+#include "collections/collection.hpp"
 #include "commands/command.hpp"
 
 #include "events/event.hpp"
 #include "events/messagecreate.hpp"
 #include "events/ready.hpp"
 
-#include "structures/collection.hpp"
 #include "structures/channels/channel.hpp"
 #include "structures/user.hpp"
 
@@ -100,12 +100,12 @@ namespace Ethyme
 		 * @brief Collection of Channel available to the Client.
 		 * @return Channels
 		*/
-		const Structures::Collection<Structures::Channel>& Channels() const;
+		const Collections::Collection<Structures::Channel>& Channels() const;
 		/**
 		 * @brief Collection of User available to the Client.
 		 * @return Users
 		*/
-		const Structures::Collection<Structures::User>& Users() const;
+		const Collections::Collection<Structures::User>& Users() const;
 
 	private:
 		enum Opcodes
@@ -119,8 +119,8 @@ namespace Ethyme
 		void SetupCommandHandler();
 		std::unordered_map<std::string, Command> m_commands;
 
-		Structures::Collection<Structures::Channel> m_channels;
-		Structures::Collection<Structures::User> m_users;
+		Collections::Collection<Structures::Channel> m_channels;
+		Collections::Collection<Structures::User> m_users;
 
 		static std::string GenerateRandomId();
 

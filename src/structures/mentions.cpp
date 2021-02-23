@@ -5,13 +5,13 @@
 namespace Ethyme::Structures
 {
 	Mentions::Mentions(
-		Collection<std::shared_ptr<Channel>> const& channels, 
-		Collection<std::shared_ptr<User>> const& users
+		Collections::Collection<std::reference_wrapper<Channel>> const& channels, 
+		Collections::Collection<std::reference_wrapper<User>> const& users
 	)
 		: m_channels{ channels }
 		, m_users{ users }
 	{}
 
-	Collection<std::shared_ptr<Channel>> const& Mentions::Channels() const { return m_channels; }
-	Collection<std::shared_ptr<User>> const& Mentions::Users() const { return m_users; }
+	Collections::Collection<std::reference_wrapper<Channel>> const& Mentions::Channels() const { return m_channels; }
+	Collections::Collection<std::reference_wrapper<User>> const& Mentions::Users() const { return m_users; }
 }

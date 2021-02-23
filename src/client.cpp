@@ -1,7 +1,8 @@
 #include "client.hpp"
 
+#include "collections/collection.hpp"
+
 #include "structures/channels/textchannel.hpp"
-#include "structures/collection.hpp"
 #include "structures/user.hpp"
 
 namespace Ethyme
@@ -25,12 +26,12 @@ namespace Ethyme
 	const std::string& Client::Token() const { return m_token; }
 	const Structures::User& Client::User() const { return m_user; }
 
-	const Structures::Collection<Structures::Channel>& Client::Channels() const
+	const Collections::Collection<Structures::Channel>& Client::Channels() const
 	{
 		return m_channels;
 	}
 
-	const Structures::Collection<Structures::User>& Client::Users() const
+	const Collections::Collection<Structures::User>& Client::Users() const
 	{
 		return m_users;
 	}

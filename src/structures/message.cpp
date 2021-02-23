@@ -2,7 +2,6 @@
 
 #include "client.hpp"
 #include "structures/channels/textchannel.hpp"
-#include "structures/collection.hpp"
 #include "structures/user.hpp"
 
 namespace Ethyme::Structures
@@ -12,7 +11,7 @@ namespace Ethyme::Structures
 		, Entity(data["id"].get<std::string>(), client)
 		, m_author(User(data["author"], client))
 		, m_channel(client.Channels().FindById(data["channel_id"]).As<TextChannel>())
-		, m_mentions(m_channelsMentions, m_usersMentions)
+		// , m_mentions(m_channelsMentions, m_usersMentions)
 	{
 		/*
 		for (auto const& channelMention : data["mentions_channels"])
@@ -26,5 +25,5 @@ namespace Ethyme::Structures
 	Structures::User const& Message::Author() const { return m_author; }
 	Structures::TextChannel const& Message::Channel() const { return m_channel; }
 	std::string const& Message::Content() const { return m_content; }
-	Structures::Mentions const& Message::Mentions() const { return m_mentions; }
+	// Structures::Mentions const& Message::Mentions() const { return m_mentions; }
 }

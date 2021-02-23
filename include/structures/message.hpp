@@ -1,7 +1,7 @@
 #pragma once
 
 #include "common.hpp"
-#include "structures/collection.hpp"
+#include "collections/collection.hpp"
 #include "structures/entity.hpp"
 #include "structures/mentions.hpp"
 #include "structures/user.hpp"
@@ -33,15 +33,15 @@ namespace Ethyme::Structures
 		/**
 		 * @brief Mentions included in the message.
 		*/
-		Structures::Mentions const& Mentions() const;
+		// Structures::Mentions const& Mentions() const;
 
 	private:
 		Structures::User m_author;
 		Structures::TextChannel const& m_channel;
 		std::string m_content;
-		Structures::Mentions m_mentions;
+		// Structures::Mentions m_mentions;
 
-		Collection<std::shared_ptr<Structures::Channel>> m_channelsMentions;
-		Collection<std::shared_ptr<User>> m_usersMentions;
+		// Collections::Collection<std::reference_wrapper<User>> m_channelsMentions;
+		// Collections::Collection<std::reference_wrapper<User>> m_usersMentions;
 	};
 }

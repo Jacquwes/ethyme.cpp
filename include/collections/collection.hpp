@@ -2,7 +2,7 @@
 
 #include "common.hpp"
 
-namespace Ethyme::Structures
+namespace Ethyme::Collections
 {
 	/**
 	 * @brief Collection manager class used by Ethyme.
@@ -12,6 +12,30 @@ namespace Ethyme::Structures
 	class Collection
 	{
 	public:
+		/**
+		 * @brief Simple iterator
+		*/
+		class Iterator
+		{
+			// yes, copied from https://www.internalpointers.com/post/writing-custom-iterators-modern-cpp hahaha
+		public:
+			Iterator(T* ptr) : m_ptr{ ptr } {}
+
+			T& operator*() const { return *m_ptr; }
+			T* operator->() { return m_ptr; }
+			Iterator& operator++() { ++m_ptr; return *this; }
+			Iterator operator++(int) { Iterator tmp = *this; ++(*this); return tmp; }
+
+			friend bool operator== (const Iterator& a, const Iterator& b) { return a.m_ptr == b.m_ptr; }
+			friend bool operator!= (const Iterator& a, const Iterator& b) { return a.m_ptr != b.m_ptr; }
+
+		private:
+			T* m_ptr;
+		};
+
+		Iterator Begin() { return Iterator(m_items.begin()); }
+		Iterator End() { return Iterator(m_items.end()); }
+
 		/**
 		 * @brief Add a new item to the collection.
 		 * @param item New item.

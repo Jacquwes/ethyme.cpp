@@ -24,9 +24,10 @@ add_library (${PROJECT_NAME}
 
 	"src/commands/command.cpp"
 
+	"src/collections/collection.cpp"
+
 	"src/structures/channels/channel.cpp"
 	"src/structures/channels/textchannel.cpp"
-	"src/structures/collection.cpp"
 	"src/structures/entity.cpp"
 	"src/structures/mentions.cpp"
 	"src/structures/message.cpp"

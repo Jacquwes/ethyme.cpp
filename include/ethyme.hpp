@@ -5,12 +5,13 @@
 #include "constants.hpp"
 #include "logger.hpp"
 
+#include "collections/collection.hpp"
+
 #include "commands/command.hpp"
 
 #include "events/messagecreate.hpp"
 #include "events/ready.hpp"
 
-#include "structures/collection.hpp"
 #include "structures/entity.hpp"
 #include "structures/message.hpp"
 #include "structures/snowflake.hpp"
