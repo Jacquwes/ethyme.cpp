@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['_7ecommand_99',['~Command',['../class_ethyme_1_1_command.html#a6326234e5e920c4fc862fc6d0b6e27cb',1,'Ethyme::Command']]],
-  ['_7eentity_100',['~Entity',['../class_ethyme_1_1_structures_1_1_entity.html#a3aa289e17b1e0ed32c9d6d7486e3ddeb',1,'Ethyme::Structures::Entity']]]
+  ['user_103',['User',['../class_ethyme_1_1_client.html#a5fe4d3a38b7c957957b1a4525131fef1',1,'Ethyme::Client']]],
+  ['users_104',['Users',['../class_ethyme_1_1_client.html#aa5b886ec84535c13cc58c4fbdefb4b48',1,'Ethyme::Client']]]
 ];

@@ -92,22 +92,23 @@ $(document).ready(function(){initNavTree('snowflake_8hpp_source.html',''); initR
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span>Ethyme::Structures</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="class_ethyme_1_1_structures_1_1_snowflake.html">    7</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_ethyme_1_1_structures_1_1_snowflake.html">Snowflake</a></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <a class="code" href="class_ethyme_1_1_structures_1_1_snowflake.html">Snowflake</a>(<span class="keyword">const</span> std::string&amp; <span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="class_ethyme_1_1_structures_1_1_snowflake.html">Snowflake</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">operator</span> <span class="keyword">const</span> std::string() <span class="keyword">const</span>&amp;;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keyword">operator</span> <span class="keyword">const</span> uint64_t() <span class="keyword">const</span>&amp;;</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_ethyme_1_1_structures_1_1_snowflake.html">   10</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_ethyme_1_1_structures_1_1_snowflake.html">Snowflake</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <a class="code" href="class_ethyme_1_1_structures_1_1_snowflake.html">Snowflake</a>(<span class="keyword">const</span> std::string&amp; <span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="class_ethyme_1_1_structures_1_1_snowflake.html">Snowflake</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">const</span> std::string&amp; ToString() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        std::string m_id;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    };</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
-<div class="ttc" id="aclass_ethyme_1_1_structures_1_1_snowflake_html"><div class="ttname"><a href="class_ethyme_1_1_structures_1_1_snowflake.html">Ethyme::Structures::Snowflake</a></div><div class="ttdef"><b>Definition:</b> snowflake.hpp:8</div></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_ethyme_1_1_structures_1_1_snowflake.html#a0f8fdfec993a9d2c32cdbe83ed64023e">   19</a></span>&#160;        <span class="keyword">operator</span> <span class="keyword">const</span> std::string() const&amp;;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_ethyme_1_1_structures_1_1_snowflake.html#a5e30af8a51dced45ef93887270b1c2e8">   23</a></span>&#160;        operator const uint64_t() const&amp;;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="class_ethyme_1_1_structures_1_1_snowflake.html#a5095f5ce367a69b42b2ed0865e4a5e72">   28</a></span>&#160;        const std::<span class="keywordtype">string</span>&amp; <a class="code" href="class_ethyme_1_1_structures_1_1_snowflake.html#a5095f5ce367a69b42b2ed0865e4a5e72">ToString</a>() const;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    private:</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        std::<span class="keywordtype">string</span> m_id;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    };</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
+<div class="ttc" id="aclass_ethyme_1_1_structures_1_1_snowflake_html"><div class="ttname"><a href="class_ethyme_1_1_structures_1_1_snowflake.html">Ethyme::Structures::Snowflake</a></div><div class="ttdoc">Discord's ID system.</div><div class="ttdef"><b>Definition:</b> snowflake.hpp:11</div></div>
+<div class="ttc" id="aclass_ethyme_1_1_structures_1_1_snowflake_html_a5095f5ce367a69b42b2ed0865e4a5e72"><div class="ttname"><a href="class_ethyme_1_1_structures_1_1_snowflake.html#a5095f5ce367a69b42b2ed0865e4a5e72">Ethyme::Structures::Snowflake::ToString</a></div><div class="ttdeci">const std::string &amp; ToString() const</div><div class="ttdoc">Returns the ID as a string.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
