@@ -14,6 +14,10 @@ The order of the arguments doesn't matter.
 
 Message update is treated as message create.
 
+## Documentation
+
+https://jacquesatan.github.io/ethyme.cpp
+
 ## Installation
 
 ### Deps

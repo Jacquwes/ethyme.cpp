@@ -10,6 +10,9 @@ namespace Ethyme
 
 namespace Ethyme::Structures
 {
+	/**
+	 * @brief Represents a Discord User
+	*/
 	class User : public Entity
 	{
 	public:
@@ -19,6 +22,9 @@ namespace Ethyme::Structures
 		const std::string& Discriminator() const;
 		const std::string& Username() const;
 
+		/**
+		 * @brief Return the tag of the User
+		*/
 		operator const std::string() const&;
 
 	protected:

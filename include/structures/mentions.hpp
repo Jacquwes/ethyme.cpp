@@ -9,6 +9,9 @@ namespace Ethyme::Structures
 {
 	class Message;
 
+	/**
+	 * @brief Used by Message class to store all mentions in it.
+	*/
 	class Mentions
 	{
 	public:
