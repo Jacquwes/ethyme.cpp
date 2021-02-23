@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -46,6 +50,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('class_ethyme_1_1_structures_1_1_user.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,11 +81,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>Ethyme</b></li><li class="navelem"><b>Structures</b></li><li class="navelem"><a class="el" href="class_ethyme_1_1_structures_1_1_user.html">User</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -77,27 +93,36 @@ $(function() {
 <div class="dynheader">
 Inheritance diagram for Ethyme::Structures::User:</div>
 <div class="dyncontent">
- <div class="center">
-  <img src="class_ethyme_1_1_structures_1_1_user.png" usemap="#Ethyme::Structures::User_map" alt=""/>
-  <map id="Ethyme::Structures::User_map" name="Ethyme::Structures::User_map">
-<area href="class_ethyme_1_1_structures_1_1_entity.html" title="Doll class. Inherited by all Discord entities." alt="Ethyme::Structures::Entity" shape="rect" coords="0,0,154,24"/>
-  </map>
-</div></div>
+<div class="center"><img src="class_ethyme_1_1_structures_1_1_user__inherit__graph.png" border="0" usemap="#a_ethyme_1_1_structures_1_1_user_inherit__map" alt="Inheritance graph"/></div>
+<map name="a_ethyme_1_1_structures_1_1_user_inherit__map" id="a_ethyme_1_1_structures_1_1_user_inherit__map">
+<area shape="rect" title=" " alt="" coords="5,95,140,136"/>
+<area shape="rect" href="class_ethyme_1_1_structures_1_1_entity.html" title="Doll class. Inherited by all Discord entities." alt="" coords="5,5,140,47"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for Ethyme::Structures::User:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_ethyme_1_1_structures_1_1_user__coll__graph.png" border="0" usemap="#a_ethyme_1_1_structures_1_1_user_coll__map" alt="Collaboration graph"/></div>
+<map name="a_ethyme_1_1_structures_1_1_user_coll__map" id="a_ethyme_1_1_structures_1_1_user_coll__map">
+<area shape="rect" title=" " alt="" coords="5,95,140,136"/>
+<area shape="rect" href="class_ethyme_1_1_structures_1_1_entity.html" title="Doll class. Inherited by all Discord entities." alt="" coords="5,5,140,47"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:acf3c5b36944efd442eaa57ac405da065"><td class="memItemLeft" align="right" valign="top"><a id="acf3c5b36944efd442eaa57ac405da065"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>User</b> (const nlohmann::json &amp;data, const <a class="el" href="class_ethyme_1_1_client.html">Ethyme::Client</a> &amp;client)</td></tr>
 <tr class="separator:acf3c5b36944efd442eaa57ac405da065"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1d36dcc3cd208c5c169c8efcfdedd1d"><td class="memItemLeft" align="right" valign="top"><a id="ad1d36dcc3cd208c5c169c8efcfdedd1d"></a>
+<tr class="memitem:a05081ae5e20d80205840ba0295bbb548"><td class="memItemLeft" align="right" valign="top"><a id="a05081ae5e20d80205840ba0295bbb548"></a>
 const bool &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>Bot</b> () const</td></tr>
-<tr class="separator:ad1d36dcc3cd208c5c169c8efcfdedd1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1cfd59b6e8a782afd3e0ef28115ffdc4"><td class="memItemLeft" align="right" valign="top"><a id="a1cfd59b6e8a782afd3e0ef28115ffdc4"></a>
+<tr class="separator:a05081ae5e20d80205840ba0295bbb548"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e4f9b7d1b42d07891bed4b782e97ce2"><td class="memItemLeft" align="right" valign="top"><a id="a2e4f9b7d1b42d07891bed4b782e97ce2"></a>
 const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>Discriminator</b> () const</td></tr>
-<tr class="separator:a1cfd59b6e8a782afd3e0ef28115ffdc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1ad1d219b89223e990a8e661397bbe9"><td class="memItemLeft" align="right" valign="top"><a id="af1ad1d219b89223e990a8e661397bbe9"></a>
+<tr class="separator:a2e4f9b7d1b42d07891bed4b782e97ce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b7c50102144244d3565ac083a505136"><td class="memItemLeft" align="right" valign="top"><a id="a4b7c50102144244d3565ac083a505136"></a>
 const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>Username</b> () const</td></tr>
-<tr class="separator:af1ad1d219b89223e990a8e661397bbe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a4b7c50102144244d3565ac083a505136"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aecc0d3ab53abcebb702e02cbba1b609d"><td class="memItemLeft" align="right" valign="top"><a id="aecc0d3ab53abcebb702e02cbba1b609d"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>operator const std::string</b> () const &amp;</td></tr>
 <tr class="separator:aecc0d3ab53abcebb702e02cbba1b609d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -109,12 +134,12 @@ const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>Us
 virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ethyme_1_1_structures_1_1_entity.html#a3aa289e17b1e0ed32c9d6d7486e3ddeb">~Entity</a> ()=default</td></tr>
 <tr class="memdesc:a3aa289e17b1e0ed32c9d6d7486e3ddeb inherit pub_methods_class_ethyme_1_1_structures_1_1_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inheritable. <br /></td></tr>
 <tr class="separator:a3aa289e17b1e0ed32c9d6d7486e3ddeb inherit pub_methods_class_ethyme_1_1_structures_1_1_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af101a21652df9c11ef83e4c73faf4575 inherit pub_methods_class_ethyme_1_1_structures_1_1_entity"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_ethyme_1_1_structures_1_1_snowflake.html">Snowflake</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ethyme_1_1_structures_1_1_entity.html#af101a21652df9c11ef83e4c73faf4575">Id</a> () const</td></tr>
-<tr class="memdesc:af101a21652df9c11ef83e4c73faf4575 inherit pub_methods_class_ethyme_1_1_structures_1_1_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_ethyme_1_1_structures_1_1_entity.html" title="Doll class. Inherited by all Discord entities.">Entity</a>'s ID.  <a href="class_ethyme_1_1_structures_1_1_entity.html#af101a21652df9c11ef83e4c73faf4575">More...</a><br /></td></tr>
-<tr class="separator:af101a21652df9c11ef83e4c73faf4575 inherit pub_methods_class_ethyme_1_1_structures_1_1_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2cca415f948d29a0ece20c0e24cae022 inherit pub_methods_class_ethyme_1_1_structures_1_1_entity"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_ethyme_1_1_client.html">Ethyme::Client</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ethyme_1_1_structures_1_1_entity.html#a2cca415f948d29a0ece20c0e24cae022">Client</a> () const</td></tr>
-<tr class="memdesc:a2cca415f948d29a0ece20c0e24cae022 inherit pub_methods_class_ethyme_1_1_structures_1_1_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_ethyme_1_1_client.html" title="Represent an Ethyme Client. Use it to communicate with Discord.">Client</a>'s instance.  <a href="class_ethyme_1_1_structures_1_1_entity.html#a2cca415f948d29a0ece20c0e24cae022">More...</a><br /></td></tr>
-<tr class="separator:a2cca415f948d29a0ece20c0e24cae022 inherit pub_methods_class_ethyme_1_1_structures_1_1_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c25d32c9e123b6fbac0ff4d89fbbce5 inherit pub_methods_class_ethyme_1_1_structures_1_1_entity"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_ethyme_1_1_structures_1_1_snowflake.html">Snowflake</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ethyme_1_1_structures_1_1_entity.html#a0c25d32c9e123b6fbac0ff4d89fbbce5">Id</a> () const</td></tr>
+<tr class="memdesc:a0c25d32c9e123b6fbac0ff4d89fbbce5 inherit pub_methods_class_ethyme_1_1_structures_1_1_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_ethyme_1_1_structures_1_1_entity.html" title="Doll class. Inherited by all Discord entities.">Entity</a>'s ID.  <a href="class_ethyme_1_1_structures_1_1_entity.html#a0c25d32c9e123b6fbac0ff4d89fbbce5">More...</a><br /></td></tr>
+<tr class="separator:a0c25d32c9e123b6fbac0ff4d89fbbce5 inherit pub_methods_class_ethyme_1_1_structures_1_1_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57a4e7ff5b4474b89f4855a33a646a71 inherit pub_methods_class_ethyme_1_1_structures_1_1_entity"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_ethyme_1_1_client.html">Ethyme::Client</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ethyme_1_1_structures_1_1_entity.html#a57a4e7ff5b4474b89f4855a33a646a71">Client</a> () const</td></tr>
+<tr class="memdesc:a57a4e7ff5b4474b89f4855a33a646a71 inherit pub_methods_class_ethyme_1_1_structures_1_1_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_ethyme_1_1_client.html" title="Represent an Ethyme Client. Use it to communicate with Discord.">Client</a>'s instance.  <a href="class_ethyme_1_1_structures_1_1_entity.html#a57a4e7ff5b4474b89f4855a33a646a71">More...</a><br /></td></tr>
+<tr class="separator:a57a4e7ff5b4474b89f4855a33a646a71 inherit pub_methods_class_ethyme_1_1_structures_1_1_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa106563945db5107a682864e090ff114 inherit pub_methods_class_ethyme_1_1_structures_1_1_entity"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:aa106563945db5107a682864e090ff114 inherit pub_methods_class_ethyme_1_1_structures_1_1_entity"><td class="memTemplItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_ethyme_1_1_structures_1_1_entity.html#aa106563945db5107a682864e090ff114">As</a> () const</td></tr>
 <tr class="memdesc:aa106563945db5107a682864e090ff114 inherit pub_methods_class_ethyme_1_1_structures_1_1_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use this <a class="el" href="class_ethyme_1_1_structures_1_1_entity.html" title="Doll class. Inherited by all Discord entities.">Entity</a> as something else.  <a href="class_ethyme_1_1_structures_1_1_entity.html#aa106563945db5107a682864e090ff114">More...</a><br /></td></tr>
@@ -132,14 +157,17 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_discriminato
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_username</b></td></tr>
 <tr class="separator:a1eef66a9b7d4e3e9c63f9a8539e4d09b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/structures/<a class="el" href="user_8hpp_source.html">user.hpp</a></li>
-<li>src/structures/user.cpp</li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Ethyme</b></li><li class="navelem"><b>Structures</b></li><li class="navelem"><a class="el" href="class_ethyme_1_1_structures_1_1_user.html">User</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

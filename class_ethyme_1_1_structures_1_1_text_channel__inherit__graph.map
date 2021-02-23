@@ -1,0 +1,5 @@
+<map id="Ethyme::Structures::TextChannel" name="Ethyme::Structures::TextChannel">
+<area shape="rect" id="node1" title="Represent all text channels." alt="" coords="5,184,140,225"/>
+<area shape="rect" id="node2" href="$class_ethyme_1_1_structures_1_1_channel.html" title="Doll class. Inherited by all Discord channels classes." alt="" coords="5,95,140,136"/>
+<area shape="rect" id="node3" href="$class_ethyme_1_1_structures_1_1_entity.html" title="Doll class. Inherited by all Discord entities." alt="" coords="5,5,140,47"/>
+</map>

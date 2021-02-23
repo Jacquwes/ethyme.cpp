@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -46,6 +50,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('class_ethyme_1_1_logger.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,11 +81,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>Ethyme</b></li><li class="navelem"><a class="el" href="class_ethyme_1_1_logger.html">Logger</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
@@ -93,30 +109,33 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> 
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ae6136a73a9677c3d81a3b337c95517e3"><td class="memItemLeft" align="right" valign="top"><a id="ae6136a73a9677c3d81a3b337c95517e3"></a>
+<tr class="memitem:a1fcfbc550b2bb29e51ac17be4d270ebb"><td class="memItemLeft" align="right" valign="top"><a id="a1fcfbc550b2bb29e51ac17be4d270ebb"></a>
 static void&#160;</td><td class="memItemRight" valign="bottom"><b>SetLogLevel</b> (uint32_t const &amp;logLevel)</td></tr>
-<tr class="separator:ae6136a73a9677c3d81a3b337c95517e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3a448e4e831806ede63925ffb2132a0"><td class="memItemLeft" align="right" valign="top"><a id="ab3a448e4e831806ede63925ffb2132a0"></a>
+<tr class="separator:a1fcfbc550b2bb29e51ac17be4d270ebb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedfd0ea24af3a48a515cced0ebe26ee9"><td class="memItemLeft" align="right" valign="top"><a id="aedfd0ea24af3a48a515cced0ebe26ee9"></a>
 static void&#160;</td><td class="memItemRight" valign="bottom"><b>Debug</b> (std::string const &amp;message)</td></tr>
-<tr class="separator:ab3a448e4e831806ede63925ffb2132a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa295c05458da1b8edbb2e09811832855"><td class="memItemLeft" align="right" valign="top"><a id="aa295c05458da1b8edbb2e09811832855"></a>
+<tr class="separator:aedfd0ea24af3a48a515cced0ebe26ee9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11b6268221ccbc194d66b9fe6b4708a3"><td class="memItemLeft" align="right" valign="top"><a id="a11b6268221ccbc194d66b9fe6b4708a3"></a>
 static void&#160;</td><td class="memItemRight" valign="bottom"><b>Error</b> (std::string const &amp;message)</td></tr>
-<tr class="separator:aa295c05458da1b8edbb2e09811832855"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3f5bccc22e8201aa00f02353f3bb3be"><td class="memItemLeft" align="right" valign="top"><a id="ac3f5bccc22e8201aa00f02353f3bb3be"></a>
+<tr class="separator:a11b6268221ccbc194d66b9fe6b4708a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4a3d4ca561307735da833a4e65f4252"><td class="memItemLeft" align="right" valign="top"><a id="af4a3d4ca561307735da833a4e65f4252"></a>
 static void&#160;</td><td class="memItemRight" valign="bottom"><b>Info</b> (std::string const &amp;message)</td></tr>
-<tr class="separator:ac3f5bccc22e8201aa00f02353f3bb3be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e2e47143a2f45bd2c4a9a5648cda613"><td class="memItemLeft" align="right" valign="top"><a id="a7e2e47143a2f45bd2c4a9a5648cda613"></a>
+<tr class="separator:af4a3d4ca561307735da833a4e65f4252"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97c2e5a517e7866d795eef312a6b0674"><td class="memItemLeft" align="right" valign="top"><a id="a97c2e5a517e7866d795eef312a6b0674"></a>
 static void&#160;</td><td class="memItemRight" valign="bottom"><b>Log</b> (std::string const &amp;message, Level const &amp;logLevel)</td></tr>
-<tr class="separator:a7e2e47143a2f45bd2c4a9a5648cda613"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a97c2e5a517e7866d795eef312a6b0674"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/<a class="el" href="logger_8hpp_source.html">logger.hpp</a></li>
-<li>src/logger.cpp</li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Ethyme</b></li><li class="navelem"><a class="el" href="class_ethyme_1_1_logger.html">Logger</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

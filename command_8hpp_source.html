@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -46,6 +50,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('command_8hpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,11 +81,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_4d4c17f10dfc67a4e6c52aa126dbc0d5.html">commands</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">command.hpp</div>  </div>
@@ -99,12 +115,12 @@ $(function() {
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        };</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
 <div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_ethyme_1_1_command.html#ad894f2a72ecaad62f9832cd13d6d14d0">   50</a></span>&#160;        <a class="code" href="class_ethyme_1_1_command.html#ad894f2a72ecaad62f9832cd13d6d14d0">Command</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <a class="code" href="class_ethyme_1_1_command.html#ad894f2a72ecaad62f9832cd13d6d14d0">Command</a>(<span class="keyword">const</span> std::function&lt;<span class="keywordtype">void</span>(<span class="keyword">const</span> <a class="code" href="class_ethyme_1_1_structures_1_1_message.html">Structures::Message</a>&amp; message, std::unordered_map&lt;std::string, Argument&gt; arguments)&gt;&amp; callback, std::unordered_map&lt;std::string, Command::Argument&gt; args);</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_ethyme_1_1_command.html#af79ee32f5a8397bfda15fafa789a6e78">   56</a></span>&#160;        <a class="code" href="class_ethyme_1_1_command.html#af79ee32f5a8397bfda15fafa789a6e78">Command</a>(<span class="keyword">const</span> std::function&lt;<span class="keywordtype">void</span>(<span class="keyword">const</span> <a class="code" href="class_ethyme_1_1_structures_1_1_message.html">Structures::Message</a>&amp; message, std::unordered_map&lt;std::string, Argument&gt; arguments)&gt;&amp; callback, std::unordered_map&lt;std::string, Command::Argument&gt; args);</div>
 <div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="class_ethyme_1_1_command.html#a6326234e5e920c4fc862fc6d0b6e27cb">   60</a></span>&#160;        <span class="keyword">virtual</span> <a class="code" href="class_ethyme_1_1_command.html#a6326234e5e920c4fc862fc6d0b6e27cb">~Command</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        std::unordered_map&lt;std::string, Argument&gt;&amp; <a class="code" href="class_ethyme_1_1_command.html#a70c32f6e94667894dbec6f9f847017e1">Arguments</a>();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_ethyme_1_1_command.html#a3f894f6d4b87cac177e904f7ae8efd9d">SetArgument</a>(<span class="keyword">const</span> std::string&amp; name, std::optional&lt;std::variant&lt;bool, std::string, int, double&gt;&gt; value);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keyword">const</span> std::function&lt;void(<span class="keyword">const</span> <a class="code" href="class_ethyme_1_1_structures_1_1_message.html">Structures::Message</a>&amp; message, std::unordered_map&lt;std::string, Argument&gt; arguments)&gt;&amp; <a class="code" href="class_ethyme_1_1_command.html#ad5d16b0b6b7db612d86468d4edbad4b3">Callback</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="class_ethyme_1_1_command.html#ac40c156a51bba8d468344e6f64895775">   66</a></span>&#160;        std::unordered_map&lt;std::string, Argument&gt;&amp; <a class="code" href="class_ethyme_1_1_command.html#ac40c156a51bba8d468344e6f64895775">Arguments</a>();</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="class_ethyme_1_1_command.html#a3f894f6d4b87cac177e904f7ae8efd9d">   72</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_ethyme_1_1_command.html#a3f894f6d4b87cac177e904f7ae8efd9d">SetArgument</a>(<span class="keyword">const</span> std::string&amp; name, std::optional&lt;std::variant&lt;bool, std::string, int, double&gt;&gt; value);</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="class_ethyme_1_1_command.html#aaa311f8313db24dcae9886de4de48c66">   77</a></span>&#160;        <span class="keyword">const</span> std::function&lt;void(<span class="keyword">const</span> <a class="code" href="class_ethyme_1_1_structures_1_1_message.html">Structures::Message</a>&amp; message, std::unordered_map&lt;std::string, Argument&gt; arguments)&gt;&amp; <a class="code" href="class_ethyme_1_1_command.html#aaa311f8313db24dcae9886de4de48c66">Callback</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">protected</span>:</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        std::unordered_map&lt;std::string, Argument&gt; arguments;</div>
@@ -115,20 +131,25 @@ $(function() {
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
 <div class="ttc" id="aclass_ethyme_1_1_command_html"><div class="ttname"><a href="class_ethyme_1_1_command.html">Ethyme::Command</a></div><div class="ttdoc">Represents a bot command. Used by the command manager.</div><div class="ttdef"><b>Definition:</b> command.hpp:16</div></div>
 <div class="ttc" id="aclass_ethyme_1_1_command_html_a1785186a195fd3b8d8c37d8b79ed9d8d"><div class="ttname"><a href="class_ethyme_1_1_command.html#a1785186a195fd3b8d8c37d8b79ed9d8d">Ethyme::Command::ArgumentType</a></div><div class="ttdeci">ArgumentType</div><div class="ttdoc">Specifies the type of a command.</div><div class="ttdef"><b>Definition:</b> command.hpp:22</div></div>
-<div class="ttc" id="aclass_ethyme_1_1_command_html_a3f894f6d4b87cac177e904f7ae8efd9d"><div class="ttname"><a href="class_ethyme_1_1_command.html#a3f894f6d4b87cac177e904f7ae8efd9d">Ethyme::Command::SetArgument</a></div><div class="ttdeci">void SetArgument(const std::string &amp;name, std::optional&lt; std::variant&lt; bool, std::string, int, double &gt;&gt; value)</div><div class="ttdoc">Add or modify a Command's Argument.</div><div class="ttdef"><b>Definition:</b> command.cpp:23</div></div>
+<div class="ttc" id="aclass_ethyme_1_1_command_html_a3f894f6d4b87cac177e904f7ae8efd9d"><div class="ttname"><a href="class_ethyme_1_1_command.html#a3f894f6d4b87cac177e904f7ae8efd9d">Ethyme::Command::SetArgument</a></div><div class="ttdeci">void SetArgument(const std::string &amp;name, std::optional&lt; std::variant&lt; bool, std::string, int, double &gt;&gt; value)</div><div class="ttdoc">Add or modify a Command's Argument.</div></div>
 <div class="ttc" id="aclass_ethyme_1_1_command_html_a6326234e5e920c4fc862fc6d0b6e27cb"><div class="ttname"><a href="class_ethyme_1_1_command.html#a6326234e5e920c4fc862fc6d0b6e27cb">Ethyme::Command::~Command</a></div><div class="ttdeci">virtual ~Command()=default</div><div class="ttdoc">This destructor is here to allow you to inherit this class.</div></div>
-<div class="ttc" id="aclass_ethyme_1_1_command_html_a70c32f6e94667894dbec6f9f847017e1"><div class="ttname"><a href="class_ethyme_1_1_command.html#a70c32f6e94667894dbec6f9f847017e1">Ethyme::Command::Arguments</a></div><div class="ttdeci">std::unordered_map&lt; std::string, Argument &gt; &amp; Arguments()</div><div class="ttdoc">Returns the current instance of the Command's default arguments.</div><div class="ttdef"><b>Definition:</b> command.cpp:18</div></div>
-<div class="ttc" id="aclass_ethyme_1_1_command_html_ad5d16b0b6b7db612d86468d4edbad4b3"><div class="ttname"><a href="class_ethyme_1_1_command.html#ad5d16b0b6b7db612d86468d4edbad4b3">Ethyme::Command::Callback</a></div><div class="ttdeci">const std::function&lt; void(const Structures::Message &amp;message, std::unordered_map&lt; std::string, Argument &gt; arguments)&gt; &amp; Callback() const</div><div class="ttdoc">Function called when the Command is triggered.</div><div class="ttdef"><b>Definition:</b> command.cpp:13</div></div>
+<div class="ttc" id="aclass_ethyme_1_1_command_html_aaa311f8313db24dcae9886de4de48c66"><div class="ttname"><a href="class_ethyme_1_1_command.html#aaa311f8313db24dcae9886de4de48c66">Ethyme::Command::Callback</a></div><div class="ttdeci">const std::function&lt; void(const Structures::Message &amp;message, std::unordered_map&lt; std::string, Argument &gt; arguments)&gt; &amp; Callback() const</div><div class="ttdoc">Function called when the Command is triggered.</div></div>
+<div class="ttc" id="aclass_ethyme_1_1_command_html_ac40c156a51bba8d468344e6f64895775"><div class="ttname"><a href="class_ethyme_1_1_command.html#ac40c156a51bba8d468344e6f64895775">Ethyme::Command::Arguments</a></div><div class="ttdeci">std::unordered_map&lt; std::string, Argument &gt; &amp; Arguments()</div><div class="ttdoc">Returns the current instance of the Command's default arguments.</div></div>
 <div class="ttc" id="aclass_ethyme_1_1_command_html_ad894f2a72ecaad62f9832cd13d6d14d0"><div class="ttname"><a href="class_ethyme_1_1_command.html#ad894f2a72ecaad62f9832cd13d6d14d0">Ethyme::Command::Command</a></div><div class="ttdeci">Command()=default</div><div class="ttdoc">Default constructor.</div></div>
-<div class="ttc" id="aclass_ethyme_1_1_structures_1_1_message_html"><div class="ttname"><a href="class_ethyme_1_1_structures_1_1_message.html">Ethyme::Structures::Message</a></div><div class="ttdef"><b>Definition:</b> message.hpp:14</div></div>
+<div class="ttc" id="aclass_ethyme_1_1_command_html_af79ee32f5a8397bfda15fafa789a6e78"><div class="ttname"><a href="class_ethyme_1_1_command.html#af79ee32f5a8397bfda15fafa789a6e78">Ethyme::Command::Command</a></div><div class="ttdeci">Command(const std::function&lt; void(const Structures::Message &amp;message, std::unordered_map&lt; std::string, Argument &gt; arguments)&gt; &amp;callback, std::unordered_map&lt; std::string, Command::Argument &gt; args)</div><div class="ttdoc">Create a command directly with a callback and its arguments.</div></div>
+<div class="ttc" id="aclass_ethyme_1_1_structures_1_1_message_html"><div class="ttname"><a href="class_ethyme_1_1_structures_1_1_message.html">Ethyme::Structures::Message</a></div><div class="ttdoc">Represents a Discord Message.</div><div class="ttdef"><b>Definition:</b> message.hpp:17</div></div>
 <div class="ttc" id="astruct_ethyme_1_1_command_1_1_argument_html"><div class="ttname"><a href="struct_ethyme_1_1_command_1_1_argument.html">Ethyme::Command::Argument</a></div><div class="ttdoc">Represents a command argument.</div><div class="ttdef"><b>Definition:</b> command.hpp:32</div></div>
 <div class="ttc" id="astruct_ethyme_1_1_command_1_1_argument_html_a1cf7821f383e50557505c37437312799"><div class="ttname"><a href="struct_ethyme_1_1_command_1_1_argument.html#a1cf7821f383e50557505c37437312799">Ethyme::Command::Argument::Required</a></div><div class="ttdeci">bool Required</div><div class="ttdoc">Specifies whether the argument can be ignored or not.</div><div class="ttdef"><b>Definition:</b> command.hpp:36</div></div>
 <div class="ttc" id="astruct_ethyme_1_1_command_1_1_argument_html_acc27b3a2d07229c046bcb5c69922845b"><div class="ttname"><a href="struct_ethyme_1_1_command_1_1_argument.html#acc27b3a2d07229c046bcb5c69922845b">Ethyme::Command::Argument::Type</a></div><div class="ttdeci">ArgumentType Type</div><div class="ttdoc">Specifies the type of the argument.</div><div class="ttdef"><b>Definition:</b> command.hpp:40</div></div>
 <div class="ttc" id="astruct_ethyme_1_1_command_1_1_argument_html_afaae4653109b9b462318b452e2b3b80e"><div class="ttname"><a href="struct_ethyme_1_1_command_1_1_argument.html#afaae4653109b9b462318b452e2b3b80e">Ethyme::Command::Argument::Value</a></div><div class="ttdeci">std::optional&lt; std::variant&lt; bool, std::string, int, double &gt; &gt; Value</div><div class="ttdoc">Value of the argument when the command is executed by an User.</div><div class="ttdef"><b>Definition:</b> command.hpp:44</div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_4d4c17f10dfc67a4e6c52aa126dbc0d5.html">commands</a></li><li class="navelem"><b>command.hpp</b></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

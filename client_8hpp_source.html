@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -46,6 +50,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('client_8hpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,11 +81,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">client.hpp</div>  </div>
@@ -112,19 +128,19 @@ $(function() {
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            Disconnected,</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        };</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <a class="code" href="class_ethyme_1_1_client.html#a65de56cf777bad1189affaaa81315a5b">Client</a>(<span class="keyword">const</span> std::string&amp; token, <span class="keywordtype">bool</span> useCommands = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_ethyme_1_1_client.html#a65de56cf777bad1189affaaa81315a5b">   57</a></span>&#160;        <a class="code" href="class_ethyme_1_1_client.html#a65de56cf777bad1189affaaa81315a5b">Client</a>(<span class="keyword">const</span> std::string&amp; token, <span class="keywordtype">bool</span> useCommands = <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_ethyme_1_1_client.html#a10409419cd0cea5338f3ea807b85dedc">AddCommand</a>(<span class="keyword">const</span> std::string&amp; name, <a class="code" href="class_ethyme_1_1_command.html">Command</a> command);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keyword">const</span> std::string&amp; <a class="code" href="class_ethyme_1_1_client.html#a53f91cf9c485805046388c686df53bf4">AddHandler</a>(EventType eventType, std::function&lt;<span class="keywordtype">void</span>(<span class="keyword">const</span> <a class="code" href="class_ethyme_1_1_events_1_1_event.html">Events::Event</a>&amp;)&gt; callback, <span class="keyword">const</span> std::string&amp; <span class="keywordtype">id</span> = GenerateRandomId());</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_ethyme_1_1_client.html#a0e9587b80898c1e30d7fc9fcc7d99b60">SetPrefix</a>(<span class="keyword">const</span> std::string&amp; prefix);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_ethyme_1_1_client.html#ab0755402adadfbde2cc909ef78499998">Start</a>();</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="class_ethyme_1_1_client.html#a10409419cd0cea5338f3ea807b85dedc">   64</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_ethyme_1_1_client.html#a10409419cd0cea5338f3ea807b85dedc">AddCommand</a>(<span class="keyword">const</span> std::string&amp; name, <a class="code" href="class_ethyme_1_1_command.html">Command</a> command);</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="class_ethyme_1_1_client.html#a4438e94002dd73a660fbfc2123e28c55">   72</a></span>&#160;        <span class="keyword">const</span> std::string&amp; <a class="code" href="class_ethyme_1_1_client.html#a4438e94002dd73a660fbfc2123e28c55">AddHandler</a>(EventType eventType, std::function&lt;<span class="keywordtype">void</span>(<span class="keyword">const</span> <a class="code" href="class_ethyme_1_1_events_1_1_event.html">Events::Event</a>&amp;)&gt; callback, <span class="keyword">const</span> std::string&amp; <span class="keywordtype">id</span> = GenerateRandomId());</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="class_ethyme_1_1_client.html#a0e9587b80898c1e30d7fc9fcc7d99b60">   77</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_ethyme_1_1_client.html#a0e9587b80898c1e30d7fc9fcc7d99b60">SetPrefix</a>(<span class="keyword">const</span> std::string&amp; prefix);</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="class_ethyme_1_1_client.html#ab0755402adadfbde2cc909ef78499998">   81</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_ethyme_1_1_client.html#ab0755402adadfbde2cc909ef78499998">Start</a>();</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keyword">const</span> websocketpp::lib::error_code&amp; <a class="code" href="class_ethyme_1_1_client.html#a10550db491b697ef37bfbd9446d246e4">ErrorCode</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keyword">const</span> std::string&amp; <a class="code" href="class_ethyme_1_1_client.html#ae01292041906381282244b671e7d0d81">Token</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keyword">const</span> <a class="code" href="class_ethyme_1_1_structures_1_1_user.html">Structures::User</a>&amp; <a class="code" href="class_ethyme_1_1_client.html#af8d59faec747b160d7902e3fa8a82250">User</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="class_ethyme_1_1_client.html#a00c7e3abe78c488f6c8472d4eaebd3df">   87</a></span>&#160;        <span class="keyword">const</span> websocketpp::lib::error_code&amp; <a class="code" href="class_ethyme_1_1_client.html#a00c7e3abe78c488f6c8472d4eaebd3df">ErrorCode</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="class_ethyme_1_1_client.html#a224500d81b44fa705758f648e3387440">   92</a></span>&#160;        <span class="keyword">const</span> std::string&amp; <a class="code" href="class_ethyme_1_1_client.html#a224500d81b44fa705758f648e3387440">Token</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="class_ethyme_1_1_client.html#a5fe4d3a38b7c957957b1a4525131fef1">   97</a></span>&#160;        <span class="keyword">const</span> <a class="code" href="class_ethyme_1_1_structures_1_1_user.html">Structures::User</a>&amp; <a class="code" href="class_ethyme_1_1_client.html#a5fe4d3a38b7c957957b1a4525131fef1">User</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keyword">const</span> <a class="code" href="class_ethyme_1_1_structures_1_1_collection.html">Structures::Collection&lt;Structures::Channel&gt;</a>&amp; <a class="code" href="class_ethyme_1_1_client.html#a5aaf84bba301a454801d2e9d69cbb10b">Channels</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keyword">const</span> <a class="code" href="class_ethyme_1_1_structures_1_1_collection.html">Structures::Collection&lt;Structures::User&gt;</a>&amp; <a class="code" href="class_ethyme_1_1_client.html#aabdab0105f2915cb54f62fd8947e1782">Users</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="class_ethyme_1_1_client.html#a34563bf7fa42f007d479e1591acbb62c">  103</a></span>&#160;        <span class="keyword">const</span> <a class="code" href="class_ethyme_1_1_structures_1_1_collection.html">Structures::Collection&lt;Structures::Channel&gt;</a>&amp; <a class="code" href="class_ethyme_1_1_client.html#a34563bf7fa42f007d479e1591acbb62c">Channels</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="class_ethyme_1_1_client.html#aa5b886ec84535c13cc58c4fbdefb4b48">  108</a></span>&#160;        <span class="keyword">const</span> <a class="code" href="class_ethyme_1_1_structures_1_1_collection.html">Structures::Collection&lt;Structures::User&gt;</a>&amp; <a class="code" href="class_ethyme_1_1_client.html#aa5b886ec84535c13cc58c4fbdefb4b48">Users</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keyword">enum</span> Opcodes</div>
@@ -138,16 +154,16 @@ $(function() {
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordtype">void</span> SetupCommandHandler();</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        std::unordered_map&lt;std::string, Command&gt; m_commands;</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        Structures::Collection&lt;Structures::Channel&gt; m_channels;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        Structures::Collection&lt;Structures::User&gt; m_users;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <a class="code" href="class_ethyme_1_1_structures_1_1_collection.html">Structures::Collection&lt;Structures::Channel&gt;</a> m_channels;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <a class="code" href="class_ethyme_1_1_structures_1_1_collection.html">Structures::Collection&lt;Structures::User&gt;</a> m_users;</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keyword">static</span> std::string GenerateRandomId();</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        std::unordered_map&lt;EventType, std::unordered_map&lt;std::string, std::function&lt;void(<span class="keyword">const</span> Events::Event&amp;)&gt;&gt;&gt; m_eventsHandlers;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        std::unordered_map&lt;EventType, std::unordered_map&lt;std::string, std::function&lt;void(<span class="keyword">const</span> <a class="code" href="class_ethyme_1_1_events_1_1_event.html">Events::Event</a>&amp;)&gt;&gt;&gt; m_eventsHandlers;</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        std::string m_prefix;</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        std::string m_token;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        Structures::User m_user;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <a class="code" href="class_ethyme_1_1_structures_1_1_user.html">Structures::User</a> m_user;</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        WebsocketClient m_ws;</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        websocketpp::lib::error_code ec;</div>
@@ -165,25 +181,29 @@ $(function() {
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    };</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;}</div>
 <div class="ttc" id="aclass_ethyme_1_1_client_html"><div class="ttname"><a href="class_ethyme_1_1_client.html">Ethyme::Client</a></div><div class="ttdoc">Represent an Ethyme Client. Use it to communicate with Discord.</div><div class="ttdef"><b>Definition:</b> client.hpp:40</div></div>
-<div class="ttc" id="aclass_ethyme_1_1_client_html_a0e9587b80898c1e30d7fc9fcc7d99b60"><div class="ttname"><a href="class_ethyme_1_1_client.html#a0e9587b80898c1e30d7fc9fcc7d99b60">Ethyme::Client::SetPrefix</a></div><div class="ttdeci">void SetPrefix(const std::string &amp;prefix)</div><div class="ttdoc">Set the prefix used for commands.</div><div class="ttdef"><b>Definition:</b> client.cpp:50</div></div>
-<div class="ttc" id="aclass_ethyme_1_1_client_html_a10409419cd0cea5338f3ea807b85dedc"><div class="ttname"><a href="class_ethyme_1_1_client.html#a10409419cd0cea5338f3ea807b85dedc">Ethyme::Client::AddCommand</a></div><div class="ttdeci">void AddCommand(const std::string &amp;name, Command command)</div><div class="ttdoc">Add a new Command to the command handler.</div><div class="ttdef"><b>Definition:</b> client.cpp:38</div></div>
-<div class="ttc" id="aclass_ethyme_1_1_client_html_a10550db491b697ef37bfbd9446d246e4"><div class="ttname"><a href="class_ethyme_1_1_client.html#a10550db491b697ef37bfbd9446d246e4">Ethyme::Client::ErrorCode</a></div><div class="ttdeci">const websocketpp::lib::error_code &amp; ErrorCode() const</div><div class="ttdoc">You may use it for further debugging.</div><div class="ttdef"><b>Definition:</b> client.cpp:24</div></div>
-<div class="ttc" id="aclass_ethyme_1_1_client_html_a53f91cf9c485805046388c686df53bf4"><div class="ttname"><a href="class_ethyme_1_1_client.html#a53f91cf9c485805046388c686df53bf4">Ethyme::Client::AddHandler</a></div><div class="ttdeci">const std::string &amp; AddHandler(EventType eventType, std::function&lt; void(const Events::Event &amp;)&gt; callback, const std::string &amp;id=GenerateRandomId())</div><div class="ttdoc">Add a handler to the Client.</div><div class="ttdef"><b>Definition:</b> client.cpp:43</div></div>
-<div class="ttc" id="aclass_ethyme_1_1_client_html_a5aaf84bba301a454801d2e9d69cbb10b"><div class="ttname"><a href="class_ethyme_1_1_client.html#a5aaf84bba301a454801d2e9d69cbb10b">Ethyme::Client::Channels</a></div><div class="ttdeci">const Structures::Collection&lt; Structures::Channel &gt; &amp; Channels() const</div><div class="ttdoc">Collection of Channel available to the Client.</div><div class="ttdef"><b>Definition:</b> client.cpp:28</div></div>
-<div class="ttc" id="aclass_ethyme_1_1_client_html_a65de56cf777bad1189affaaa81315a5b"><div class="ttname"><a href="class_ethyme_1_1_client.html#a65de56cf777bad1189affaaa81315a5b">Ethyme::Client::Client</a></div><div class="ttdeci">Client(const std::string &amp;token, bool useCommands=true)</div><div class="ttdoc">Client's constructor.</div><div class="ttdef"><b>Definition:</b> client.cpp:9</div></div>
-<div class="ttc" id="aclass_ethyme_1_1_client_html_aabdab0105f2915cb54f62fd8947e1782"><div class="ttname"><a href="class_ethyme_1_1_client.html#aabdab0105f2915cb54f62fd8947e1782">Ethyme::Client::Users</a></div><div class="ttdeci">const Structures::Collection&lt; Structures::User &gt; &amp; Users() const</div><div class="ttdoc">Collection of User available to the Client.</div><div class="ttdef"><b>Definition:</b> client.cpp:33</div></div>
-<div class="ttc" id="aclass_ethyme_1_1_client_html_ab0755402adadfbde2cc909ef78499998"><div class="ttname"><a href="class_ethyme_1_1_client.html#ab0755402adadfbde2cc909ef78499998">Ethyme::Client::Start</a></div><div class="ttdeci">void Start()</div><div class="ttdoc">Connect the Client to Discord.</div><div class="ttdef"><b>Definition:</b> client.cpp:74</div></div>
-<div class="ttc" id="aclass_ethyme_1_1_client_html_ae01292041906381282244b671e7d0d81"><div class="ttname"><a href="class_ethyme_1_1_client.html#ae01292041906381282244b671e7d0d81">Ethyme::Client::Token</a></div><div class="ttdeci">const std::string &amp; Token() const</div><div class="ttdoc">Token used by the Client.</div><div class="ttdef"><b>Definition:</b> client.cpp:25</div></div>
-<div class="ttc" id="aclass_ethyme_1_1_client_html_af8d59faec747b160d7902e3fa8a82250"><div class="ttname"><a href="class_ethyme_1_1_client.html#af8d59faec747b160d7902e3fa8a82250">Ethyme::Client::User</a></div><div class="ttdeci">const Structures::User &amp; User() const</div><div class="ttdoc">Account of the Client.</div><div class="ttdef"><b>Definition:</b> client.cpp:26</div></div>
+<div class="ttc" id="aclass_ethyme_1_1_client_html_a00c7e3abe78c488f6c8472d4eaebd3df"><div class="ttname"><a href="class_ethyme_1_1_client.html#a00c7e3abe78c488f6c8472d4eaebd3df">Ethyme::Client::ErrorCode</a></div><div class="ttdeci">const websocketpp::lib::error_code &amp; ErrorCode() const</div><div class="ttdoc">You may use it for further debugging.</div></div>
+<div class="ttc" id="aclass_ethyme_1_1_client_html_a0e9587b80898c1e30d7fc9fcc7d99b60"><div class="ttname"><a href="class_ethyme_1_1_client.html#a0e9587b80898c1e30d7fc9fcc7d99b60">Ethyme::Client::SetPrefix</a></div><div class="ttdeci">void SetPrefix(const std::string &amp;prefix)</div><div class="ttdoc">Set the prefix used for commands.</div></div>
+<div class="ttc" id="aclass_ethyme_1_1_client_html_a10409419cd0cea5338f3ea807b85dedc"><div class="ttname"><a href="class_ethyme_1_1_client.html#a10409419cd0cea5338f3ea807b85dedc">Ethyme::Client::AddCommand</a></div><div class="ttdeci">void AddCommand(const std::string &amp;name, Command command)</div><div class="ttdoc">Add a new Command to the command handler.</div></div>
+<div class="ttc" id="aclass_ethyme_1_1_client_html_a224500d81b44fa705758f648e3387440"><div class="ttname"><a href="class_ethyme_1_1_client.html#a224500d81b44fa705758f648e3387440">Ethyme::Client::Token</a></div><div class="ttdeci">const std::string &amp; Token() const</div><div class="ttdoc">Token used by the Client.</div></div>
+<div class="ttc" id="aclass_ethyme_1_1_client_html_a34563bf7fa42f007d479e1591acbb62c"><div class="ttname"><a href="class_ethyme_1_1_client.html#a34563bf7fa42f007d479e1591acbb62c">Ethyme::Client::Channels</a></div><div class="ttdeci">const Structures::Collection&lt; Structures::Channel &gt; &amp; Channels() const</div><div class="ttdoc">Collection of Channel available to the Client.</div></div>
+<div class="ttc" id="aclass_ethyme_1_1_client_html_a4438e94002dd73a660fbfc2123e28c55"><div class="ttname"><a href="class_ethyme_1_1_client.html#a4438e94002dd73a660fbfc2123e28c55">Ethyme::Client::AddHandler</a></div><div class="ttdeci">const std::string &amp; AddHandler(EventType eventType, std::function&lt; void(const Events::Event &amp;)&gt; callback, const std::string &amp;id=GenerateRandomId())</div><div class="ttdoc">Add a handler to the Client.</div></div>
+<div class="ttc" id="aclass_ethyme_1_1_client_html_a5fe4d3a38b7c957957b1a4525131fef1"><div class="ttname"><a href="class_ethyme_1_1_client.html#a5fe4d3a38b7c957957b1a4525131fef1">Ethyme::Client::User</a></div><div class="ttdeci">const Structures::User &amp; User() const</div><div class="ttdoc">Account of the Client.</div></div>
+<div class="ttc" id="aclass_ethyme_1_1_client_html_a65de56cf777bad1189affaaa81315a5b"><div class="ttname"><a href="class_ethyme_1_1_client.html#a65de56cf777bad1189affaaa81315a5b">Ethyme::Client::Client</a></div><div class="ttdeci">Client(const std::string &amp;token, bool useCommands=true)</div><div class="ttdoc">Client's constructor.</div></div>
+<div class="ttc" id="aclass_ethyme_1_1_client_html_aa5b886ec84535c13cc58c4fbdefb4b48"><div class="ttname"><a href="class_ethyme_1_1_client.html#aa5b886ec84535c13cc58c4fbdefb4b48">Ethyme::Client::Users</a></div><div class="ttdeci">const Structures::Collection&lt; Structures::User &gt; &amp; Users() const</div><div class="ttdoc">Collection of User available to the Client.</div></div>
+<div class="ttc" id="aclass_ethyme_1_1_client_html_ab0755402adadfbde2cc909ef78499998"><div class="ttname"><a href="class_ethyme_1_1_client.html#ab0755402adadfbde2cc909ef78499998">Ethyme::Client::Start</a></div><div class="ttdeci">void Start()</div><div class="ttdoc">Connect the Client to Discord.</div></div>
 <div class="ttc" id="aclass_ethyme_1_1_client_html_aff7518e5feb3ea42e18d092e648006a9"><div class="ttname"><a href="class_ethyme_1_1_client.html#aff7518e5feb3ea42e18d092e648006a9">Ethyme::Client::ConnectionState</a></div><div class="ttdeci">ConnectionState</div><div class="ttdoc">State of the connection with Discord.</div><div class="ttdef"><b>Definition:</b> client.hpp:46</div></div>
 <div class="ttc" id="aclass_ethyme_1_1_command_html"><div class="ttname"><a href="class_ethyme_1_1_command.html">Ethyme::Command</a></div><div class="ttdoc">Represents a bot command. Used by the command manager.</div><div class="ttdef"><b>Definition:</b> command.hpp:16</div></div>
 <div class="ttc" id="aclass_ethyme_1_1_events_1_1_event_html"><div class="ttname"><a href="class_ethyme_1_1_events_1_1_event.html">Ethyme::Events::Event</a></div><div class="ttdoc">Doll class inherited by events classes.</div><div class="ttdef"><b>Definition:</b> event.hpp:11</div></div>
 <div class="ttc" id="aclass_ethyme_1_1_structures_1_1_collection_html"><div class="ttname"><a href="class_ethyme_1_1_structures_1_1_collection.html">Ethyme::Structures::Collection</a></div><div class="ttdoc">Collection manager class used by Ethyme.</div><div class="ttdef"><b>Definition:</b> collection.hpp:13</div></div>
 <div class="ttc" id="aclass_ethyme_1_1_structures_1_1_user_html"><div class="ttname"><a href="class_ethyme_1_1_structures_1_1_user.html">Ethyme::Structures::User</a></div><div class="ttdef"><b>Definition:</b> user.hpp:14</div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><b>client.hpp</b></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>
