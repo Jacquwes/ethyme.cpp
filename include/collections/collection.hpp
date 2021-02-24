@@ -19,6 +19,14 @@ namespace Ethyme::Collections
 		{
 			// yes, copied from https://www.internalpointers.com/post/writing-custom-iterators-modern-cpp hahaha
 		public:
+			using iterator_category = std::forward_iterator_tag;
+			using difference_type = std::ptrdiff_t;
+			using value_type = T;
+			using pointer = T*;
+			using reference = T&;
+
+			Iterator() = default;
+			Iterator(Iterator const& i) : m_ptr{ i.m_ptr } {}
 			Iterator(T* ptr) : m_ptr{ ptr } {}
 
 			T& operator*() const { return *m_ptr; }
@@ -33,8 +41,11 @@ namespace Ethyme::Collections
 			T* m_ptr;
 		};
 
-		Iterator Begin() { return Iterator(m_items.begin()); }
-		Iterator End() { return Iterator(m_items.end()); }
+		Collection(std::string const& fetchEndpoint = "");
+		virtual ~Collection() = default;
+
+		constexpr Iterator begin();
+		constexpr Iterator end();
 
 		/**
 		 * @brief Add a new item to the collection.
@@ -42,21 +53,17 @@ namespace Ethyme::Collections
 		*/
 		void Add(const T& item);
 		/**
-		 * @brief Useless
-		*/
-		const T* End() const;
-		/**
 		 * @brief Find an item in the Collection.
 		 * @param predicate Function which must return true when an item has the researched property.
 		 * @return Item if found.
 		*/
-		const T& Find(std::function<bool(const T&)> predicate) const;
+		constexpr Iterator Find(std::function<bool(const T&)> predicate) const;
 		/**
 		 * @brief Find an item in the Collection with its ID.
 		 * @param id ID of the item.
 		 * @return Item if found.
 		*/
-		const T& FindById(const std::string& id) const;
+		constexpr Iterator FindById(const std::string& id) const;
 		/**
 		 * @brief Remove an item in the Collection.
 		 * @param predicate Function which must return true when an item has the researched property.
@@ -70,6 +77,7 @@ namespace Ethyme::Collections
 
 	private:
 		std::vector<T> m_items;
+		std::string m_fetchEndpoint;
 	};
 
 	template<typename T>
@@ -79,22 +87,34 @@ namespace Ethyme::Collections
 	}
 
 	template<typename T>
-	inline const T* Collection<T>::End() const
+	inline Collection<T>::Collection(std::string const& fetchEndpoint)
+		: m_fetchEndpoint{ fetchEndpoint }
+	{}
+
+	template<typename T>
+	constexpr typename inline Collection<T>::Iterator Collection<T>::begin()
+	{
+		return m_items.begin();
+	}
+
+	template<typename T>
+	constexpr typename inline Collection<T>::Iterator Collection<T>::end()
 	{
 		return m_items.end();
 	}
 
 	template<typename T>
-	inline const T& Collection<T>::Find(std::function<bool(const T&)> predicate) const
+	constexpr typename inline Collection<T>::Iterator Collection<T>::Find(std::function<bool(const T&)> predicate) const
 	{
-		for (const T& item : m_items)
-			if (predicate(item))
-				return item;
-		throw std::exception("item not found");
+		Iterator last( m_items.end()._Ptr );
+		for (Iterator i( m_items.begin()._Ptr ); i != last; ++i)
+			if (predicate(*i))
+				return i;
+		return last;
 	}
 
 	template<typename T>
-	inline const T& Collection<T>::FindById(const std::string& id) const
+	constexpr typename inline Collection<T>::Iterator Collection<T>::FindById(const std::string& id) const
 	{
 		return Find([&](const T& i) { return i.Id().ToString() == id; });
 	}

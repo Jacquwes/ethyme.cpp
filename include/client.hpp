@@ -100,12 +100,12 @@ namespace Ethyme
 		 * @brief Collection of Channel available to the Client.
 		 * @return Channels
 		*/
-		const Collections::Collection<Structures::Channel>& Channels() const;
+		Collections::Collection<Structures::Channel> const& Channels() const;
 		/**
 		 * @brief Collection of User available to the Client.
 		 * @return Users
 		*/
-		const Collections::Collection<Structures::User>& Users() const;
+		Collections::Collection<Structures::User> const& Users() const;
 
 	private:
 		enum Opcodes

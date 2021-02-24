@@ -23,6 +23,6 @@ namespace Ethyme::Structures
 			cpr::Body{ body.dump() }
 		);
 
-		Logger::Debug("Message sent to " + Id());
+		Logger::Debug("Message sent to " + Id().ToString());
 	}
 }

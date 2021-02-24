@@ -26,12 +26,12 @@ namespace Ethyme
 	const std::string& Client::Token() const { return m_token; }
 	const Structures::User& Client::User() const { return m_user; }
 
-	const Collections::Collection<Structures::Channel>& Client::Channels() const
+	 Collections::Collection<Structures::Channel> const& Client::Channels() const
 	{
 		return m_channels;
 	}
 
-	const Collections::Collection<Structures::User>& Client::Users() const
+	 Collections::Collection<Structures::User> const& Client::Users() const
 	{
 		return m_users;
 	}
