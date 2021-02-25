@@ -6,5 +6,5 @@ namespace Ethyme::Events
 		: m_message(Structures::Message(data, client))
 	{}
 
-	const Structures::Message& MessageCreate::Message() const { return m_message; }
+	Structures::Message& MessageCreate::Message() { return m_message; }
 }

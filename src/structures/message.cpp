@@ -17,5 +17,20 @@ namespace Ethyme::Structures
 	Structures::User const& Message::Author() const { return m_author; }
 	Structures::TextChannel const& Message::Channel() const { return m_channel; }
 	std::string const& Message::Content() const { return m_content; }
+
+	cppcoro::task<Message const&> Message::Delete()
+	{
+		cpr::Delete(
+			cpr::Url{ Constants::API::Channels + Channel().Id().ToString() + "/messages/" + Id().ToString() },
+			cpr::Header{
+				{ "Authorization", this->Client().Token() },
+				{ "Content-Type", "application/json" }
+			}
+		);
+
+		Logger::Debug("Message deleted in channel " + Channel().Id().ToString());
+
+		co_return *this;
+	}
 	// Structures::Mentions const& Message::Mentions() const { return m_mentions; }
 }

@@ -41,7 +41,7 @@ namespace Ethyme
 		m_commands[name] = command;
 	}
 
-	const std::string& Client::AddHandler(EventType eventType, std::function<cppcoro::task<>(const Events::Event&)> callback, const std::string& id)
+	const std::string& Client::AddHandler(EventType eventType, std::function<cppcoro::task<>(Events::Event&)> callback, const std::string& id)
 	{
 		Logger::Debug("New event handler added: " + id);
 		m_eventsHandlers[eventType][id] = callback;

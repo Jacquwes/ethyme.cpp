@@ -31,6 +31,10 @@ namespace Ethyme::Structures
 		*/
 		std::string const& Content() const;
 		/**
+		 * @brief Delete the Message
+		*/
+		cppcoro::task<Message const&> Delete();
+		/**
 		 * @brief Mentions included in the message.
 		*/
 		// Structures::Mentions const& Mentions() const;

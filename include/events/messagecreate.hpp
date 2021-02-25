@@ -28,7 +28,7 @@ namespace Ethyme::Events
 		 * @brief Message
 		 * @return Message received by the Client
 		*/
-		const Structures::Message& Message() const;
+		Structures::Message& Message();
 
 	private:
 		Structures::Message m_message;

@@ -9,7 +9,7 @@ namespace Ethyme
 		Logger::Debug("Setting up command handler");
 		AddHandler(
 			EventType::MessageCreate,
-			[&](const Events::Event& event) -> cppcoro::task<>
+			[&](Events::Event& event) -> cppcoro::task<>
 			{
 				auto& message = (*(Events::MessageCreate*)&event).Message();
 				auto& content = message.Content();

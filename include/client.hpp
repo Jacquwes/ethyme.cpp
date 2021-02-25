@@ -69,7 +69,7 @@ namespace Ethyme
 		 * @param id ID of the handler. In the future, will be used to managed short-term listerners in the future.
 		 * @return ID of the handler.
 		*/
-		const std::string& AddHandler(EventType eventType, std::function<cppcoro::task<>(const Events::Event&)> callback, const std::string& id = GenerateRandomId());
+		const std::string& AddHandler(EventType eventType, std::function<cppcoro::task<>(Events::Event&)> callback, const std::string& id = GenerateRandomId());
 		/**
 		 * @brief Set the prefix used for commands.
 		 * @param prefix Prefix to use.
@@ -124,7 +124,7 @@ namespace Ethyme
 
 		static std::string GenerateRandomId();
 
-		std::unordered_map<EventType, std::unordered_map<std::string, std::function<cppcoro::task<>(const Events::Event&)>>> m_eventsHandlers;
+		std::unordered_map<EventType, std::unordered_map<std::string, std::function<cppcoro::task<>(Events::Event&)>>> m_eventsHandlers;
 
 		std::string m_prefix;
 		std::string m_token;
