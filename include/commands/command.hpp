@@ -53,7 +53,7 @@ namespace Ethyme
 		 * @param callback Function called when the command is triggered.
 		 * @param args Command's arguments.
 		*/
-		Command(const std::function<void(const Structures::Message& message, std::unordered_map<std::string, Argument> arguments)>& callback, std::unordered_map<std::string, Command::Argument> args);
+		Command(const std::function<cppcoro::task<>(const Structures::Message& message, std::unordered_map<std::string, Argument> arguments)>& callback, std::unordered_map<std::string, Command::Argument> args);
 		/**
 		 * @brief This destructor is here to allow you to inherit this class.
 		*/
@@ -74,12 +74,12 @@ namespace Ethyme
 		 * @brief Function called when the Command is triggered.
 		 * @return A function
 		*/
-		const std::function<void(const Structures::Message& message, std::unordered_map<std::string, Argument> arguments)>& Callback() const;
+		const std::function<cppcoro::task<>(const Structures::Message& message, std::unordered_map<std::string, Argument> arguments)>& Callback() const;
 
 	protected:
 		std::unordered_map<std::string, Argument> arguments;
 
 	private:
-		std::function<void(const Structures::Message& message, std::unordered_map<std::string, Argument> arguments)> m_callback;
+		std::function<cppcoro::task<>(const Structures::Message& message, std::unordered_map<std::string, Argument> arguments)> m_callback;
 	};
 }

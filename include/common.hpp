@@ -21,7 +21,9 @@
 #include <variant>
 #include <vector>
 
-#include "cpr/cpr.h"
-#include "nlohmann/json.hpp"
-#include "websocketpp/config/asio_client.hpp"
-#include "websocketpp/client.hpp"
+#include <cppcoro/sync_wait.hpp>
+#include <cppcoro/task.hpp>
+#include <cpr/cpr.h>
+#include <nlohmann/json.hpp>
+#include <websocketpp/config/asio_client.hpp>
+#include <websocketpp/client.hpp>

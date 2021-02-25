@@ -12,7 +12,7 @@ namespace Ethyme::Structures
 
 	User::User(const nlohmann::json& data, const Ethyme::Client& client)
 		: Entity(data["id"], client)
-		, m_bot(data.contains("bot") ? data["bot"] : false)
+		, m_bot(data.contains("bot") ? data["bot"].get<bool>() : false)
 		, m_discriminator(data["discriminator"])
 		, m_username(data["username"])
 	{}

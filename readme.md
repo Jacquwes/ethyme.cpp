@@ -1,6 +1,6 @@
 # ethyme.cpp
 
-A C++17 wrapper for Discord's API. Uses websocketpp and cpr.
+A C++20 wrapper for Discord's API. Uses websocketpp and cpr.
 
 Example available at [example.cpp](/example.cpp)
 
@@ -24,7 +24,7 @@ https://jacquesatan.github.io/ethyme.cpp
 
 Use Vcpkg to install dependencies:
 
-`vcpkg install websocketpp nlohmann-json cpr openssl boost-random` ([More docs](https://github.com/microsoft/vcpkg/blob/master/docs/examples/installing-and-using-packages.md))
+`vcpkg install websocketpp nlohmann-json cpr openssl boost-random cppcoro` ([More docs](https://github.com/microsoft/vcpkg/blob/master/docs/examples/installing-and-using-packages.md))
 
 ### Build
 

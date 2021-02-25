@@ -2,6 +2,7 @@
 
 #include "client.hpp"
 #include "constants.hpp"
+#include "structures/message.hpp"
 
 namespace Ethyme::Structures
 {
@@ -9,12 +10,12 @@ namespace Ethyme::Structures
 		: Channel(static_cast<Channel::ChannelType>(data["type"]), data["id"], client)
 	{}
 
-	void TextChannel::Send(const std::string& content) const
+	cppcoro::task<Message> TextChannel::Send(const std::string& content) const
 	{
 		nlohmann::json body;
 		body["content"] = content;
 
-		cpr::Post(
+		auto response = cpr::Post(
 			cpr::Url{ Constants::API::Channels + Id().ToString() + "/messages" },
 			cpr::Header{
 				{ "Authorization", this->Client().Token() },
@@ -24,5 +25,7 @@ namespace Ethyme::Structures
 		);
 
 		Logger::Debug("Message sent to " + Id().ToString());
+
+		co_return Message(nlohmann::json::parse(response.text), Client());
 	}
 }

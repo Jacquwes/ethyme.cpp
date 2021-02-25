@@ -9,7 +9,7 @@ namespace Ethyme
 		Logger::Debug("Setting up command handler");
 		AddHandler(
 			EventType::MessageCreate,
-			[&](const Events::Event& event)
+			[&](const Events::Event& event) -> cppcoro::task<>
 			{
 				auto& message = (*(Events::MessageCreate*)&event).Message();
 				auto& content = message.Content();
@@ -161,7 +161,7 @@ namespace Ethyme
 					return;
 				}
 
-				command.second.Callback()(message, command.second.Arguments());
+				co_await command.second.Callback()(message, command.second.Arguments());
 			},
 			"commandHandler"
 		);

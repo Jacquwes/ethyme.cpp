@@ -5,6 +5,8 @@
 
 namespace Ethyme::Structures
 {
+	class Message;
+
 	/**
 	 * @brief Represent all text channels.
 	*/
@@ -17,6 +19,6 @@ namespace Ethyme::Structures
 		 * @brief Send a message to the channel.
 		 * @param content Content of the message.
 		*/
-		void Send(const std::string& content) const;
+		cppcoro::task<Message> Send(const std::string& content) const;
 	};
 }
