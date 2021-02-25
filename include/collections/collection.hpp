@@ -2,6 +2,11 @@
 
 #include "common.hpp"
 
+namespace Ethyme
+{
+	class Client;
+}
+
 namespace Ethyme::Collections
 {
 	/**
@@ -41,7 +46,7 @@ namespace Ethyme::Collections
 			T* m_ptr;
 		};
 
-		Collection(std::string const& fetchEndpoint = "");
+		Collection(Ethyme::Client const& client, std::string const& fetchEndpoint = "");
 		virtual ~Collection() = default;
 
 		constexpr Iterator begin();
@@ -52,6 +57,12 @@ namespace Ethyme::Collections
 		 * @param item New item.
 		*/
 		void Add(const T& item);
+		/**
+		 * @brief Fetch an item from Discord.
+		 * @param endpoint Item to fetch, usually an ID.
+		 * @return Returns end() if Item does not exist.
+		*/
+		cppcoro::task<Iterator> Fetch(std::string const& endpoint);
 		/**
 		 * @brief Find an item in the Collection.
 		 * @param predicate Function which must return true when an item has the researched property.
@@ -76,20 +87,22 @@ namespace Ethyme::Collections
 		void RemoveById(const std::string& id);
 
 	private:
-		std::vector<T> m_items;
+		Ethyme::Client const& m_client;
 		std::string m_fetchEndpoint;
+		std::vector<T> m_items;
 	};
+
+	template<typename T>
+	inline Collection<T>::Collection(Ethyme::Client const& client, std::string const& fetchEndpoint)
+		: m_client{ client }
+		, m_fetchEndpoint { fetchEndpoint }
+	{}
 
 	template<typename T>
 	inline void Collection<T>::Add(const T& item)
 	{
 		m_items.push_back(item);
 	}
-
-	template<typename T>
-	inline Collection<T>::Collection(std::string const& fetchEndpoint)
-		: m_fetchEndpoint{ fetchEndpoint }
-	{}
 
 	template<typename T>
 	constexpr typename inline Collection<T>::Iterator Collection<T>::begin()
@@ -101,6 +114,26 @@ namespace Ethyme::Collections
 	constexpr typename inline Collection<T>::Iterator Collection<T>::end()
 	{
 		return m_items.end();
+	}
+
+	template<typename T>
+	inline cppcoro::task<typename Collection<T>::Iterator> Collection<T>::Fetch(std::string const& endpoint)
+	{
+		auto response = cpr::Get(
+			cpr::Url{ m_fetchEndpoint + endpoint },
+			cpr::Header{
+				{ "Authorization", m_client.Token() },
+				{ "Content-Type", "application/json" }
+			}
+		);
+
+		if (response.error)
+			co_return end();
+
+		T item{ nlohmann::json::parse(response.text), m_client };
+		Add(item);
+
+		co_return Iterator(&T);
 	}
 
 	template<typename T>

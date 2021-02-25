@@ -17,6 +17,8 @@ namespace Ethyme
 			cpr::Header{ { "Authorization", m_token } }
 		).text), *this))
 		, m_commands()
+		, m_channels{ *this, Constants::API::Channels }
+		, m_users{ *this, Constants::API::Users }
 	{
 		if (useCommands)
 			SetupCommandHandler();
