@@ -1,5 +1,6 @@
 var dir_d44c64559bbebec7f509842c48db8b23 =
 [
+    [ "collections", "dir_5fe9a5293e4d8e8b76a42b82ceb2e240.html", "dir_5fe9a5293e4d8e8b76a42b82ceb2e240" ],
     [ "commands", "dir_4d4c17f10dfc67a4e6c52aa126dbc0d5.html", "dir_4d4c17f10dfc67a4e6c52aa126dbc0d5" ],
     [ "events", "dir_c33611b4dec78f96017d2ccf425d656a.html", "dir_c33611b4dec78f96017d2ccf425d656a" ],
     [ "structures", "dir_ae392c548e81aebab219dc0867f8ff50.html", "dir_ae392c548e81aebab219dc0867f8ff50" ],

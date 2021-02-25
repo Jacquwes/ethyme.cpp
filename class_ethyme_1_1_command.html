@@ -120,9 +120,9 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ethyme_1_1_command.html#ad894f2a72ecaad62f9832cd13d6d14d0">Command</a> ()=default</td></tr>
 <tr class="memdesc:ad894f2a72ecaad62f9832cd13d6d14d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor. <br /></td></tr>
 <tr class="separator:ad894f2a72ecaad62f9832cd13d6d14d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af79ee32f5a8397bfda15fafa789a6e78"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ethyme_1_1_command.html#af79ee32f5a8397bfda15fafa789a6e78">Command</a> (const std::function&lt; void(const <a class="el" href="class_ethyme_1_1_structures_1_1_message.html">Structures::Message</a> &amp;message, std::unordered_map&lt; std::string, <a class="el" href="struct_ethyme_1_1_command_1_1_argument.html">Argument</a> &gt; arguments)&gt; &amp;callback, std::unordered_map&lt; std::string, <a class="el" href="struct_ethyme_1_1_command_1_1_argument.html">Command::Argument</a> &gt; args)</td></tr>
-<tr class="memdesc:af79ee32f5a8397bfda15fafa789a6e78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a command directly with a callback and its arguments.  <a href="class_ethyme_1_1_command.html#af79ee32f5a8397bfda15fafa789a6e78">More...</a><br /></td></tr>
-<tr class="separator:af79ee32f5a8397bfda15fafa789a6e78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae217a8818e4a251e91dfac097ddc5d17"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ethyme_1_1_command.html#ae217a8818e4a251e91dfac097ddc5d17">Command</a> (const std::function&lt; cppcoro::task&lt;&gt;(<a class="el" href="class_ethyme_1_1_structures_1_1_message.html">Structures::Message</a> &amp;message, std::unordered_map&lt; std::string, <a class="el" href="struct_ethyme_1_1_command_1_1_argument.html">Argument</a> &gt; arguments)&gt; &amp;callback, std::unordered_map&lt; std::string, <a class="el" href="struct_ethyme_1_1_command_1_1_argument.html">Command::Argument</a> &gt; args)</td></tr>
+<tr class="memdesc:ae217a8818e4a251e91dfac097ddc5d17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a command directly with a callback and its arguments.  <a href="class_ethyme_1_1_command.html#ae217a8818e4a251e91dfac097ddc5d17">More...</a><br /></td></tr>
+<tr class="separator:ae217a8818e4a251e91dfac097ddc5d17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6326234e5e920c4fc862fc6d0b6e27cb"><td class="memItemLeft" align="right" valign="top"><a id="a6326234e5e920c4fc862fc6d0b6e27cb"></a>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ethyme_1_1_command.html#a6326234e5e920c4fc862fc6d0b6e27cb">~Command</a> ()=default</td></tr>
 <tr class="memdesc:a6326234e5e920c4fc862fc6d0b6e27cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">This destructor is here to allow you to inherit this class. <br /></td></tr>
@@ -133,9 +133,9 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <tr class="memitem:a3f894f6d4b87cac177e904f7ae8efd9d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ethyme_1_1_command.html#a3f894f6d4b87cac177e904f7ae8efd9d">SetArgument</a> (const std::string &amp;name, std::optional&lt; std::variant&lt; bool, std::string, int, double &gt;&gt; value)</td></tr>
 <tr class="memdesc:a3f894f6d4b87cac177e904f7ae8efd9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add or modify a <a class="el" href="class_ethyme_1_1_command.html" title="Represents a bot command. Used by the command manager.">Command</a>'s <a class="el" href="struct_ethyme_1_1_command_1_1_argument.html" title="Represents a command argument.">Argument</a>.  <a href="class_ethyme_1_1_command.html#a3f894f6d4b87cac177e904f7ae8efd9d">More...</a><br /></td></tr>
 <tr class="separator:a3f894f6d4b87cac177e904f7ae8efd9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa311f8313db24dcae9886de4de48c66"><td class="memItemLeft" align="right" valign="top">const std::function&lt; void(const <a class="el" href="class_ethyme_1_1_structures_1_1_message.html">Structures::Message</a> &amp;message, std::unordered_map&lt; std::string, <a class="el" href="struct_ethyme_1_1_command_1_1_argument.html">Argument</a> &gt; arguments)&gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ethyme_1_1_command.html#aaa311f8313db24dcae9886de4de48c66">Callback</a> () const</td></tr>
-<tr class="memdesc:aaa311f8313db24dcae9886de4de48c66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function called when the <a class="el" href="class_ethyme_1_1_command.html" title="Represents a bot command. Used by the command manager.">Command</a> is triggered.  <a href="class_ethyme_1_1_command.html#aaa311f8313db24dcae9886de4de48c66">More...</a><br /></td></tr>
-<tr class="separator:aaa311f8313db24dcae9886de4de48c66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6d88cc83efcc91345a94cde7e7f66f6"><td class="memItemLeft" align="right" valign="top">const std::function&lt; cppcoro::task&lt;&gt;<a class="el" href="class_ethyme_1_1_structures_1_1_message.html">Structures::Message</a> &amp;message, std::unordered_map&lt; std::string, <a class="el" href="struct_ethyme_1_1_command_1_1_argument.html">Argument</a> &gt; arguments)&gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ethyme_1_1_command.html#ae6d88cc83efcc91345a94cde7e7f66f6">Callback</a> () const</td></tr>
+<tr class="memdesc:ae6d88cc83efcc91345a94cde7e7f66f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function called when the <a class="el" href="class_ethyme_1_1_command.html" title="Represents a bot command. Used by the command manager.">Command</a> is triggered.  <a href="class_ethyme_1_1_command.html#ae6d88cc83efcc91345a94cde7e7f66f6">More...</a><br /></td></tr>
+<tr class="separator:ae6d88cc83efcc91345a94cde7e7f66f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -146,8 +146,8 @@ std::unordered_map&lt; std::string, <a class="el" href="struct_ethyme_1_1_comman
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a bot command. Used by the command manager. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="af79ee32f5a8397bfda15fafa789a6e78"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af79ee32f5a8397bfda15fafa789a6e78">&#9670;&nbsp;</a></span>Command()</h2>
+<a id="ae217a8818e4a251e91dfac097ddc5d17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae217a8818e4a251e91dfac097ddc5d17">&#9670;&nbsp;</a></span>Command()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -155,7 +155,7 @@ std::unordered_map&lt; std::string, <a class="el" href="struct_ethyme_1_1_comman
         <tr>
           <td class="memname">Ethyme::Command::Command </td>
           <td>(</td>
-          <td class="paramtype">const std::function&lt; void(const <a class="el" href="class_ethyme_1_1_structures_1_1_message.html">Structures::Message</a> &amp;message, std::unordered_map&lt; std::string, <a class="el" href="struct_ethyme_1_1_command_1_1_argument.html">Argument</a> &gt; arguments)&gt; &amp;&#160;</td>
+          <td class="paramtype">const std::function&lt; cppcoro::task&lt;&gt;(<a class="el" href="class_ethyme_1_1_structures_1_1_message.html">Structures::Message</a> &amp;message, std::unordered_map&lt; std::string, <a class="el" href="struct_ethyme_1_1_command_1_1_argument.html">Argument</a> &gt; arguments)&gt; &amp;&#160;</td>
           <td class="paramname"><em>callback</em>, </td>
         </tr>
         <tr>
@@ -204,14 +204,14 @@ std::unordered_map&lt; std::string, <a class="el" href="struct_ethyme_1_1_comman
 
 </div>
 </div>
-<a id="aaa311f8313db24dcae9886de4de48c66"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaa311f8313db24dcae9886de4de48c66">&#9670;&nbsp;</a></span>Callback()</h2>
+<a id="ae6d88cc83efcc91345a94cde7e7f66f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6d88cc83efcc91345a94cde7e7f66f6">&#9670;&nbsp;</a></span>Callback()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const std::function&lt;void(const <a class="el" href="class_ethyme_1_1_structures_1_1_message.html">Structures::Message</a>&amp; message, std::unordered_map&lt;std::string, <a class="el" href="struct_ethyme_1_1_command_1_1_argument.html">Argument</a>&gt; arguments)&gt;&amp; Ethyme::Command::Callback </td>
+          <td class="memname">const std::function&lt;cppcoro::task&lt;&gt;<a class="el" href="class_ethyme_1_1_structures_1_1_message.html">Structures::Message</a>&amp; message, std::unordered_map&lt;std::string, <a class="el" href="struct_ethyme_1_1_command_1_1_argument.html">Argument</a>&gt; arguments)&gt;&amp; Ethyme::Command::Callback </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>

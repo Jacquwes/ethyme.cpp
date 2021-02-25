@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['_7ecommand_49',['~Command',['../class_ethyme_1_1_command.html#a6326234e5e920c4fc862fc6d0b6e27cb',1,'Ethyme::Command']]],
-  ['_7eentity_50',['~Entity',['../class_ethyme_1_1_structures_1_1_entity.html#a3aa289e17b1e0ed32c9d6d7486e3ddeb',1,'Ethyme::Structures::Entity']]]
+  ['value_49',['Value',['../struct_ethyme_1_1_command_1_1_argument.html#afaae4653109b9b462318b452e2b3b80e',1,'Ethyme::Command::Argument']]]
 ];

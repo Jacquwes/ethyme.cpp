@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['find_85',['Find',['../class_ethyme_1_1_structures_1_1_collection.html#a31e4141da26a8c6bef3b7d7e729301b6',1,'Ethyme::Structures::Collection']]],
-  ['findbyid_86',['FindById',['../class_ethyme_1_1_structures_1_1_collection.html#a024cd8791ce16007c65af2f8d8a5f906',1,'Ethyme::Structures::Collection']]]
+  ['entity_85',['Entity',['../class_ethyme_1_1_structures_1_1_entity.html#ab40a7ddd4a00937dba21e167c478ad15',1,'Ethyme::Structures::Entity']]],
+  ['errorcode_86',['ErrorCode',['../class_ethyme_1_1_client.html#a00c7e3abe78c488f6c8472d4eaebd3df',1,'Ethyme::Client']]]
 ];

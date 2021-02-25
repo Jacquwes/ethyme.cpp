@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['send_96',['Send',['../class_ethyme_1_1_structures_1_1_text_channel.html#a4ff553b5466620ae68f9eca93b6f4409',1,'Ethyme::Structures::TextChannel']]],
-  ['setargument_97',['SetArgument',['../class_ethyme_1_1_command.html#a3f894f6d4b87cac177e904f7ae8efd9d',1,'Ethyme::Command']]],
-  ['setprefix_98',['SetPrefix',['../class_ethyme_1_1_client.html#a0e9587b80898c1e30d7fc9fcc7d99b60',1,'Ethyme::Client']]],
-  ['start_99',['Start',['../class_ethyme_1_1_client.html#ab0755402adadfbde2cc909ef78499998',1,'Ethyme::Client']]]
+  ['ready_94',['Ready',['../class_ethyme_1_1_events_1_1_ready.html#ad7e654181d6cec91a82c7a6c2b6d6d25',1,'Ethyme::Events::Ready']]],
+  ['remove_95',['Remove',['../class_ethyme_1_1_collections_1_1_collection.html#a2ccf02f772bd5065cd48eb656216bc0c',1,'Ethyme::Collections::Collection']]],
+  ['removebyid_96',['RemoveById',['../class_ethyme_1_1_collections_1_1_collection.html#a736cfe601cd1de82e77984fad5e6fe85',1,'Ethyme::Collections::Collection']]]
 ];

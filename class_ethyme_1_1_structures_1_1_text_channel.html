@@ -120,9 +120,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aadde07fb5c9b562d126d35cbbc3fbe15"><td class="memItemLeft" align="right" valign="top"><a id="aadde07fb5c9b562d126d35cbbc3fbe15"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>TextChannel</b> (const nlohmann::json &amp;data, const <a class="el" href="class_ethyme_1_1_client.html">Ethyme::Client</a> &amp;client)</td></tr>
 <tr class="separator:aadde07fb5c9b562d126d35cbbc3fbe15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ff553b5466620ae68f9eca93b6f4409"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ethyme_1_1_structures_1_1_text_channel.html#a4ff553b5466620ae68f9eca93b6f4409">Send</a> (const std::string &amp;content) const</td></tr>
-<tr class="memdesc:a4ff553b5466620ae68f9eca93b6f4409"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a message to the channel.  <a href="class_ethyme_1_1_structures_1_1_text_channel.html#a4ff553b5466620ae68f9eca93b6f4409">More...</a><br /></td></tr>
-<tr class="separator:a4ff553b5466620ae68f9eca93b6f4409"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b1f724fe2af04cc2769df81e087d2d9"><td class="memItemLeft" align="right" valign="top">cppcoro::task&lt; <a class="el" href="class_ethyme_1_1_structures_1_1_message.html">Message</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ethyme_1_1_structures_1_1_text_channel.html#a5b1f724fe2af04cc2769df81e087d2d9">Send</a> (const std::string &amp;content) const</td></tr>
+<tr class="memdesc:a5b1f724fe2af04cc2769df81e087d2d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a message to the channel.  <a href="class_ethyme_1_1_structures_1_1_text_channel.html#a5b1f724fe2af04cc2769df81e087d2d9">More...</a><br /></td></tr>
+<tr class="separator:a5b1f724fe2af04cc2769df81e087d2d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_ethyme_1_1_structures_1_1_channel"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_ethyme_1_1_structures_1_1_channel')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_ethyme_1_1_structures_1_1_channel.html">Ethyme::Structures::Channel</a></td></tr>
 <tr class="memitem:addc0cb0cbfb108f3c09120a91726fe74 inherit pub_methods_class_ethyme_1_1_structures_1_1_channel"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ethyme_1_1_structures_1_1_channel.html#addc0cb0cbfb108f3c09120a91726fe74">Channel</a> (const ChannelType &amp;channelType, const std::string &amp;id, const <a class="el" href="class_ethyme_1_1_client.html">Ethyme::Client</a> &amp;client)</td></tr>
 <tr class="memdesc:addc0cb0cbfb108f3c09120a91726fe74 inherit pub_methods_class_ethyme_1_1_structures_1_1_channel"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_ethyme_1_1_structures_1_1_channel.html" title="Doll class. Inherited by all Discord channels classes.">Channel</a> constructor.  <a href="class_ethyme_1_1_structures_1_1_channel.html#addc0cb0cbfb108f3c09120a91726fe74">More...</a><br /></td></tr>
@@ -152,14 +152,14 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represent all text channels. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a4ff553b5466620ae68f9eca93b6f4409"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ff553b5466620ae68f9eca93b6f4409">&#9670;&nbsp;</a></span>Send()</h2>
+<a id="a5b1f724fe2af04cc2769df81e087d2d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b1f724fe2af04cc2769df81e087d2d9">&#9670;&nbsp;</a></span>Send()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Ethyme::Structures::TextChannel::Send </td>
+          <td class="memname">cppcoro::task&lt;<a class="el" href="class_ethyme_1_1_structures_1_1_message.html">Message</a>&gt; Ethyme::Structures::TextChannel::Send </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>content</em></td><td>)</td>

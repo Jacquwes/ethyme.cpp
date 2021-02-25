@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logger_62',['Logger',['../class_ethyme_1_1_logger.html',1,'Ethyme']]]
+  ['iterator_63',['Iterator',['../class_ethyme_1_1_collections_1_1_collection_1_1_iterator.html',1,'Ethyme::Collections::Collection']]]
 ];

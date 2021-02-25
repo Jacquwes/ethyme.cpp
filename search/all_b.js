@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['user_46',['User',['../class_ethyme_1_1_structures_1_1_user.html',1,'Ethyme::Structures::User'],['../class_ethyme_1_1_client.html#a5fe4d3a38b7c957957b1a4525131fef1',1,'Ethyme::Client::User() const']]],
-  ['users_47',['Users',['../class_ethyme_1_1_client.html#aa5b886ec84535c13cc58c4fbdefb4b48',1,'Ethyme::Client']]]
+  ['textchannel_43',['TextChannel',['../class_ethyme_1_1_structures_1_1_text_channel.html',1,'Ethyme::Structures']]],
+  ['token_44',['Token',['../class_ethyme_1_1_client.html#a224500d81b44fa705758f648e3387440',1,'Ethyme::Client']]],
+  ['tostring_45',['ToString',['../class_ethyme_1_1_structures_1_1_snowflake.html#a5095f5ce367a69b42b2ed0865e4a5e72',1,'Ethyme::Structures::Snowflake']]],
+  ['type_46',['Type',['../struct_ethyme_1_1_command_1_1_argument.html#acc27b3a2d07229c046bcb5c69922845b',1,'Ethyme::Command::Argument::Type()'],['../class_ethyme_1_1_structures_1_1_channel.html#aa9d3975a0c78fcf5c13c143f37e18fe5',1,'Ethyme::Structures::Channel::Type()']]]
 ];

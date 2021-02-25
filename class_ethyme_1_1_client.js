@@ -7,12 +7,12 @@ var class_ethyme_1_1_client =
     ] ],
     [ "Client", "class_ethyme_1_1_client.html#a65de56cf777bad1189affaaa81315a5b", null ],
     [ "AddCommand", "class_ethyme_1_1_client.html#a10409419cd0cea5338f3ea807b85dedc", null ],
-    [ "AddHandler", "class_ethyme_1_1_client.html#a4438e94002dd73a660fbfc2123e28c55", null ],
-    [ "Channels", "class_ethyme_1_1_client.html#a34563bf7fa42f007d479e1591acbb62c", null ],
+    [ "AddHandler", "class_ethyme_1_1_client.html#a42ba62a16c937cf109fe7c209955205a", null ],
+    [ "Channels", "class_ethyme_1_1_client.html#aa39d20d297c470655fc649bd5cbd74a5", null ],
     [ "ErrorCode", "class_ethyme_1_1_client.html#a00c7e3abe78c488f6c8472d4eaebd3df", null ],
     [ "SetPrefix", "class_ethyme_1_1_client.html#a0e9587b80898c1e30d7fc9fcc7d99b60", null ],
     [ "Start", "class_ethyme_1_1_client.html#ab0755402adadfbde2cc909ef78499998", null ],
     [ "Token", "class_ethyme_1_1_client.html#a224500d81b44fa705758f648e3387440", null ],
     [ "User", "class_ethyme_1_1_client.html#a5fe4d3a38b7c957957b1a4525131fef1", null ],
-    [ "Users", "class_ethyme_1_1_client.html#aa5b886ec84535c13cc58c4fbdefb4b48", null ]
+    [ "Users", "class_ethyme_1_1_client.html#a44c4f4cdd9e633dbd212af3588d2a81d", null ]
 ];

@@ -113,9 +113,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a10409419cd0cea5338f3ea807b85dedc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ethyme_1_1_client.html#a10409419cd0cea5338f3ea807b85dedc">AddCommand</a> (const std::string &amp;name, <a class="el" href="class_ethyme_1_1_command.html">Command</a> command)</td></tr>
 <tr class="memdesc:a10409419cd0cea5338f3ea807b85dedc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new <a class="el" href="class_ethyme_1_1_command.html" title="Represents a bot command. Used by the command manager.">Command</a> to the command handler.  <a href="class_ethyme_1_1_client.html#a10409419cd0cea5338f3ea807b85dedc">More...</a><br /></td></tr>
 <tr class="separator:a10409419cd0cea5338f3ea807b85dedc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4438e94002dd73a660fbfc2123e28c55"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ethyme_1_1_client.html#a4438e94002dd73a660fbfc2123e28c55">AddHandler</a> (EventType eventType, std::function&lt; void(const <a class="el" href="class_ethyme_1_1_events_1_1_event.html">Events::Event</a> &amp;)&gt; callback, const std::string &amp;id=GenerateRandomId())</td></tr>
-<tr class="memdesc:a4438e94002dd73a660fbfc2123e28c55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a handler to the <a class="el" href="class_ethyme_1_1_client.html" title="Represent an Ethyme Client. Use it to communicate with Discord.">Client</a>.  <a href="class_ethyme_1_1_client.html#a4438e94002dd73a660fbfc2123e28c55">More...</a><br /></td></tr>
-<tr class="separator:a4438e94002dd73a660fbfc2123e28c55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42ba62a16c937cf109fe7c209955205a"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ethyme_1_1_client.html#a42ba62a16c937cf109fe7c209955205a">AddHandler</a> (EventType eventType, std::function&lt; cppcoro::task&lt;&gt;(<a class="el" href="class_ethyme_1_1_events_1_1_event.html">Events::Event</a> &amp;)&gt; callback, const std::string &amp;id=GenerateRandomId())</td></tr>
+<tr class="memdesc:a42ba62a16c937cf109fe7c209955205a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a handler to the <a class="el" href="class_ethyme_1_1_client.html" title="Represent an Ethyme Client. Use it to communicate with Discord.">Client</a>.  <a href="class_ethyme_1_1_client.html#a42ba62a16c937cf109fe7c209955205a">More...</a><br /></td></tr>
+<tr class="separator:a42ba62a16c937cf109fe7c209955205a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e9587b80898c1e30d7fc9fcc7d99b60"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ethyme_1_1_client.html#a0e9587b80898c1e30d7fc9fcc7d99b60">SetPrefix</a> (const std::string &amp;prefix)</td></tr>
 <tr class="memdesc:a0e9587b80898c1e30d7fc9fcc7d99b60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the prefix used for commands.  <a href="class_ethyme_1_1_client.html#a0e9587b80898c1e30d7fc9fcc7d99b60">More...</a><br /></td></tr>
 <tr class="separator:a0e9587b80898c1e30d7fc9fcc7d99b60"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -132,12 +132,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a5fe4d3a38b7c957957b1a4525131fef1"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_ethyme_1_1_structures_1_1_user.html">Structures::User</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ethyme_1_1_client.html#a5fe4d3a38b7c957957b1a4525131fef1">User</a> () const</td></tr>
 <tr class="memdesc:a5fe4d3a38b7c957957b1a4525131fef1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Account of the <a class="el" href="class_ethyme_1_1_client.html" title="Represent an Ethyme Client. Use it to communicate with Discord.">Client</a>.  <a href="class_ethyme_1_1_client.html#a5fe4d3a38b7c957957b1a4525131fef1">More...</a><br /></td></tr>
 <tr class="separator:a5fe4d3a38b7c957957b1a4525131fef1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34563bf7fa42f007d479e1591acbb62c"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_ethyme_1_1_structures_1_1_collection.html">Structures::Collection</a>&lt; <a class="el" href="class_ethyme_1_1_structures_1_1_channel.html">Structures::Channel</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ethyme_1_1_client.html#a34563bf7fa42f007d479e1591acbb62c">Channels</a> () const</td></tr>
-<tr class="memdesc:a34563bf7fa42f007d479e1591acbb62c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collection of Channel available to the <a class="el" href="class_ethyme_1_1_client.html" title="Represent an Ethyme Client. Use it to communicate with Discord.">Client</a>.  <a href="class_ethyme_1_1_client.html#a34563bf7fa42f007d479e1591acbb62c">More...</a><br /></td></tr>
-<tr class="separator:a34563bf7fa42f007d479e1591acbb62c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5b886ec84535c13cc58c4fbdefb4b48"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_ethyme_1_1_structures_1_1_collection.html">Structures::Collection</a>&lt; <a class="el" href="class_ethyme_1_1_structures_1_1_user.html">Structures::User</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ethyme_1_1_client.html#aa5b886ec84535c13cc58c4fbdefb4b48">Users</a> () const</td></tr>
-<tr class="memdesc:aa5b886ec84535c13cc58c4fbdefb4b48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collection of User available to the <a class="el" href="class_ethyme_1_1_client.html" title="Represent an Ethyme Client. Use it to communicate with Discord.">Client</a>.  <a href="class_ethyme_1_1_client.html#aa5b886ec84535c13cc58c4fbdefb4b48">More...</a><br /></td></tr>
-<tr class="separator:aa5b886ec84535c13cc58c4fbdefb4b48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa39d20d297c470655fc649bd5cbd74a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_ethyme_1_1_collections_1_1_collection.html">Collections::Collection</a>&lt; <a class="el" href="class_ethyme_1_1_structures_1_1_channel.html">Structures::Channel</a> &gt; const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ethyme_1_1_client.html#aa39d20d297c470655fc649bd5cbd74a5">Channels</a> () const</td></tr>
+<tr class="memdesc:aa39d20d297c470655fc649bd5cbd74a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collection of Channel available to the <a class="el" href="class_ethyme_1_1_client.html" title="Represent an Ethyme Client. Use it to communicate with Discord.">Client</a>.  <a href="class_ethyme_1_1_client.html#aa39d20d297c470655fc649bd5cbd74a5">More...</a><br /></td></tr>
+<tr class="separator:aa39d20d297c470655fc649bd5cbd74a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44c4f4cdd9e633dbd212af3588d2a81d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_ethyme_1_1_collections_1_1_collection.html">Collections::Collection</a>&lt; <a class="el" href="class_ethyme_1_1_structures_1_1_user.html">Structures::User</a> &gt; const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ethyme_1_1_client.html#a44c4f4cdd9e633dbd212af3588d2a81d">Users</a> () const</td></tr>
+<tr class="memdesc:a44c4f4cdd9e633dbd212af3588d2a81d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collection of User available to the <a class="el" href="class_ethyme_1_1_client.html" title="Represent an Ethyme Client. Use it to communicate with Discord.">Client</a>.  <a href="class_ethyme_1_1_client.html#a44c4f4cdd9e633dbd212af3588d2a81d">More...</a><br /></td></tr>
+<tr class="separator:a44c4f4cdd9e633dbd212af3588d2a81d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represent an Ethyme <a class="el" href="class_ethyme_1_1_client.html" title="Represent an Ethyme Client. Use it to communicate with Discord.">Client</a>. Use it to communicate with Discord. </p>
@@ -217,8 +217,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 </div>
 </div>
-<a id="a4438e94002dd73a660fbfc2123e28c55"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4438e94002dd73a660fbfc2123e28c55">&#9670;&nbsp;</a></span>AddHandler()</h2>
+<a id="a42ba62a16c937cf109fe7c209955205a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42ba62a16c937cf109fe7c209955205a">&#9670;&nbsp;</a></span>AddHandler()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -232,7 +232,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::function&lt; void(const <a class="el" href="class_ethyme_1_1_events_1_1_event.html">Events::Event</a> &amp;)&gt;&#160;</td>
+          <td class="paramtype">std::function&lt; cppcoro::task&lt;&gt;(<a class="el" href="class_ethyme_1_1_events_1_1_event.html">Events::Event</a> &amp;)&gt;&#160;</td>
           <td class="paramname"><em>callback</em>, </td>
         </tr>
         <tr>
@@ -262,14 +262,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 </div>
 </div>
-<a id="a34563bf7fa42f007d479e1591acbb62c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34563bf7fa42f007d479e1591acbb62c">&#9670;&nbsp;</a></span>Channels()</h2>
+<a id="aa39d20d297c470655fc649bd5cbd74a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa39d20d297c470655fc649bd5cbd74a5">&#9670;&nbsp;</a></span>Channels()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="class_ethyme_1_1_structures_1_1_collection.html">Structures::Collection</a>&lt;<a class="el" href="class_ethyme_1_1_structures_1_1_channel.html">Structures::Channel</a>&gt;&amp; Ethyme::Client::Channels </td>
+          <td class="memname"><a class="el" href="class_ethyme_1_1_collections_1_1_collection.html">Collections::Collection</a>&lt;<a class="el" href="class_ethyme_1_1_structures_1_1_channel.html">Structures::Channel</a>&gt; const&amp; Ethyme::Client::Channels </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -368,14 +368,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 </div>
 </div>
-<a id="aa5b886ec84535c13cc58c4fbdefb4b48"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa5b886ec84535c13cc58c4fbdefb4b48">&#9670;&nbsp;</a></span>Users()</h2>
+<a id="a44c4f4cdd9e633dbd212af3588d2a81d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44c4f4cdd9e633dbd212af3588d2a81d">&#9670;&nbsp;</a></span>Users()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="class_ethyme_1_1_structures_1_1_collection.html">Structures::Collection</a>&lt;<a class="el" href="class_ethyme_1_1_structures_1_1_user.html">Structures::User</a>&gt;&amp; Ethyme::Client::Users </td>
+          <td class="memname"><a class="el" href="class_ethyme_1_1_collections_1_1_collection.html">Collections::Collection</a>&lt;<a class="el" href="class_ethyme_1_1_structures_1_1_user.html">Structures::User</a>&gt; const&amp; Ethyme::Client::Users </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
