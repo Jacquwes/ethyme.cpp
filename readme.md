@@ -28,15 +28,12 @@ Use Vcpkg to install dependencies:
 
 ### Build
 
-I didn't test it on Linux. You may have to modify
-```
-find_library(BOOST_RANDOM_LIBRARY boost_random-vc140-mt.lib)
-```
-for it to work.
+Doesn't work on Linux. You shouldn't use Linux in 2021 anyways.
 
 ```bash
+git clone git@github.com:JacqueSatan/ethyme.cpp.git
+# If you want to generate a Visual Studio Solution:
 mkdir build
 cd build
-cmake .. -DCMAKE_TOOLCHAIN_FILE=path/to/vcpkg/scripts/buildsystems/vcpkg.cmake
-# on windows you can use -G "Visual Studio 16"
+cmake .. -G "Visual Studio 16"
 ```
