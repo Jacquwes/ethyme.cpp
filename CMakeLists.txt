@@ -43,7 +43,7 @@ add_library (${PROJECT_NAME}
 
 	"src/events/messagecreate.cpp"
 	"src/events/ready.cpp"
-  "src/structures/role.cpp")
+  "src/structures/role.cpp" "src/structures/member.cpp")
 
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
 

@@ -2,6 +2,7 @@
 
 #include "client.hpp"
 #include "structures/channels/textchannel.hpp"
+#include "structures/member.hpp"
 #include "structures/role.hpp"
 
 namespace Ethyme::Structures
