@@ -30,6 +30,7 @@ add_library (${PROJECT_NAME}
 	"src/structures/channels/channel.cpp"
 	"src/structures/channels/textchannel.cpp"
 	"src/structures/entity.cpp"
+	"src/structures/guild.cpp"
 	"src/structures/mentions.cpp"
 	"src/structures/message.cpp"
 	"src/structures/snowflake.cpp"
@@ -42,7 +43,7 @@ add_library (${PROJECT_NAME}
 
 	"src/events/messagecreate.cpp"
 	"src/events/ready.cpp"
-)
+  "src/structures/role.cpp")
 
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
 
