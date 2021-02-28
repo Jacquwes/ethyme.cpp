@@ -87,6 +87,10 @@ namespace Ethyme::Collections
 		 * @param id ID of the item.
 		*/
 		void RemoveById(std::string const& id);
+		/**
+		 * @brief Number of items in the Collection.
+		*/
+		size_t const& Size() const;
 
 	private:
 		Ethyme::Client const& m_client;
@@ -147,4 +151,6 @@ namespace Ethyme::Collections
 	inline void Collection<T>::Remove(std::function<bool(T&)> predicate) { m_items.erase(std::find_if(m_items.begin(), m_items.end(), predicate)); }
 	template<typename T>
 	inline void Collection<T>::RemoveById(const std::string& id) { remove([&](const T& item) { return id == item->Id().ToString(); }); }
+	template<typename T>
+	inline size_t const& Collection<T>::Size() const { return m_items.size(); }
 }
