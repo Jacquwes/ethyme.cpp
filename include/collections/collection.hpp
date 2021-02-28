@@ -51,6 +51,8 @@ namespace Ethyme::Collections
 
 		constexpr Iterator begin();
 		constexpr Iterator end();
+		constexpr Iterator const cbegin() const;
+		constexpr Iterator const cend() const;
 
 		/**
 		 * @brief Add a new item to the collection.
@@ -62,7 +64,7 @@ namespace Ethyme::Collections
 		 * @param endpoint Item to fetch, usually an ID.
 		 * @return Returns end() if Item does not exist.
 		*/
-		cppcoro::task<Iterator> Fetch(std::string const& endpoint);
+		cppcoro::task<Iterator> Fetch(std::string const& endpoint) const;
 		/**
 		 * @brief Find an item in the Collection.
 		 * @param predicate Function which must return true when an item has the researched property.
@@ -99,25 +101,18 @@ namespace Ethyme::Collections
 	{}
 
 	template<typename T>
-	inline void Collection<T>::Add(const T& item)
-	{
-		m_items.push_back(item);
-	}
+	inline void Collection<T>::Add(const T& item) { m_items.push_back(item); }
+	template<typename T>
+	constexpr typename inline Collection<T>::Iterator Collection<T>::begin() { return m_items.begin()._Ptr; }
+	template<typename T>
+	constexpr typename inline Collection<T>::Iterator Collection<T>::end() { return m_items.end()._Ptr; }
+	template<typename T>
+	constexpr typename inline Collection<T>::Iterator const Collection<T>::cbegin() const { return m_items.cbegin()._Ptr; }
+	template<typename T>
+	constexpr typename inline Collection<T>::Iterator const Collection<T>::cend() const { return m_items.cend()._Ptr; }
 
 	template<typename T>
-	constexpr typename inline Collection<T>::Iterator Collection<T>::begin()
-	{
-		return m_items.begin();
-	}
-
-	template<typename T>
-	constexpr typename inline Collection<T>::Iterator Collection<T>::end()
-	{
-		return m_items.end();
-	}
-
-	template<typename T>
-	inline cppcoro::task<typename Collection<T>::Iterator> Collection<T>::Fetch(std::string const& endpoint)
+	inline cppcoro::task<typename Collection<T>::Iterator> Collection<T>::Fetch(std::string const& endpoint) const
 	{
 		auto response = cpr::Get(
 			cpr::Url{ m_fetchEndpoint + endpoint },
@@ -147,20 +142,9 @@ namespace Ethyme::Collections
 	}
 
 	template<typename T>
-	constexpr typename inline Collection<T>::Iterator Collection<T>::FindById(const std::string& id) const
-	{
-		return Find([&](const T& i) { return i.Id().ToString() == id; });
-	}
-
+	constexpr typename inline Collection<T>::Iterator Collection<T>::FindById(const std::string& id) const { return Find([&](const T& i) { return i.Id().ToString() == id; }); }
 	template<typename T>
-	inline void Collection<T>::Remove(std::function<bool(const T&)> predicate)
-	{
-		m_items.erase(std::find_if(m_items.begin(), m_items.end(), predicate));
-	}
-
+	inline void Collection<T>::Remove(std::function<bool(const T&)> predicate) { m_items.erase(std::find_if(m_items.begin(), m_items.end(), predicate)); }
 	template<typename T>
-	inline void Collection<T>::RemoveById(const std::string& id)
-	{
-		remove([&](const T& item) { return id == item->Id().ToString(); });
-	}
+	inline void Collection<T>::RemoveById(const std::string& id) { remove([&](const T& item) { return id == item->Id().ToString(); }); }
 }
