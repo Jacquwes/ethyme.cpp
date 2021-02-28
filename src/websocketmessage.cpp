@@ -1,6 +1,7 @@
 #include "client.hpp"
 
 #include "structures/channels/textchannel.hpp"
+#include "structures/guild.hpp"
 #include "structures/message.hpp"
 
 namespace Ethyme
@@ -25,29 +26,37 @@ namespace Ethyme
 		{
 		case Dispatch:
 		{
-			if (payload["t"].get<std::string>() == "READY")
+			#pragma region GuildCreate
+			if (payload["t"].get<std::string>() == "GUILD_CREATE")
 			{
-				Logger::Debug("Client ready");
-				for (auto& guild : payload["d"]["guilds"])
-				{
-					auto response = cpr::Get(
-						cpr::Url(Constants::API::Guilds + guild["id"].get<std::string>() + "/channels"),
-						cpr::Header{ { "Authorization", m_token } }).text;
-					auto channels = nlohmann::json::parse(response);
-					for (const auto& channel : channels)
-						m_channels.Add(Structures::TextChannel(channel, *this).As<Structures::Channel>());
-					
-					Events::Ready event{ *this };
-					for (auto& handler : m_eventsHandlers[EventType::Ready])
-						std::async([&] { cppcoro::sync_wait(handler.second(*(Events::Event*)&event)); });
-				}
+				Logger::Debug("Received GuildCreate event");
+				auto guild = Structures::Guild(payload["d"], *this);
+				m_guilds.Add(guild);
+				Logger::Debug(guild.Name() + " successfully cached");
+
+				Events::GuildCreate event{ guild };
+				for (auto& handler : m_eventsHandlers[EventType::GuildCreate])
+					std::async([&] { cppcoro::sync_wait(handler.second(event)); });
 			}
+			#pragma endregion
+			#pragma region MessageCreate
 			else if (payload["t"].get<std::string>() == "MESSAGE_CREATE" || payload["t"].get<std::string>() == "MESSAGE_UPDATE")
 			{
-				Events::MessageCreate event{ payload["d"], *this };
+				Structures::Message message{ payload["d"], *this };
+				Events::MessageCreate event{ message };
 				for (auto& handler : m_eventsHandlers[EventType::MessageCreate])
+					std::async([&] { cppcoro::sync_wait(handler.second(event)); });
+			}
+			#pragma endregion
+			#pragma region Ready
+			else if (payload["t"].get<std::string>() == "READY")
+			{
+				Logger::Debug("Client ready");
+				Events::Ready event{ *this };
+				for (auto& handler : m_eventsHandlers[EventType::Ready])
 					std::async([&] { cppcoro::sync_wait(handler.second(*(Events::Event*)&event)); });
 			}
+			#pragma endregion
 			break;
 		}
 		case Hello:
@@ -67,7 +76,7 @@ namespace Ethyme
 			nlohmann::json id;
 			id["op"] = Identify;
 			id["d"]["token"] = m_token;
-			id["d"]["intents"] = (1 << 9);
+			id["d"]["intents"] = m_intents;
 			id["d"]["properties"]["$os"] = "windows";
 			id["d"]["properties"]["$browser"] = "ethyme.cpp";
 			id["d"]["properties"]["$browser"] = "ethyme.cpp";

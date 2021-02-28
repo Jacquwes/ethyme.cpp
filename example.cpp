@@ -61,10 +61,9 @@ int main()
 	// handler example
 	client.AddHandler(
 		Ethyme::EventType::MessageCreate,
-		[&](Ethyme::Events::Event const& event) -> cppcoro::task<>
+		[&](Ethyme::Events::Event& event) -> cppcoro::task<>
 		{
-			// ugly cast
-			auto messageEvent = *(Ethyme::Events::MessageCreate*)&event;
+			auto messageEvent = event.As<Ethyme::Events::MessageCreate>();
 			auto message = messageEvent.Message();
 
 			if (!message.Author().Bot()
@@ -76,9 +75,9 @@ int main()
 
 	client.AddHandler(
 		Ethyme::EventType::Ready,
-		[&](Ethyme::Events::Event const& event) -> cppcoro::task<>
+		[&](Ethyme::Events::Event& event) -> cppcoro::task<>
 		{
-			auto readyEvent = *(Ethyme::Events::Ready*)&event;
+			auto readyEvent = event.As<Ethyme::Events::Ready>();
 			Logger::Info(std::string(readyEvent.Client().User()) + " is online!");
 			co_return;
 		}

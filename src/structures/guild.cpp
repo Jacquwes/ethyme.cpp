@@ -14,7 +14,10 @@ namespace Ethyme::Structures
 		, m_name{ data["name"].get<std::string>() }
 		, m_roles{ client, Constants::API::Guilds + Id().ToString() + "/roles/" }
 		, m_ownerId{ data["owner_id"].get<std::string>() }
-	{}
+	{
+		for (auto& role : data["roles"])
+			m_roles.Add(Role(role, client));
+	}
 
 	Collections::Collection<std::reference_wrapper<Channel>> const& Guild::Channels() const { return m_channels; }
 	Collections::Collection<Member> const& Guild::Members() const { return m_members; }

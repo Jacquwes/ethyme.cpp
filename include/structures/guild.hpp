@@ -3,6 +3,8 @@
 #include "collections/collection.hpp"
 #include "common.hpp"
 #include "structures/entity.hpp"
+#include "structures/member.hpp"
+#include "structures/role.hpp"
 
 namespace Ethyme
 {
@@ -12,8 +14,6 @@ namespace Ethyme
 namespace Ethyme::Structures
 {
 	class Channel;
-	class Member;
-	class Role;
 
 	class Guild : public Entity
 	{

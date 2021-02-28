@@ -2,8 +2,8 @@
 
 namespace Ethyme::Events
 {
-	MessageCreate::MessageCreate(const nlohmann::json& data, const Ethyme::Client& client)
-		: m_message(Structures::Message(data, client))
+	MessageCreate::MessageCreate(Structures::Message& message)
+		: m_message{ message }
 	{}
 
 	Structures::Message& MessageCreate::Message() { return m_message; }

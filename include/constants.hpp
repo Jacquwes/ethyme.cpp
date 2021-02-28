@@ -34,9 +34,9 @@ namespace Ethyme::Constants
 			GuildMessageTyping		= 1 << 11,
 			DirectMessages			= 1 << 12,
 			DirectMessageReactions	= 1 << 13,
-			DirectMessageTyping		= 1 << 14
-	
+			DirectMessageTyping		= 1 << 14,
 		};
+		inline uint32_t const& Default = 0x3fff ^ 2 ^ 0x100;
 	}
 
 	namespace Permissions

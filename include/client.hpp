@@ -8,10 +8,12 @@
 #include "commands/command.hpp"
 
 #include "events/event.hpp"
+#include "events/guildcreate.hpp"
 #include "events/messagecreate.hpp"
 #include "events/ready.hpp"
 
 #include "structures/channels/channel.hpp"
+#include "structures/guild.hpp"
 #include "structures/user.hpp"
 
 namespace Ethyme
@@ -29,6 +31,7 @@ namespace Ethyme
 	*/
 	enum class EventType
 	{
+		GuildCreate,
 		MessageCreate,
 		Ready
 	};
@@ -54,7 +57,7 @@ namespace Ethyme
 		 * @param token Any Discord account's token
 		 * @param useCommands Whether you want to use the built-in command handler or not
 		*/
-		Client(const std::string& token, bool useCommands = true);
+		Client(const std::string& token, bool const& useCommands = true, uint32_t const& intents = Constants::Intents::Default);
 
 		/**
 		 * @brief Add a new Command to the command handler.
@@ -102,6 +105,11 @@ namespace Ethyme
 		*/
 		Collections::Collection<Structures::Channel> const& Channels() const;
 		/**
+		 * @brief Collection of Guild available to the Client.
+		 * @return Guilds
+		*/
+		Collections::Collection<Structures::Guild> const& Guilds() const;
+		/**
 		 * @brief Collection of User available to the Client.
 		 * @return Users
 		*/
@@ -120,12 +128,14 @@ namespace Ethyme
 		std::unordered_map<std::string, Command> m_commands;
 
 		Collections::Collection<Structures::Channel> m_channels;
+		Collections::Collection<Structures::Guild> m_guilds;
 		Collections::Collection<Structures::User> m_users;
 
 		static std::string GenerateRandomId();
 
 		std::unordered_map<EventType, std::unordered_map<std::string, std::function<cppcoro::task<>(Events::Event&)>>> m_eventsHandlers;
 
+		uint32_t m_intents;
 		std::string m_prefix;
 		std::string m_token;
 		Structures::User m_user;

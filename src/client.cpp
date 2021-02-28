@@ -7,18 +7,20 @@
 
 namespace Ethyme
 {
-	Client::Client(const std::string& token, bool useCommands)
-		: m_token(token)
-		, m_connectionState(ConnectionState::Disconnected)
-		, m_heartbeatInterval(0)
-		, m_sequenceNumber(0)
-		, m_user(Structures::User(nlohmann::json::parse(cpr::Get(
+	Client::Client(const std::string& token, bool const& useCommands, uint32_t const& intents)
+		: m_token{ token }
+		, m_connectionState{ ConnectionState::Disconnected }
+		, m_heartbeatInterval{ 0 }
+		, m_sequenceNumber{ 0 }
+		, m_user{ Structures::User(nlohmann::json::parse(cpr::Get(
 			cpr::Url(Constants::API::CurrentUser),
 			cpr::Header{ { "Authorization", m_token } }
-		).text), *this))
-		, m_commands()
+		).text), *this) }
+		, m_commands{}
 		, m_channels{ *this, Constants::API::Channels }
 		, m_users{ *this, Constants::API::Users }
+		, m_guilds{ *this, Constants::API::Guilds }
+		, m_intents{ intents }
 	{
 		if (useCommands)
 			SetupCommandHandler();
@@ -27,21 +29,10 @@ namespace Ethyme
 	const websocketpp::lib::error_code& Client::ErrorCode() const { return ec; }
 	const std::string& Client::Token() const { return m_token; }
 	const Structures::User& Client::User() const { return m_user; }
-
-	 Collections::Collection<Structures::Channel> const& Client::Channels() const
-	{
-		return m_channels;
-	}
-
-	 Collections::Collection<Structures::User> const& Client::Users() const
-	{
-		return m_users;
-	}
-
-	void Client::AddCommand(const std::string& name, Command command)
-	{
-		m_commands[name] = command;
-	}
+	Collections::Collection<Structures::Channel> const& Client::Channels() const { return m_channels; }
+	Collections::Collection<Structures::Guild> const& Client::Guilds() const { return m_guilds; }
+	Collections::Collection<Structures::User> const& Client::Users() const { return m_users; }
+	void Client::AddCommand(const std::string& name, Command command) { m_commands[name] = command; }
 
 	const std::string& Client::AddHandler(EventType eventType, std::function<cppcoro::task<>(Events::Event&)> callback, const std::string& id)
 	{

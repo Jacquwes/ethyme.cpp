@@ -11,5 +11,8 @@ namespace Ethyme::Events
 	{
 	public:
 		virtual ~Event() = default;
+
+		template<typename T>
+		inline T& As() { return *(T*)this; }
 	};
 }

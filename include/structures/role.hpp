@@ -10,8 +10,6 @@ namespace Ethyme
 
 namespace Ethyme::Structures
 {
-	class Guild;
-
 	class Role : public Entity
 	{
 	public:

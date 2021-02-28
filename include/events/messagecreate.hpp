@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../common.hpp"
+#include "common.hpp"
 #include "event.hpp"
-#include "../structures/message.hpp"
+#include "structures/message.hpp"
 
 namespace Ethyme
 {
@@ -22,7 +22,7 @@ namespace Ethyme::Events
 		 * @param data Raw event data
 		 * @param client Client's instance
 		*/
-		MessageCreate(const nlohmann::json& data, const Ethyme::Client& client);
+		MessageCreate(Structures::Message& message);
 
 		/**
 		 * @brief Message
@@ -31,6 +31,6 @@ namespace Ethyme::Events
 		Structures::Message& Message();
 
 	private:
-		Structures::Message m_message;
+		Structures::Message& m_message;
 	};
 }
