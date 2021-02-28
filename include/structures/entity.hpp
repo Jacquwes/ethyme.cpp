@@ -21,7 +21,7 @@ namespace Ethyme::Structures
 		 * @param id ID of the entity
 		 * @param client Client's instance
 		*/
-		Entity(std::string const& id, Ethyme::Client const& client, bool const& partial = false);
+		Entity(std::string const& id, Ethyme::Client& client, bool const& partial = false);
 		/**
 		 * @brief Inheritable
 		*/
@@ -36,7 +36,7 @@ namespace Ethyme::Structures
 		 * @brief Client's instance
 		 * @return Client's instance
 		*/
-		Ethyme::Client const& Client() const;
+		Ethyme::Client& Client() const;
 		bool const& Partial() const;
 		/**
 		 * @brief Use this Entity as something else
@@ -51,7 +51,7 @@ namespace Ethyme::Structures
 
 	private:
 		Snowflake m_id;
-		Ethyme::Client const& m_client;
+		Ethyme::Client& m_client;
 		bool m_partial;
 	};
 }

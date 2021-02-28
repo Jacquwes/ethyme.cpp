@@ -18,13 +18,13 @@ namespace Ethyme::Structures
 	class Guild : public Entity
 	{
 	public:
-		Guild(nlohmann::json const& data, Ethyme::Client const& client);
+		Guild(nlohmann::json const& data, Ethyme::Client& client);
 
-		Collections::Collection<std::reference_wrapper<Channel>> const& Channels() const;
-		Collections::Collection<Member> const& Members() const;
+		Collections::Collection<std::reference_wrapper<Channel>>& Channels();
+		Collections::Collection<Member>& Members();
 		std::string const& Name() const;
-		Member const& Owner() const;
-		Collections::Collection<Role> const& Roles() const;
+		Member& Owner();
+		Collections::Collection<Role>& Roles();
 
 	private:
 		Collections::Collection<std::reference_wrapper<Channel>> m_channels;

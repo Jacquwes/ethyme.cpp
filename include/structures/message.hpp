@@ -16,16 +16,16 @@ namespace Ethyme::Structures
 	class Message : public Entity
 	{
 	public:
-		Message(nlohmann::json const& data, Ethyme::Client const& client);
+		Message(nlohmann::json const& data, Ethyme::Client& client);
 
 		/**
 		 * @brief The User who sent the Message
 		*/
-		Structures::User const& Author() const;
+		Structures::User& Author();
 		/**
 		 * @brief Channel where the Message was sent
 		*/
-		Structures::TextChannel const& Channel() const;
+		Structures::TextChannel& Channel();
 		/**
 		 * @brief Content of the Message
 		*/
@@ -33,7 +33,7 @@ namespace Ethyme::Structures
 		/**
 		 * @brief Delete the Message
 		*/
-		cppcoro::task<Message const&> Delete();
+		cppcoro::task<Message&> Delete();
 		/**
 		 * @brief Mentions included in the message.
 		*/
@@ -41,7 +41,7 @@ namespace Ethyme::Structures
 
 	private:
 		Structures::User m_author;
-		Structures::TextChannel const& m_channel;
+		Structures::TextChannel& m_channel;
 		std::string m_content;
 		// Structures::Mentions m_mentions;
 

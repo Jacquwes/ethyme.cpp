@@ -11,7 +11,16 @@ namespace Ethyme::Structures
 	class Channel : public Entity
 	{
 	public:
-		enum class ChannelType;
+		enum class ChannelType
+		{
+			GuildText,
+			DirectMessage,
+			GuildVoice,
+			GroupDirectMessage,
+			GuildCategory,
+			GuildNews,
+			GuildStore,
+		};
 
 		/**
 		 * @brief Channel constructor
@@ -19,7 +28,7 @@ namespace Ethyme::Structures
 		 * @param id Id of the channel
 		 * @param client You guessed it right, Client's instance
 		*/
-		Channel(const ChannelType& channelType, const std::string& id, const Ethyme::Client& client);
+		Channel(ChannelType const& channelType, std::string const& id, Ethyme::Client& client);
 		/**
 		 * @brief Channel's type
 		 * @return Channel's type

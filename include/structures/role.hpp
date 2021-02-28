@@ -13,7 +13,7 @@ namespace Ethyme::Structures
 	class Role : public Entity
 	{
 	public:
-		Role(nlohmann::json const& data, Ethyme::Client const& client);
+		Role(nlohmann::json const& data, Ethyme::Client& client);
 
 		uint32_t const& Color() const;
 		std::string const& Name() const;

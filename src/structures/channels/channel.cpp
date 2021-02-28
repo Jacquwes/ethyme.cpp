@@ -2,7 +2,7 @@
 
 namespace Ethyme::Structures
 {
-	Channel::Channel(const ChannelType& channelType, const std::string& id, const Ethyme::Client& client)
+	Channel::Channel(ChannelType const& channelType, std::string const& id, Ethyme::Client& client)
 		: m_channelType(channelType)
 		, Entity(id, client)
 	{}

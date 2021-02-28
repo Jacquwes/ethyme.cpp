@@ -6,7 +6,7 @@
 
 namespace Ethyme::Structures
 {
-	Message::Message(nlohmann::json const& data, Ethyme::Client const& client)
+	Message::Message(nlohmann::json const& data, Ethyme::Client& client)
 		: m_content{ data["content"].get<std::string>() }
 		, Entity{ data["id"].get<std::string>(), client }
 		, m_author{ User(data["author"], client) }
@@ -14,11 +14,11 @@ namespace Ethyme::Structures
 	{
 	}
 
-	Structures::User const& Message::Author() const { return m_author; }
-	Structures::TextChannel const& Message::Channel() const { return m_channel; }
+	Structures::User& Message::Author() { return m_author; }
+	Structures::TextChannel& Message::Channel() { return m_channel; }
 	std::string const& Message::Content() const { return m_content; }
 
-	cppcoro::task<Message const&> Message::Delete()
+	cppcoro::task<Message&> Message::Delete()
 	{
 		cpr::Delete(
 			cpr::Url{ Constants::API::Channels + Channel().Id().ToString() + "/messages/" + Id().ToString() },

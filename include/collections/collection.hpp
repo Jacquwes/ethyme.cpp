@@ -58,7 +58,7 @@ namespace Ethyme::Collections
 		 * @brief Add a new item to the collection.
 		 * @param item New item.
 		*/
-		void Add(const T& item);
+		T& Add(T item);
 		/**
 		 * @brief Fetch an item from Discord.
 		 * @param endpoint Item to fetch, usually an ID.
@@ -70,23 +70,23 @@ namespace Ethyme::Collections
 		 * @param predicate Function which must return true when an item has the researched property.
 		 * @return Item if found.
 		*/
-		constexpr Iterator Find(std::function<bool(const T&)> predicate) const;
+		constexpr Iterator Find(std::function<bool(T&)> predicate) const;
 		/**
 		 * @brief Find an item in the Collection with its ID.
 		 * @param id ID of the item.
 		 * @return Item if found.
 		*/
-		constexpr Iterator FindById(const std::string& id) const;
+		constexpr Iterator FindById(std::string const& id) const;
 		/**
 		 * @brief Remove an item in the Collection.
 		 * @param predicate Function which must return true when an item has the researched property.
 		*/
-		void Remove(std::function<bool(const T&)> predicate);
+		void Remove(std::function<bool(T&)> predicate);
 		/**
 		 * @brief Remove an item in the Collection with its ID.
 		 * @param id ID of the item.
 		*/
-		void RemoveById(const std::string& id);
+		void RemoveById(std::string const& id);
 
 	private:
 		Ethyme::Client const& m_client;
@@ -101,7 +101,7 @@ namespace Ethyme::Collections
 	{}
 
 	template<typename T>
-	inline void Collection<T>::Add(const T& item) { m_items.push_back(item); }
+	inline T& Collection<T>::Add(T item) { m_items.push_back(item); return m_items[m_items.size() - 1]; }
 	template<typename T>
 	constexpr typename inline Collection<T>::Iterator Collection<T>::begin() { return m_items.begin()._Ptr; }
 	template<typename T>
@@ -132,7 +132,7 @@ namespace Ethyme::Collections
 	}
 
 	template<typename T>
-	constexpr typename inline Collection<T>::Iterator Collection<T>::Find(std::function<bool(const T&)> predicate) const
+	constexpr typename inline Collection<T>::Iterator Collection<T>::Find(std::function<bool(T&)> predicate) const
 	{
 		Iterator last( m_items.end()._Ptr );
 		for (Iterator i( m_items.begin()._Ptr ); i != last; ++i)
@@ -144,7 +144,7 @@ namespace Ethyme::Collections
 	template<typename T>
 	constexpr typename inline Collection<T>::Iterator Collection<T>::FindById(const std::string& id) const { return Find([&](const T& i) { return i.Id().ToString() == id; }); }
 	template<typename T>
-	inline void Collection<T>::Remove(std::function<bool(const T&)> predicate) { m_items.erase(std::find_if(m_items.begin(), m_items.end(), predicate)); }
+	inline void Collection<T>::Remove(std::function<bool(T&)> predicate) { m_items.erase(std::find_if(m_items.begin(), m_items.end(), predicate)); }
 	template<typename T>
 	inline void Collection<T>::RemoveById(const std::string& id) { remove([&](const T& item) { return id == item->Id().ToString(); }); }
 }

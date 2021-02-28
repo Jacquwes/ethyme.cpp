@@ -2,6 +2,9 @@
 
 #include <iostream>
 
+#include "commands/greet.hpp"
+#include "commands/guilds.hpp"
+
 using namespace Ethyme;
 
 int main()
@@ -16,47 +19,8 @@ int main()
 	);
 
 	// Command example
-	client.AddCommand("greet", Ethyme::Command(
-		// callback
-		[&](Ethyme::Structures::Message& message, std::unordered_map<std::string, Ethyme::Command::Argument> arguments) -> cppcoro::task<>
-		{
-			// If no default value
-			// std::string name = "World";
-			// if (arguments["name"].Value)
-			std::string name = std::get<std::string>(*arguments["name"].Value);
-			std::string secondName = std::get<std::string>(*arguments["secondName"].Value);
-			co_await message.Delete();
-
-			auto sentMessage = co_await message.Channel().Send("Hello " + name + " and " + secondName + "!");
-			Logger::Info(sentMessage.Content() + " sent in channel " + sentMessage.Channel().Id().ToString());
-
-			// You have to use at least once "co_await <expression>" or "co_return;"
-			// in a handler.
-
-			// Triggered with "!greet"
-			// or "!greet some name --secondName hahaha"
-			// or "!greet --name some name --secondName hahaha"
-		},
-		// arguments
-		{
-			{
-				"name", // name
-				{
-					false, // required
-					Ethyme::Command::ArgumentType::String, // type
-					std::string("World") // default value, don't forget to cast
-				}
-			},
-			{
-				"secondName",
-				{
-					false,
-					Ethyme::Command::ArgumentType::String,
-					std::string("Samuel")
-				}
-			}
-		}
-	));
+	client.AddCommand("greet", GreetCommand);
+	client.AddCommand("guilds", GuildsCommand);
 
 	// handler example
 	client.AddHandler(

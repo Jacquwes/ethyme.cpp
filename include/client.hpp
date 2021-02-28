@@ -103,17 +103,17 @@ namespace Ethyme
 		 * @brief Collection of Channel available to the Client.
 		 * @return Channels
 		*/
-		Collections::Collection<Structures::Channel> const& Channels() const;
+		Collections::Collection<Structures::Channel>& Channels();
 		/**
 		 * @brief Collection of Guild available to the Client.
 		 * @return Guilds
 		*/
-		Collections::Collection<Structures::Guild> const& Guilds() const;
+		Collections::Collection<Structures::Guild>& Guilds();
 		/**
 		 * @brief Collection of User available to the Client.
 		 * @return Users
 		*/
-		Collections::Collection<Structures::User> const& Users() const;
+		Collections::Collection<Structures::User>& Users();
 
 	private:
 		enum Opcodes

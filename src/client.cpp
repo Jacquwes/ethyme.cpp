@@ -29,9 +29,9 @@ namespace Ethyme
 	const websocketpp::lib::error_code& Client::ErrorCode() const { return ec; }
 	const std::string& Client::Token() const { return m_token; }
 	const Structures::User& Client::User() const { return m_user; }
-	Collections::Collection<Structures::Channel> const& Client::Channels() const { return m_channels; }
-	Collections::Collection<Structures::Guild> const& Client::Guilds() const { return m_guilds; }
-	Collections::Collection<Structures::User> const& Client::Users() const { return m_users; }
+	Collections::Collection<Structures::Channel>& Client::Channels() { return m_channels; }
+	Collections::Collection<Structures::Guild>& Client::Guilds() { return m_guilds; }
+	Collections::Collection<Structures::User>& Client::Users() { return m_users; }
 	void Client::AddCommand(const std::string& name, Command command) { m_commands[name] = command; }
 
 	const std::string& Client::AddHandler(EventType eventType, std::function<cppcoro::task<>(Events::Event&)> callback, const std::string& id)

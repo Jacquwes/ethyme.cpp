@@ -6,11 +6,11 @@
 
 namespace Ethyme::Structures
 {
-	TextChannel::TextChannel(const nlohmann::json& data, const Ethyme::Client& client)
-		: Channel(static_cast<Channel::ChannelType>(data["type"]), data["id"], client)
+	TextChannel::TextChannel(nlohmann::json const& data, Ethyme::Client& client)
+		: Channel(Channel::ChannelType::GuildText, data["id"], client)
 	{}
 
-	cppcoro::task<Message> TextChannel::Send(const std::string& content) const
+	cppcoro::task<Message> TextChannel::Send(std::string const& content) const
 	{
 		nlohmann::json body;
 		body["content"] = content;

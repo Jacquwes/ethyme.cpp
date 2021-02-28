@@ -1,13 +1,14 @@
 #include "structures/guild.hpp"
 
 #include "client.hpp"
+#include "structures/channels/channel.hpp"
 #include "structures/channels/textchannel.hpp"
 #include "structures/member.hpp"
 #include "structures/role.hpp"
 
 namespace Ethyme::Structures
 {
-	Guild::Guild(nlohmann::json const& data, Ethyme::Client const& client)
+	Guild::Guild(nlohmann::json const& data, Ethyme::Client& client)
 		: Entity(data["id"].get<std::string>(), client)
 		, m_channels{ client, Constants::API::Channels }
 		, m_members{ client, Constants::API::Guilds + Id().ToString() + "/members/" }
@@ -17,11 +18,25 @@ namespace Ethyme::Structures
 	{
 		for (auto& role : data["roles"])
 			m_roles.Add(Role(role, client));
+		for (auto& channel : data["channels"])
+			switch (channel["type"].get<Channel::ChannelType>())
+			{
+			case Channel::ChannelType::DirectMessage:
+			case Channel::ChannelType::GroupDirectMessage:
+			case Channel::ChannelType::GuildText:
+			case Channel::ChannelType::GuildNews:
+				m_channels.Add(
+					Client().Channels().Add(TextChannel(channel, client))
+				);
+				break;
+			default:
+				break;
+			}
 	}
 
-	Collections::Collection<std::reference_wrapper<Channel>> const& Guild::Channels() const { return m_channels; }
-	Collections::Collection<Member> const& Guild::Members() const { return m_members; }
+	Collections::Collection<std::reference_wrapper<Channel>>& Guild::Channels() { return m_channels; }
+	Collections::Collection<Member>& Guild::Members() { return m_members; }
 	std::string const& Guild::Name() const { return m_name; }
-	Member const& Guild::Owner() const { return *m_members.FindById(m_ownerId); }
-	Collections::Collection<Role> const& Guild::Roles() const { return m_roles; }
+	Member& Guild::Owner() { return *m_members.FindById(m_ownerId); }
+	Collections::Collection<Role>& Guild::Roles() { return m_roles; }
 }
