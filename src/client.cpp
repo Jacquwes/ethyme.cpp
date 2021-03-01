@@ -32,20 +32,15 @@ namespace Ethyme
 	Collections::Collection<Structures::Channel>& Client::Channels() { return m_channels; }
 	Collections::Collection<Structures::Guild>& Client::Guilds() { return m_guilds; }
 	Collections::Collection<Structures::User>& Client::Users() { return m_users; }
-	void Client::AddCommand(const std::string& name, Command command) { m_commands[name] = command; }
-
+	
+	Command& Client::AddCommand(const std::string& name, Command command) { m_commands[name] = command; return m_commands[name]; }
 	const std::string& Client::AddHandler(EventType eventType, std::function<cppcoro::task<>(Events::Event&)> callback, const std::string& id)
 	{
 		Logger::Debug("New event handler added: " + id);
 		m_eventsHandlers[eventType][id] = callback;
 		return id;
 	}
-
-	void Client::SetPrefix(const std::string& prefix)
-	{
-		m_prefix = prefix;
-	}
-
+	void Client::SetPrefix(const std::string& prefix) { m_prefix = prefix; }
 	std::string Client::GenerateRandomId()
 	{
 		std::string id = "";
@@ -90,4 +85,6 @@ namespace Ethyme
 			throw e;
 		}
 	}
+
+	std::unordered_map<std::string, Command> const& Client::Commands() const { return m_commands; }
 }

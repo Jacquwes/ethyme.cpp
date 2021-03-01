@@ -57,14 +57,14 @@ namespace Ethyme
 		 * @param token Any Discord account's token
 		 * @param useCommands Whether you want to use the built-in command handler or not
 		*/
-		Client(const std::string& token, bool const& useCommands = true, uint32_t const& intents = Constants::Intents::Default);
+		Client(std::string const& token, bool const& useCommands = true, uint32_t const& intents = Constants::Intents::Default);
 
 		/**
 		 * @brief Add a new Command to the command handler.
 		 * @param name Name of the command. Will be used to trigger the command.
 		 * @param command Command instance.
 		*/
-		void AddCommand(const std::string& name, Command command);
+		Command& AddCommand(std::string const& name, Command command);
 		/**
 		 * @brief Add a handler to the Client.
 		 * @param eventType Type of Event to listen to.
@@ -72,32 +72,33 @@ namespace Ethyme
 		 * @param id ID of the handler. In the future, will be used to managed short-term listerners in the future.
 		 * @return ID of the handler.
 		*/
-		const std::string& AddHandler(EventType eventType, std::function<cppcoro::task<>(Events::Event&)> callback, const std::string& id = GenerateRandomId());
+		std::string const& AddHandler(EventType eventType, std::function<cppcoro::task<>(Events::Event&)> callback, std::string const& id = GenerateRandomId());
 		/**
 		 * @brief Set the prefix used for commands.
 		 * @param prefix Prefix to use.
 		*/
-		void SetPrefix(const std::string& prefix);
+		void SetPrefix(std::string const& prefix);
 		/**
 		 * @brief Connect the Client to Discord.
 		*/
 		void Start();
 
+		std::unordered_map<std::string, Command> const& Commands() const;
 		/**
 		 * @brief You may use it for further debugging.
 		 * @return Error code.
 		*/
-		const websocketpp::lib::error_code& ErrorCode() const;
+		websocketpp::lib::error_code const& ErrorCode() const;
 		/**
 		 * @brief Token used by the Client.
 		 * @return Token used by the Client.
 		*/
-		const std::string& Token() const;
+		std::string const& Token() const;
 		/**
 		 * @brief Account of the Client.
 		 * @return Account of the Client.
 		*/
-		const Structures::User& User() const;
+		Structures::User const& User() const;
 
 		/**
 		 * @brief Collection of Channel available to the Client.
