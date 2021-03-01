@@ -40,7 +40,7 @@ namespace Ethyme
 			}
 			#pragma endregion
 			#pragma region MessageCreate
-			else if (payload["t"].get<std::string>() == "MESSAGE_CREATE" || payload["t"].get<std::string>() == "MESSAGE_UPDATE")
+			else if (payload["t"].get<std::string>() == "MESSAGE_CREATE")
 			{
 				Structures::Message message{ payload["d"], *this };
 				Events::MessageCreate event{ message };
