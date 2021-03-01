@@ -90,7 +90,7 @@ namespace Ethyme::Collections
 		/**
 		 * @brief Number of items in the Collection.
 		*/
-		size_t const& Size() const;
+		size_t Size() const;
 
 	private:
 		Ethyme::Client const& m_client;
@@ -152,5 +152,5 @@ namespace Ethyme::Collections
 	template<typename T>
 	inline void Collection<T>::RemoveById(const std::string& id) { remove([&](const T& item) { return id == item->Id().ToString(); }); }
 	template<typename T>
-	inline size_t const& Collection<T>::Size() const { return m_items.size(); }
+	inline size_t Collection<T>::Size() const { return m_items.size(); }
 }
