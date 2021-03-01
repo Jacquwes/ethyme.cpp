@@ -6,9 +6,17 @@
 #include "structures/mentions.hpp"
 #include "structures/user.hpp"
 
+namespace Ethyme
+{
+	class Client;
+}
+
 namespace Ethyme::Structures
 {
-	class TextChannel;
+	namespace Channels
+	{
+		class TextChannel;
+	}
 
 	/**
 	 * @brief Represents a Discord Message.
@@ -25,7 +33,7 @@ namespace Ethyme::Structures
 		/**
 		 * @brief Channel where the Message was sent
 		*/
-		Structures::TextChannel& Channel();
+		Structures::Channels::TextChannel& Channel();
 		/**
 		 * @brief Content of the Message
 		*/
@@ -41,7 +49,7 @@ namespace Ethyme::Structures
 
 	private:
 		Structures::User m_author;
-		Structures::TextChannel& m_channel;
+		Structures::Channels::TextChannel& m_channel;
 		std::string m_content;
 		// Structures::Mentions m_mentions;
 

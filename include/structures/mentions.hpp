@@ -18,13 +18,13 @@ namespace Ethyme::Structures
 	class Mentions
 	{
 	public:
-		Mentions(Collections::Collection<std::reference_wrapper<Channel>> const& channels, Collections::Collection<std::reference_wrapper<User>> const& users);
+		Mentions(Collections::Collection<std::reference_wrapper<Channels::Channel>> const& channels, Collections::Collection<std::reference_wrapper<User>> const& users);
 
-		Collections::Collection<std::reference_wrapper<Channel>> const& Channels() const;
+		Collections::Collection<std::reference_wrapper<Channels::Channel>> const& Channels() const;
 		Collections::Collection<std::reference_wrapper<User>> const& Users() const;
 
 	private:
-		Collections::Collection<std::reference_wrapper<Channel>> const& m_channels;
+		Collections::Collection<std::reference_wrapper<Channels::Channel>> const& m_channels;
 		Collections::Collection<std::reference_wrapper<User>> const& m_users;
 	};
 }

@@ -10,12 +10,11 @@ namespace Ethyme::Structures
 		: m_content{ data["content"].get<std::string>() }
 		, Entity{ data["id"].get<std::string>(), client }
 		, m_author{ User(data["author"], client) }
-		, m_channel{ client.Channels().FindById(data["channel_id"])->As<TextChannel>() }
-	{
-	}
+		, m_channel{ client.Channels().FindById(data["channel_id"].get<std::string>())->As<Channels::TextChannel>() }
+	{}
 
 	Structures::User& Message::Author() { return m_author; }
-	Structures::TextChannel& Message::Channel() { return m_channel; }
+	Structures::Channels::TextChannel& Message::Channel() { return m_channel; }
 	std::string const& Message::Content() const { return m_content; }
 
 	cppcoro::task<Message&> Message::Delete()

@@ -19,14 +19,14 @@ namespace Ethyme::Structures
 		for (auto& role : data["roles"])
 			m_roles.Add(Role(role, client));
 		for (auto& channel : data["channels"])
-			switch (channel["type"].get<Channel::ChannelType>())
+			switch (channel["type"].get<Channels::Channel::ChannelType>())
 			{
-			case Channel::ChannelType::DirectMessage:
-			case Channel::ChannelType::GroupDirectMessage:
-			case Channel::ChannelType::GuildText:
-			case Channel::ChannelType::GuildNews:
+			case Channels::Channel::ChannelType::DirectMessage:
+			case Channels::Channel::ChannelType::GroupDirectMessage:
+			case Channels::Channel::ChannelType::GuildText:
+			case Channels::Channel::ChannelType::GuildNews:
 				m_channels.Add(
-					Client().Channels().Add(TextChannel(channel, client))
+					Client().Channels().Add(Channels::TextChannel(channel, client))
 				);
 				break;
 			default:
@@ -34,7 +34,7 @@ namespace Ethyme::Structures
 			}
 	}
 
-	Collections::Collection<std::reference_wrapper<Channel>>& Guild::Channels() { return m_channels; }
+	Collections::Collection<std::reference_wrapper<Channels::Channel>>& Guild::Channels() { return m_channels; }
 	Collections::Collection<Member>& Guild::Members() { return m_members; }
 	std::string const& Guild::Name() const { return m_name; }
 	Member& Guild::Owner() { return *m_members.FindById(m_ownerId); }

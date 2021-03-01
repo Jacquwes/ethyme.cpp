@@ -4,10 +4,10 @@
 #include "constants.hpp"
 #include "structures/message.hpp"
 
-namespace Ethyme::Structures
+namespace Ethyme::Structures::Channels
 {
 	TextChannel::TextChannel(nlohmann::json const& data, Ethyme::Client& client)
-		: Channel(Channel::ChannelType::GuildText, data["id"], client)
+		: Channel(data, client)
 	{}
 
 	cppcoro::task<Message> TextChannel::Send(std::string const& content) const

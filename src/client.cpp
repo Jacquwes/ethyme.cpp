@@ -29,7 +29,7 @@ namespace Ethyme
 	const websocketpp::lib::error_code& Client::ErrorCode() const { return ec; }
 	const std::string& Client::Token() const { return m_token; }
 	const Structures::User& Client::User() const { return m_user; }
-	Collections::Collection<Structures::Channel>& Client::Channels() { return m_channels; }
+	Collections::Collection<Structures::Channels::Channel>& Client::Channels() { return m_channels; }
 	Collections::Collection<Structures::Guild>& Client::Guilds() { return m_guilds; }
 	Collections::Collection<Structures::User>& Client::Users() { return m_users; }
 	

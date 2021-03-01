@@ -104,7 +104,7 @@ namespace Ethyme
 		 * @brief Collection of Channel available to the Client.
 		 * @return Channels
 		*/
-		Collections::Collection<Structures::Channel>& Channels();
+		Collections::Collection<Structures::Channels::Channel>& Channels();
 		/**
 		 * @brief Collection of Guild available to the Client.
 		 * @return Guilds
@@ -128,7 +128,7 @@ namespace Ethyme
 		void SetupCommandHandler();
 		std::unordered_map<std::string, Command> m_commands;
 
-		Collections::Collection<Structures::Channel> m_channels;
+		Collections::Collection<Structures::Channels::Channel> m_channels;
 		Collections::Collection<Structures::Guild> m_guilds;
 		Collections::Collection<Structures::User> m_users;
 

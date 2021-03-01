@@ -3,7 +3,7 @@
 #include "common.hpp"
 #include "structures/entity.hpp"
 
-namespace Ethyme::Structures
+namespace Ethyme::Structures::Channels
 {
 	/**
 	 * @brief Doll class. Inherited by all Discord channels classes.
@@ -28,7 +28,7 @@ namespace Ethyme::Structures
 		 * @param id Id of the channel
 		 * @param client You guessed it right, Client's instance
 		*/
-		Channel(ChannelType const& channelType, std::string const& id, Ethyme::Client& client);
+		Channel(nlohmann::json const& data, Ethyme::Client& client);
 		/**
 		 * @brief Channel's type
 		 * @return Channel's type
