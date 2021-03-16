@@ -28,11 +28,21 @@ add_library (${PROJECT_NAME}
 	"src/collections/collection.cpp"
 
 	"src/structures/channels/channel.cpp"
+	"src/structures/channels/directmessage.cpp"
+	"src/structures/channels/groupdirectmessage.cpp"
+	"src/structures/channels/guildcategory.cpp"
+	"src/structures/channels/guildchannel.cpp"
+	"src/structures/channels/guildnews.cpp"
+	"src/structures/channels/guildstore.cpp"
+	"src/structures/channels/guildtext.cpp"
+	"src/structures/channels/guildvoice.cpp"
 	"src/structures/channels/textchannel.cpp"
 	"src/structures/entity.cpp"
 	"src/structures/guild.cpp"
+	"src/structures/member.cpp"
 	"src/structures/mentions.cpp"
 	"src/structures/message.cpp"
+	"src/structures/role.cpp"
 	"src/structures/snowflake.cpp"
 	"src/structures/user.cpp"
 
@@ -43,7 +53,8 @@ add_library (${PROJECT_NAME}
 
 	"src/events/messagecreate.cpp"
 	"src/events/ready.cpp"
-  "src/structures/role.cpp" "src/structures/member.cpp" "src/events/guildcreate.cpp")
+	"src/events/guildcreate.cpp"
+)
 
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
 

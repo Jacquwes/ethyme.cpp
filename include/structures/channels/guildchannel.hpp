@@ -16,14 +16,16 @@ namespace Ethyme
 			class GuildChannel : public Channel
 			{
 			public:
-				GuildChannel(ChannelType const& channelType, nlohmann::json const& data, Ethyme::Client& client);
+				GuildChannel(nlohmann::json const& data, Ethyme::Client& client);
 
 				Structures::Guild& Guild();
 				std::string const& Name() const;
+				uint16_t const& Position() const;
 
 			private:
 				Structures::Guild& m_guild;
 				std::string m_name;
+				uint16_t m_position;
 			};
 		} // namespace channels
 	} // namespace Structures

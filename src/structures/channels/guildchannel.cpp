@@ -5,8 +5,8 @@
 
 namespace Ethyme::Structures::Channels
 {
-	GuildChannel::GuildChannel(ChannelType const& channelType, nlohmann::json const& data, Ethyme::Client& client)
-		: Channel	{ channelType, data["id"].get<std::string>(), client }
+	GuildChannel::GuildChannel(nlohmann::json const& data, Ethyme::Client& client)
+		: Channel	{ data["id"].get<std::string>(), client }
 		, m_guild	{ *client.Guilds().FindById(data["guild_id"].get<std::string>()) }
 		, m_name	{ data["name"].get<std::string>() }
 	{}

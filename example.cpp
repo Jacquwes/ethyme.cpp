@@ -5,8 +5,6 @@
 #include "commands/greet.hpp"
 #include "commands/guilds.hpp"
 
-using namespace Ethyme;
-
 int main()
 {
 	Ethyme::Client client("Bot Token");
