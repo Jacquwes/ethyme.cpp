@@ -13,4 +13,5 @@ namespace Ethyme::Structures::Channels
 
 	Structures::Guild& GuildChannel::Guild() { return m_guild; }
 	std::string const& GuildChannel::Name() const { return m_name; }
+	uint16_t const& GuildChannel::Position() const { return m_position; }
 }

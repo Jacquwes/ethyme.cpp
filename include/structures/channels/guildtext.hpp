@@ -11,7 +11,7 @@ namespace Ethyme
 
 	namespace Structures::Channels
 	{
-		class GuildText : public TextChannel
+		class GuildText : public GuildChannel, public TextChannel
 		{
 		public:
 			GuildText(nlohmann::json const& data, Ethyme::Client& client);
