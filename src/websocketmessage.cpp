@@ -30,8 +30,8 @@ namespace Ethyme
 			if (payload["t"].get<std::string>() == "GUILD_CREATE")
 			{
 				Logger::Debug("Received GuildCreate event");
-				auto guild = Structures::Guild(payload["d"], *this);
-				m_guilds.Add(guild);
+				auto guild = Structures::Guild(payload["d"], *this, false);
+				m_guilds.Add(guild).Parse();
 				Logger::Debug(guild.Name() + " successfully cached");
 
 				Events::GuildCreate event{ guild };
@@ -42,8 +42,8 @@ namespace Ethyme
 			#pragma region MessageCreate
 			else if (payload["t"].get<std::string>() == "MESSAGE_CREATE")
 			{
-				Structures::Message message{ payload["d"], *this };
-				Events::MessageCreate event{ message };
+				Structures::Message msg{ payload["d"], *this };
+				Events::MessageCreate event{ msg };
 				for (auto& handler : m_eventsHandlers[EventType::MessageCreate])
 					std::async([&] { cppcoro::sync_wait(handler.second(event)); });
 			}
