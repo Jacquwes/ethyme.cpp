@@ -20,6 +20,8 @@ namespace Ethyme
 			bool const& Nsfw() const;
 			std::string const& Topic() const;
 
+			template <typename T> inline T& As() { return Entity::As<T>(); }
+
 		private:
 			GuildCategory& m_parent;
 			bool m_nsfw;
