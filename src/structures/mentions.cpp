@@ -5,13 +5,13 @@
 namespace Ethyme::Structures
 {
 	Mentions::Mentions(
-		Collections::Collection<std::reference_wrapper<Channels::Channel>> const& channels,
-		Collections::Collection<std::reference_wrapper<User>> const& users
+		Collections::Collection<Channels::Channel, true> const& channels,
+		Collections::Collection<User, true> const& users
 	)
 		: m_channels{ channels }
 		, m_users{ users }
 	{}
 
-	Collections::Collection<std::reference_wrapper<Channels::Channel>> const& Mentions::Channels() const { return m_channels; }
-	Collections::Collection<std::reference_wrapper<User>> const& Mentions::Users() const { return m_users; }
+	Collections::Collection<Channels::Channel, true> const& Mentions::Channels() const { return m_channels; }
+	Collections::Collection<User, true> const& Mentions::Users() const { return m_users; }
 }

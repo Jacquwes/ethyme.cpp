@@ -21,12 +21,12 @@ namespace Ethyme::Structures
 		Member(nlohmann::json const& data, Ethyme::Client& client);
 
 		std::optional<std::string> const& Nickname() const;
-		Collections::Collection<std::reference_wrapper<Role>>& Roles();
+		Collections::Collection<Role, true>& Roles();
 		Structures::User& User();
 
 	private:
 		std::optional<std::string> m_nickname;
-		Collections::Collection<std::reference_wrapper<Role>> m_roles;
+		Collections::Collection<Role, true> m_roles;
 		Structures::User& m_user;
 	};
 }
