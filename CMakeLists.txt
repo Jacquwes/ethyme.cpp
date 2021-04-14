@@ -54,7 +54,7 @@ add_library (${PROJECT_NAME}
 	"src/events/messagecreate.cpp"
 	"src/events/ready.cpp"
 	"src/events/guildcreate.cpp"
- "src/collections/refcollection.cpp")
+)
 
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
 
