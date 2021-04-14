@@ -54,7 +54,7 @@ add_library (${PROJECT_NAME}
 	"src/events/messagecreate.cpp"
 	"src/events/ready.cpp"
 	"src/events/guildcreate.cpp"
-)
+ "src/collections/refcollection.cpp")
 
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
 
@@ -69,7 +69,12 @@ target_link_libraries(${PROJECT_NAME} PRIVATE OpenSSL::SSL OpenSSL::Crypto)
 
 project("example")
 
-add_executable (${PROJECT_NAME} "example.cpp")
+add_executable (${PROJECT_NAME}
+	"example.cpp"
+	"commands/channel.hpp"
+	"commands/greet.hpp"
+	"commands/guilds.hpp"
+)
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
 
 include_directories("./include")

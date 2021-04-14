@@ -8,7 +8,7 @@ namespace Ethyme::Structures
 {
 	Message::Message(nlohmann::json const& data, Ethyme::Client& client)
 		: m_content{ data["content"].get<std::string>() }
-		, Entity{ data["id"].get<std::string>(), client }
+		, Entity{ data["id"].get<std::string>(), client, false, data }
 		, m_author{ User(data["author"], client) }
 		, m_channel{ client.Channels().FindById(data["channel_id"].get<std::string>())->As<Channels::TextChannel>() }
 	{}
