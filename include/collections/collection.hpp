@@ -13,10 +13,12 @@ namespace Ethyme::Collections
 	 * @brief Collection manager class used by Ethyme.
 	 * @tparam T Type of objects to manage.
 	*/
-	template<typename T>
+	template<typename T, bool ReferenceWrapper = false>
 	class Collection
 	{
 	public:
+		using type_t = std::conditional_t<ReferenceWrapper, std::reference_wrapper<T>, T>;
+
 		/**
 		 * @brief Simple iterator
 		*/
@@ -43,7 +45,7 @@ namespace Ethyme::Collections
 			friend bool operator!= (const Iterator& a, const Iterator& b) { return a.m_ptr != b.m_ptr; }
 
 		private:
-			T* m_ptr;
+			type_t* m_ptr;
 		};
 
 		Collection(Ethyme::Client const& client, std::string const& fetchEndpoint = "");
@@ -95,28 +97,22 @@ namespace Ethyme::Collections
 	private:
 		Ethyme::Client const& m_client;
 		std::string m_fetchEndpoint;
-		std::vector<T> m_items;
+		std::vector<type_t> m_items;
 	};
 
-	template<typename T>
-	inline Collection<T>::Collection(Ethyme::Client const& client, std::string const& fetchEndpoint)
+	template<typename T, bool ReferenceWrapper>
+	inline Collection<T, ReferenceWrapper>::Collection(Ethyme::Client const& client, std::string const& fetchEndpoint)
 		: m_client{ client }
-		, m_fetchEndpoint { fetchEndpoint }
+		, m_fetchEndpoint{ fetchEndpoint }
 	{}
 
-	template<typename T>
-	inline T& Collection<T>::Add(T item) { m_items.push_back(item); return m_items[m_items.size() - 1]; }
-	template<typename T>
-	constexpr typename inline Collection<T>::Iterator Collection<T>::begin() { return m_items.begin()._Ptr; }
-	template<typename T>
-	constexpr typename inline Collection<T>::Iterator Collection<T>::end() { return m_items.end()._Ptr; }
-	template<typename T>
-	constexpr typename inline Collection<T>::Iterator const Collection<T>::cbegin() const { return m_items.cbegin()._Ptr; }
-	template<typename T>
-	constexpr typename inline Collection<T>::Iterator const Collection<T>::cend() const { return m_items.cend()._Ptr; }
+	template<typename T, bool ReferenceWrapper> inline T& Collection<T, ReferenceWrapper>::Add(T item) { m_items.push_back(item); return m_items[m_items.size() - 1]; }
+	template<typename T, bool ReferenceWrapper> constexpr typename inline Collection<T, ReferenceWrapper>::Iterator Collection<T, ReferenceWrapper>::begin() { return m_items.begin()._Ptr; }
+	template<typename T, bool ReferenceWrapper> constexpr typename inline Collection<T, ReferenceWrapper>::Iterator Collection<T, ReferenceWrapper>::end() { return m_items.end()._Ptr; }
+	template<typename T, bool ReferenceWrapper> constexpr typename inline Collection<T, ReferenceWrapper>::Iterator const Collection<T, ReferenceWrapper>::cbegin() const { return m_items.cbegin()._Ptr; }
+	template<typename T, bool ReferenceWrapper> constexpr typename inline Collection<T, ReferenceWrapper>::Iterator const Collection<T, ReferenceWrapper>::cend() const { return m_items.cend()._Ptr; }
 
-	template<typename T>
-	inline cppcoro::task<typename Collection<T>::Iterator> Collection<T>::Fetch(std::string const& endpoint) const
+	template<typename T, bool ReferenceWrapper> inline cppcoro::task<typename Collection<T, ReferenceWrapper>::Iterator> Collection<T, ReferenceWrapper>::Fetch(std::string const& endpoint) const
 	{
 		auto response = cpr::Get(
 			cpr::Url{ m_fetchEndpoint + endpoint },
@@ -135,22 +131,30 @@ namespace Ethyme::Collections
 		co_return Iterator(&T);
 	}
 
-	template<typename T>
-	constexpr typename inline Collection<T>::Iterator Collection<T>::Find(std::function<bool(T&)> predicate) const
+	template<typename T, bool ReferenceWrapper>
+	constexpr typename inline Collection<T, ReferenceWrapper>::Iterator Collection<T, ReferenceWrapper>::Find(std::function<bool(T&)> predicate) const
 	{
-		Iterator last( m_items.end()._Ptr );
-		for (Iterator i( m_items.begin()._Ptr ); i != last; ++i)
-			if (predicate(*i))
-				return i;
+		Iterator last(m_items.end()._Ptr);
+		for (Iterator i(m_items.begin()._Ptr); i != last; ++i)
+			if constexpr (ReferenceWrapper)
+			{
+				if (predicate(i->get()))
+					return i;
+			}
+			else
+			{
+				if (predicate(*i))
+					return i;
+			}
 		return last;
 	}
 
-	template<typename T>
-	constexpr typename inline Collection<T>::Iterator Collection<T>::FindById(const std::string& id) const { return Find([&](const T& i) { return i.Id().ToString() == id; }); }
-	template<typename T>
-	inline void Collection<T>::Remove(std::function<bool(T&)> predicate) { m_items.erase(std::find_if(m_items.begin(), m_items.end(), predicate)); }
-	template<typename T>
-	inline void Collection<T>::RemoveById(const std::string& id) { remove([&](const T& item) { return id == item->Id().ToString(); }); }
-	template<typename T>
-	inline size_t Collection<T>::Size() const { return m_items.size(); }
+	template<typename T, bool ReferenceWrapper>
+	constexpr typename inline Collection<T, ReferenceWrapper>::Iterator Collection<T, ReferenceWrapper>::FindById(const std::string& id) const { return Find([&](T& i) { return i.Id().ToString() == id; }); }
+	template<typename T, bool ReferenceWrapper>
+	inline void Collection<T, ReferenceWrapper>::Remove(std::function<bool(T&)> predicate) { m_items.erase(std::find_if(m_items.begin(), m_items.end(), predicate)); }
+	template<typename T, bool ReferenceWrapper>
+	inline void Collection<T, ReferenceWrapper>::RemoveById(const std::string& id) { remove([&](const T& item) { return id == item->Id().ToString(); }); }
+	template<typename T, bool ReferenceWrapper>
+	inline size_t Collection<T, ReferenceWrapper>::Size() const { return m_items.size(); }
 }
