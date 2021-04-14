@@ -16,10 +16,10 @@ namespace Ethyme
 		public:
 			GroupDirectMessage(nlohmann::json const& data, Ethyme::Client& client);
 
-			Collections::Collection<User, true>& Recipients();
+			Collections::Collection<std::reference_wrapper<User>>& Recipients();
 
 		private:
-			Collections::Collection<User, true> m_recipients;
+			Collections::Collection<std::reference_wrapper<User>> m_recipients;
 		};
 	} // namespace Structures::Channels
 } // namespace Ethyme

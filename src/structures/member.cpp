@@ -13,6 +13,6 @@ namespace Ethyme::Structures
 	{}
 
 	std::optional<std::string> const& Member::Nickname() const { return m_nickname; }
-	Collections::Collection<Role, true>& Member::Roles() { return m_roles; }
+	Collections::Collection<std::reference_wrapper<Role>>& Member::Roles() { return m_roles; }
 	Structures::User& Member::User() { return m_user; }
 }

@@ -12,7 +12,7 @@ namespace Ethyme::Structures::Channels
             m_recipients.Add(*client.Users().FindById(recipient["id"]));
     }
 
-    Collections::Collection<User, true>& GroupDirectMessage::Recipients()
+    Collections::Collection<std::reference_wrapper<User>>& GroupDirectMessage::Recipients()
     {
         return m_recipients;
     }

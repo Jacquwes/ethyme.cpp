@@ -18,7 +18,7 @@ namespace Ethyme::Structures::Channels
 		auto response = cpr::Post(
 			cpr::Url{ Constants::API::Channels + Id().ToString() + "/messages" },
 			cpr::Header{
-				{ "Authorization", Client().Token() },
+				{ "Authorization", this->Client().Token() },
 				{ "Content-Type", "application/json" } 
 			},
 			cpr::Body{ body.dump() }
@@ -26,6 +26,6 @@ namespace Ethyme::Structures::Channels
 
 		Logger::Debug("Message sent to " + Id().ToString());
 
-		co_return Message(nlohmann::json::parse(response.text), this->Client());
+		co_return Message(nlohmann::json::parse(response.text), Client());
 	}
 }

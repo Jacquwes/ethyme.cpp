@@ -2,13 +2,12 @@
 
 #include <iostream>
 
-#include "commands/channel.hpp"
 #include "commands/greet.hpp"
 #include "commands/guilds.hpp"
 
 int main()
 {
-	Ethyme::Client client("Bot NjQ3NDcyMjgxMDg1MjgwMjY5.XdgLjQ.fnkpNFL0q_VRuCqyctu2RFK6TK0");
+	Ethyme::Client client("Bot Token");
 	client.SetPrefix("!");
 
 	Ethyme::Logger::SetLogLevel(
@@ -18,7 +17,6 @@ int main()
 	);
 
 	// Command example
-	client.AddCommand("channel", ChannelCommand);
 	client.AddCommand("greet", GreetCommand);
 	client.AddCommand("guilds", GuildsCommand);
 

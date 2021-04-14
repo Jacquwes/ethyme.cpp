@@ -6,10 +6,9 @@
 namespace Ethyme::Structures::Channels
 {
 	GuildChannel::GuildChannel(nlohmann::json const& data, Ethyme::Client& client)
-		: Channel	{ data, client }
+		: Channel	{ data["id"].get<std::string>(), client }
 		, m_guild	{ *client.Guilds().FindById(data["guild_id"].get<std::string>()) }
 		, m_name	{ data["name"].get<std::string>() }
-		, m_position{ data["position"].get<uint16_t>() }
 	{}
 
 	Structures::Guild& GuildChannel::Guild() { return m_guild; }
