@@ -34,10 +34,10 @@ namespace Ethyme::Collections
 
 			Iterator() = default;
 			Iterator(Iterator const& i) : m_ptr{ i.m_ptr } {}
-			Iterator(T* ptr) : m_ptr{ ptr } {}
+			Iterator(type_t* ptr) : m_ptr{ ptr } {}
 
-			T& operator*() const { return *m_ptr; }
-			T* operator->() { return m_ptr; }
+			T& operator*() const { if constexpr (ReferenceWrapper) return m_ptr->get(); else return *m_ptr; }
+			T* operator->() { if constexpr (ReferenceWrapper) return &m_ptr->get(); else return m_ptr; }
 			Iterator& operator++() { ++m_ptr; return *this; }
 			Iterator operator++(int) { Iterator tmp = *this; ++(*this); return tmp; }
 
@@ -106,11 +106,21 @@ namespace Ethyme::Collections
 		, m_fetchEndpoint{ fetchEndpoint }
 	{}
 
-	template<typename T, bool ReferenceWrapper> inline T& Collection<T, ReferenceWrapper>::Add(T item) { m_items.push_back(item); return m_items[m_items.size() - 1]; }
+	template<typename T, bool ReferenceWrapper> inline T& Collection<T, ReferenceWrapper>::Add(T item)
+	{
+		m_items.push_back(item);
+		if constexpr (ReferenceWrapper)
+			return m_items[m_items.size() - 1].get();
+		else
+			return m_items[m_items.size() - 1];
+	}
+
+#pragma region Iterators
 	template<typename T, bool ReferenceWrapper> constexpr typename inline Collection<T, ReferenceWrapper>::Iterator Collection<T, ReferenceWrapper>::begin() { return m_items.begin()._Ptr; }
 	template<typename T, bool ReferenceWrapper> constexpr typename inline Collection<T, ReferenceWrapper>::Iterator Collection<T, ReferenceWrapper>::end() { return m_items.end()._Ptr; }
 	template<typename T, bool ReferenceWrapper> constexpr typename inline Collection<T, ReferenceWrapper>::Iterator const Collection<T, ReferenceWrapper>::cbegin() const { return m_items.cbegin()._Ptr; }
 	template<typename T, bool ReferenceWrapper> constexpr typename inline Collection<T, ReferenceWrapper>::Iterator const Collection<T, ReferenceWrapper>::cend() const { return m_items.cend()._Ptr; }
+#pragma endregion
 
 	template<typename T, bool ReferenceWrapper> inline cppcoro::task<typename Collection<T, ReferenceWrapper>::Iterator> Collection<T, ReferenceWrapper>::Fetch(std::string const& endpoint) const
 	{
@@ -134,19 +144,22 @@ namespace Ethyme::Collections
 	template<typename T, bool ReferenceWrapper>
 	constexpr typename inline Collection<T, ReferenceWrapper>::Iterator Collection<T, ReferenceWrapper>::Find(std::function<bool(T&)> predicate) const
 	{
-		Iterator last(m_items.end()._Ptr);
-		for (Iterator i(m_items.begin()._Ptr); i != last; ++i)
-			if constexpr (ReferenceWrapper)
-			{
-				if (predicate(i->get()))
-					return i;
-			}
-			else
-			{
+		if constexpr (ReferenceWrapper)
+		{
+			Iterator last(m_items.end()._Ptr);
+			for (Iterator i(m_items.begin()._Ptr); i != last; ++i)
 				if (predicate(*i))
 					return i;
-			}
-		return last;
+			return last;
+		}
+		else
+		{
+			Iterator last(m_items.end()._Ptr);
+			for (Iterator i(m_items.begin()._Ptr); i != last; ++i)
+				if (predicate(*i))
+					return i;
+			return last;
+		}
 	}
 
 	template<typename T, bool ReferenceWrapper>
