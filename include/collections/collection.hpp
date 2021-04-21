@@ -144,6 +144,11 @@ namespace Ethyme::Collections
 	template<typename T, bool ReferenceWrapper>
 	constexpr typename inline Collection<T, ReferenceWrapper>::Iterator Collection<T, ReferenceWrapper>::Find(std::function<bool(T&)> predicate) const
 	{
+		if (!m_items.size())
+		{
+			return m_items.end()._Ptr;
+		}
+
 		if constexpr (ReferenceWrapper)
 		{
 			Iterator last(m_items.end()._Ptr);
