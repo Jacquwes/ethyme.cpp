@@ -38,9 +38,17 @@ namespace Ethyme::Structures
 		if (!data.is_null()) [[unlikely]]
 			Data()[0] = data;
 
+		// sort channels, we need categories to be parsed first
+		// because discord decided they'd send them in a random order
+		std::vector<nlohmann::json> channels(Data()[0]["channels"].begin(), Data()[0]["channels"].end());
+		std::ranges::sort(channels, [](nlohmann::json a, nlohmann::json b)
+			{
+				return a["type"] == Structures::Channels::Channel::ChannelType::GuildCategory;
+			});
+
 		for (auto& role : Data()[0]["roles"])
 			m_roles.Add(Role(role, Client()));
-		for (auto& channel : Data()[0]["channels"])
+		for (auto& channel : channels)
 		{
 			if (!channel.contains("guild_id"))
 				const_cast<nlohmann::json&>(channel)["guild_id"] = Data()[0]["id"].get<std::string>();
