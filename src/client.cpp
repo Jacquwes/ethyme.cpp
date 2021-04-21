@@ -21,6 +21,7 @@ namespace Ethyme
 		, m_users{ *this, Constants::API::Users }
 		, m_guilds{ *this, Constants::API::Guilds }
 		, m_intents{ intents }
+		, m_unknownChannel{ Structures::Channels::Channel({}, *this)}
 	{
 		if (useCommands)
 			SetupCommandHandler();
@@ -32,6 +33,7 @@ namespace Ethyme
 	Collections::Collection<Structures::Channels::Channel>& Client::Channels() { return m_channels; }
 	Collections::Collection<Structures::Guild>& Client::Guilds() { return m_guilds; }
 	Collections::Collection<Structures::User>& Client::Users() { return m_users; }
+	Structures::Channels::Channel const& Client::UnknownChannel() const { return m_unknownChannel; }
 	
 	Command& Client::AddCommand(const std::string& name, Command command) { m_commands[name] = command; return m_commands[name]; }
 	const std::string& Client::AddHandler(EventType eventType, std::function<cppcoro::task<>(Events::Event&)> callback, const std::string& id)

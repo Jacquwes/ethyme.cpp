@@ -115,6 +115,8 @@ namespace Ethyme
 		 * @return Users
 		*/
 		Collections::Collection<Structures::User>& Users();
+		
+		Structures::Channels::Channel const& UnknownChannel() const;
 
 	private:
 		enum Opcodes
@@ -131,6 +133,7 @@ namespace Ethyme
 		Collections::Collection<Structures::Channels::Channel> m_channels;
 		Collections::Collection<Structures::Guild> m_guilds;
 		Collections::Collection<Structures::User> m_users;
+		Structures::Channels::Channel m_unknownChannel;
 
 		static std::string GenerateRandomId();
 
