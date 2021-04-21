@@ -6,6 +6,6 @@ namespace Ethyme::Structures
 		: m_id(id)
 		, m_client(client)
 		, m_partial{ partial }
-		, m_data{ data }
+		, m_data{ data.is_array() ? data[0] : data }
 	{}
 }
