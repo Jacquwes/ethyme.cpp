@@ -8,7 +8,7 @@
 
 int main()
 {
-	Ethyme::Client client("Bot NjQ3NDcyMjgxMDg1MjgwMjY5.XdgLjQ.fnkpNFL0q_VRuCqyctu2RFK6TK0");
+	Ethyme::Client client("Bot Token");
 	client.SetPrefix("!");
 
 	Ethyme::Logger::SetLogLevel(
