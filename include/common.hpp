@@ -2,6 +2,9 @@
 
 #pragma warning( disable : 4267 )
 
+#define BOOST_ASIO_DISABLE_STD_COROUTINE
+#define _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS
+
 #include <cstring>
 #include <ctime>
 
