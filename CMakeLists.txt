@@ -70,10 +70,10 @@ target_link_libraries(${PROJECT_NAME} PRIVATE OpenSSL::SSL OpenSSL::Crypto)
 project("example")
 
 add_executable (${PROJECT_NAME}
-	"example.cpp"
-	"commands/channel.hpp"
-	"commands/greet.hpp"
-	"commands/guilds.hpp"
+	"tests/example.cpp"
+	"tests/commands/channel.hpp"
+	"tests/commands/greet.hpp"
+	"tests/commands/guilds.hpp"
 )
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
 
