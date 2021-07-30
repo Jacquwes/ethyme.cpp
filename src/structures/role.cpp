@@ -5,7 +5,7 @@
 
 namespace Ethyme::Structures
 {
-	Role::Role(nlohmann::json const& data, Ethyme::Client& client)
+	Role::Role(nlohmann::json const& data, std::shared_ptr<Ethyme::Client> client)
 		: Entity(data["id"].get<std::string>(), client)
 		, m_color{ data["color"].get<uint32_t>() }
 		, m_name{ data["name"].get<std::string>() }

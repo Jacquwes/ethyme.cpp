@@ -14,7 +14,7 @@
 
 namespace Ethyme::Structures
 {
-	Guild::Guild(nlohmann::json const& data, Ethyme::Client& client, bool const& parse)
+	Guild::Guild(nlohmann::json const& data, std::shared_ptr<Ethyme::Client> client, bool const& parse)
 		: Entity(data["id"].get<std::string>(), client, !parse, data)
 		, m_channels{ client, Constants::API::Channels }
 		, m_members{ client, Constants::API::Guilds + Id().ToString() + "/members/" }
@@ -26,11 +26,11 @@ namespace Ethyme::Structures
 			Parse(data);
 	}
 
-	Collections::Collection<Channels::Channel, true>& Guild::Channels() { return m_channels; }
-	Collections::Collection<Member>& Guild::Members() { return m_members; }
+	Collections::Collection<std::shared_ptr<Channels::Channel>>& Guild::Channels() { return m_channels; }
+	Collections::Collection<std::shared_ptr<Member>>& Guild::Members() { return m_members; }
 	std::string const& Guild::Name() const { return m_name; }
-	Member& Guild::Owner() { return *m_members.FindById(m_ownerId); }
-	Collections::Collection<Role>& Guild::Roles() { return m_roles; }
+	std::shared_ptr<Member>& Guild::Owner() { return *m_members.FindById(m_ownerId); }
+	Collections::Collection<std::shared_ptr<Role>>& Guild::Roles() { return m_roles; }
 
 	void Guild::Parse(nlohmann::json const& data)
 	{
@@ -47,7 +47,10 @@ namespace Ethyme::Structures
 			});
 
 		for (auto& role : Data()[0]["roles"])
-			m_roles.Add(Role(role, Client()));
+		{
+			auto role_ = std::make_shared<Role>(role, Client());
+			m_roles.Add(role_);
+		}
 		for (auto& channel : channels)
 		{
 			if (!channel.contains("guild_id"))
@@ -55,47 +58,47 @@ namespace Ethyme::Structures
 			switch (channel["type"].get<Channels::Channel::ChannelType>())
 			{
 			case Channels::Channel::ChannelType::DirectMessage:
-				m_channels.Add
-				(
-					Client().Channels().Add(Channels::DirectMessage(channel, Client()))
-				);
+			{
+				auto channel_ = std::dynamic_pointer_cast<Channels::Channel>(std::make_shared<Channels::DirectMessage>(channel, Client()));
+				m_channels.Add(Client()->Channels().Add(channel_));
 				break;
+			}
 			case Channels::Channel::ChannelType::GroupDirectMessage:
-				m_channels.Add
-				(
-					Client().Channels().Add(Channels::GroupDirectMessage(channel, Client()))
-				);
+			{
+				auto channel_ = std::dynamic_pointer_cast<Channels::Channel>(std::make_shared<Channels::GroupDirectMessage>(channel, Client()));
+				m_channels.Add(Client()->Channels().Add(channel_));
 				break;
+			}
 			case Channels::Channel::ChannelType::GuildCategory:
-				m_channels.Add
-				(
-					Client().Channels().Add(Channels::GuildCategory(channel, Client()))
-				);
+			{
+				auto channel_ = std::dynamic_pointer_cast<Channels::Channel>(std::make_shared<Channels::GuildCategory>(channel, Client()));
+				m_channels.Add(Client()->Channels().Add(channel_));
 				break;
+			}
 			case Channels::Channel::ChannelType::GuildNews:
-				m_channels.Add
-				(
-					Client().Channels().Add(Channels::GuildNews(channel, Client()).As<Channels::Channel>())
-				);
+			{
+				auto channel_ = std::dynamic_pointer_cast<Channels::Channel>(std::make_shared<Channels::GuildNews>(channel, Client()));
+				m_channels.Add(Client()->Channels().Add(channel_));
 				break;
+			}
 			case Channels::Channel::ChannelType::GuildStore:
-				m_channels.Add
-				(
-					Client().Channels().Add(Channels::GuildStore(channel, Client()))
-				);
+			{
+				auto channel_ = std::dynamic_pointer_cast<Channels::Channel>(std::make_shared<Channels::GuildStore>(channel, Client()));
+				m_channels.Add(Client()->Channels().Add(channel_));
 				break;
+			}
 			case Channels::Channel::ChannelType::GuildText:
-				m_channels.Add
-				(
-					Client().Channels().Add(Channels::GuildText(channel, Client()).As<Channels::Channel>())
-				);
+			{
+				auto channel_ = std::dynamic_pointer_cast<Channels::Channel>(std::make_shared<Channels::GuildText>(channel, Client()));
+				m_channels.Add(Client()->Channels().Add(channel_));
 				break;
+			}
 			default:
-				m_channels.Add
-				(
-					Client().Channels().Add(Channels::Channel(channel, Client()))
-				);
+			{
+				auto channel_ = std::make_shared<Channels::Channel>(channel, Client());
+				m_channels.Add(Client()->Channels().Add(channel_));
 				break;
+			}
 			}
 		}
 	}

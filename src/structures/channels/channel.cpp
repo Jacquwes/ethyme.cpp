@@ -2,7 +2,7 @@
 
 namespace Ethyme::Structures::Channels
 {
-	Channel::Channel(nlohmann::json const& data, Ethyme::Client& client)
+	Channel::Channel(nlohmann::json const& data, std::shared_ptr<Ethyme::Client> client)
 		: m_channelType(data.contains("type") ? data["type"].get<ChannelType>() : ChannelType::GuildText)
 		, Entity(data.contains("id") ? data["id"].get<std::string>() : "000000000000000000", client, false, data)
 	{}

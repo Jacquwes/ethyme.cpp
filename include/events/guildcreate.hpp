@@ -9,12 +9,12 @@ namespace Ethyme::Events
 	class GuildCreate : public Event
 	{
 	public:
-		GuildCreate(Structures::Guild& guild);
+		GuildCreate(std::shared_ptr<Structures::Guild>& guild);
 
-		Structures::Guild& Guild() const;
+		std::shared_ptr<Structures::Guild>& Guild() const;
 
 	private:
-		Structures::Guild& m_guild;
+		std::shared_ptr<Structures::Guild>& m_guild;
 	};
 
 }

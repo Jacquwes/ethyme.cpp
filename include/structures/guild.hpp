@@ -20,22 +20,22 @@ namespace Ethyme
 		class Guild : public Entity
 		{
 		public:
-			Guild(nlohmann::json const& data, Ethyme::Client& client, bool const& parse = true);
+			Guild(nlohmann::json const& data, std::shared_ptr<Ethyme::Client> client, bool const& parse = true);
 
-			Collections::Collection<Channels::Channel, true>& Channels();
-			Collections::Collection<Member>& Members();
+			Collections::Collection<std::shared_ptr<Channels::Channel>>& Channels();
+			Collections::Collection<std::shared_ptr<Member>>& Members();
 			std::string const& Name() const;
-			Member& Owner();
-			Collections::Collection<Role>& Roles();
+			std::shared_ptr<Member>& Owner();
+			Collections::Collection<std::shared_ptr<Role>>& Roles();
 
 			void Parse(nlohmann::json const& data = {}) override;
 
 		private:
-			Collections::Collection<Channels::Channel, true> m_channels;
-			Collections::Collection<Member> m_members;
+			Collections::Collection<std::shared_ptr<Channels::Channel>> m_channels;
+			Collections::Collection<std::shared_ptr<Member>> m_members;
 			std::string m_name;
 			std::string m_ownerId;
-			Collections::Collection<Role> m_roles;
+			Collections::Collection<std::shared_ptr<Role>> m_roles;
 		};
 	}
 }

@@ -2,11 +2,11 @@
 
 namespace Ethyme::Events
 {
-	GuildCreate::GuildCreate(Structures::Guild& guild)
+	GuildCreate::GuildCreate(std::shared_ptr<Structures::Guild>& guild)
 		: m_guild{ guild }
 	{}
 
-	Structures::Guild& GuildCreate::Guild() const
+	std::shared_ptr<Structures::Guild>& GuildCreate::Guild() const
 	{
 		return m_guild;
 	}

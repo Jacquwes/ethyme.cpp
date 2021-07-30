@@ -6,6 +6,14 @@
 
 namespace Ethyme
 {
+	typedef websocketpp::client<websocketpp::config::asio_tls_client> WebsocketClient;
+	typedef websocketpp::lib::shared_ptr<websocketpp::lib::asio::ssl::context> context_ptr;
+	typedef websocketpp::config::asio_client::message_type::ptr message_ptr;
+
+	using websocketpp::lib::placeholders::_1;
+	using websocketpp::lib::placeholders::_2;
+	using websocketpp::lib::bind;
+
 	void Client::SendHeartbeat(websocketpp::connection_hdl handler)
 	{
 		Logger::Debug("Sending heartbeat");
@@ -30,9 +38,9 @@ namespace Ethyme
 			if (payload["t"].get<std::string>() == "GUILD_CREATE")
 			{
 				Logger::Debug("Received GuildCreate event");
-				auto guild = Structures::Guild(payload["d"], *this, false);
-				m_guilds.Add(guild).Parse();
-				Logger::Debug(guild.Name() + " successfully cached");
+				auto guild = std::make_shared<Structures::Guild>(payload["d"], shared_from_this(), false);
+				m_guilds.Add(guild)->Parse();
+				Logger::Debug(guild->Name() + " successfully cached");
 
 				Events::GuildCreate event{ guild };
 				for (auto& handler : m_eventsHandlers[EventType::GuildCreate])
@@ -42,7 +50,7 @@ namespace Ethyme
 			#pragma region MessageCreate
 			else if (payload["t"].get<std::string>() == "MESSAGE_CREATE")
 			{
-				Structures::Message msg{ payload["d"], *this };
+				auto msg = std::make_shared<Structures::Message>(payload["d"], shared_from_this());
 				Events::MessageCreate event{ msg };
 				for (auto& handler : m_eventsHandlers[EventType::MessageCreate])
 					std::async([&] { cppcoro::sync_wait(handler.second(event)); });
@@ -52,7 +60,7 @@ namespace Ethyme
 			else if (payload["t"].get<std::string>() == "READY")
 			{
 				Logger::Debug("Client ready");
-				Events::Ready event{ *this };
+				Events::Ready event{ shared_from_this() };
 				for (auto& handler : m_eventsHandlers[EventType::Ready])
 					std::async([&] { cppcoro::sync_wait(handler.second(*(Events::Event*)&event)); });
 			}

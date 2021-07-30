@@ -14,12 +14,12 @@ namespace Ethyme
 		class GroupDirectMessage : public TextChannel
 		{
 		public:
-			GroupDirectMessage(nlohmann::json const& data, Ethyme::Client& client);
+			GroupDirectMessage(nlohmann::json const& data, std::shared_ptr<Ethyme::Client> client);
 
-			Collections::Collection<User, true>& Recipients();
+			Collections::Collection<std::shared_ptr<User>> const& Recipients() const;
 
 		private:
-			Collections::Collection<User, true> m_recipients;
+			Collections::Collection<std::shared_ptr<User>> m_recipients;
 		};
 	} // namespace Structures::Channels
 } // namespace Ethyme

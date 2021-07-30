@@ -21,19 +21,19 @@ namespace Ethyme::Structures
 	/**
 	 * @brief Represents a Discord Message.
 	*/
-	class Message : public Entity
+	class Message : public Entity, public std::enable_shared_from_this<Message>
 	{
 	public:
-		Message(nlohmann::json const& data, Ethyme::Client& client);
+		Message(nlohmann::json const& data, std::shared_ptr<Ethyme::Client> client);
 
 		/**
 		 * @brief The User who sent the Message
 		*/
-		Structures::User& Author();
+		std::shared_ptr<Structures::User> Author();
 		/**
 		 * @brief Channel where the Message was sent
 		*/
-		Structures::Channels::TextChannel& Channel();
+		std::shared_ptr<Structures::Channels::TextChannel> Channel();
 		/**
 		 * @brief Content of the Message
 		*/
@@ -41,15 +41,15 @@ namespace Ethyme::Structures
 		/**
 		 * @brief Delete the Message
 		*/
-		cppcoro::task<Message&> Delete();
+		cppcoro::task<std::shared_ptr<Message>> Delete();
 		/**
 		 * @brief Mentions included in the message.
 		*/
 		// Structures::Mentions const& Mentions() const;
 
 	private:
-		Structures::User m_author;
-		Structures::Channels::TextChannel& m_channel;
+		std::shared_ptr<Structures::User> m_author;
+		std::shared_ptr<Structures::Channels::TextChannel> m_channel;
 		std::string m_content;
 		// Structures::Mentions m_mentions;
 

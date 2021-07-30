@@ -6,11 +6,11 @@
 
 namespace Ethyme::Structures::Channels
 {
-	TextChannel::TextChannel(nlohmann::json const& data, Ethyme::Client& client)
+	TextChannel::TextChannel(nlohmann::json const& data, std::shared_ptr<Ethyme::Client> client)
 		: Channel(data, client)
 	{}
 
-	cppcoro::task<Message> TextChannel::Send(std::string const& content) const
+	cppcoro::task<std::shared_ptr<Message>> TextChannel::Send(std::string const& content) const
 	{
 		nlohmann::json body;
 		body["content"] = content;
@@ -18,7 +18,7 @@ namespace Ethyme::Structures::Channels
 		auto response = cpr::Post(
 			cpr::Url{ Constants::API::Channels + Id().ToString() + "/messages" },
 			cpr::Header{
-				{ "Authorization", Client().Token() },
+				{ "Authorization", Client()->Token() },
 				{ "Content-Type", "application/json" } 
 			},
 			cpr::Body{ body.dump() }
@@ -26,6 +26,6 @@ namespace Ethyme::Structures::Channels
 
 		Logger::Debug("Message sent to " + Id().ToString());
 
-		co_return Message(nlohmann::json::parse(response.text), this->Client());
+		co_return std::make_shared<Message>(nlohmann::json::parse(response.text), this->Client());
 	}
 }

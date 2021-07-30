@@ -7,33 +7,42 @@
 
 namespace Ethyme
 {
+	typedef websocketpp::client<websocketpp::config::asio_tls_client> WebsocketClient;
+	typedef websocketpp::lib::shared_ptr<websocketpp::lib::asio::ssl::context> context_ptr;
+	typedef websocketpp::config::asio_client::message_type::ptr message_ptr;
+
+	using websocketpp::lib::placeholders::_1;
+	using websocketpp::lib::placeholders::_2;
+	using websocketpp::lib::bind;
+
 	Client::Client(const std::string& token, bool const& useCommands, uint32_t const& intents)
-		: m_token{ token }
+		: m_shared{ std::shared_ptr<Client>(this) }
+		, m_token { token }
 		, m_connectionState{ ConnectionState::Disconnected }
 		, m_heartbeatInterval{ 0 }
 		, m_sequenceNumber{ 0 }
-		, m_user{ Structures::User(nlohmann::json::parse(cpr::Get(
+		, m_user{ std::make_shared<Structures::User>(nlohmann::json::parse(cpr::Get(
 			cpr::Url(Constants::API::CurrentUser),
 			cpr::Header{ { "Authorization", m_token } }
-		).text), *this) }
+		).text), m_shared) }
 		, m_commands{}
-		, m_channels{ *this, Constants::API::Channels }
-		, m_users{ *this, Constants::API::Users }
-		, m_guilds{ *this, Constants::API::Guilds }
+		, m_channels{ m_shared, Constants::API::Channels }
+		, m_users{ m_shared, Constants::API::Users }
+		, m_guilds{ m_shared, Constants::API::Guilds }
 		, m_intents{ intents }
-		, m_unknownChannel{ Structures::Channels::Channel({}, *this)}
+		, m_unknownChannel{ std::make_shared<Structures::Channels::Channel>(nlohmann::json(), m_shared) }
 	{
 		if (useCommands)
 			SetupCommandHandler();
 	}
 
-	const websocketpp::lib::error_code& Client::ErrorCode() const { return ec; }
-	const std::string& Client::Token() const { return m_token; }
-	const Structures::User& Client::User() const { return m_user; }
-	Collections::Collection<Structures::Channels::Channel>& Client::Channels() { return m_channels; }
-	Collections::Collection<Structures::Guild>& Client::Guilds() { return m_guilds; }
-	Collections::Collection<Structures::User>& Client::Users() { return m_users; }
-	Structures::Channels::Channel const& Client::UnknownChannel() const { return m_unknownChannel; }
+	websocketpp::lib::error_code const& Client::ErrorCode() const { return ec; }
+	std::string const& Client::Token() const { return m_token; }
+	std::shared_ptr<Structures::User> const& Client::User() const { return m_user; }
+	Collections::Collection<std::shared_ptr<Structures::Channels::Channel>>& Client::Channels() { return m_channels; }
+	Collections::Collection<std::shared_ptr<Structures::Guild>>& Client::Guilds() { return m_guilds; }
+	Collections::Collection<std::shared_ptr<Structures::User>>& Client::Users() { return m_users; }
+	std::shared_ptr<Structures::Channels::Channel> const& Client::UnknownChannel() const { return m_unknownChannel; }
 	
 	Command& Client::AddCommand(const std::string& name, Command command) { m_commands[name] = command; return m_commands[name]; }
 	const std::string& Client::AddHandler(EventType eventType, std::function<cppcoro::task<>(Events::Event&)> callback, const std::string& id)

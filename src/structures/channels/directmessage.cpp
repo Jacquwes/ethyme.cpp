@@ -4,10 +4,11 @@
 
 namespace Ethyme::Structures::Channels
 {
-	DirectMessage::DirectMessage(nlohmann::json const& data, Ethyme::Client& client)
+	DirectMessage::DirectMessage(nlohmann::json const& data, std::shared_ptr<Ethyme::Client> client)
 		: TextChannel{ data, client }
-		, m_recipient{ *client.Users().FindById(data["recipients"][0]["id"].get<std::string>()) }
+		, Channel{ data, client }
+		, m_recipient{ client->Users().FindById(data["recipients"][0]["id"].get<std::string>()).get() }
 	{}
 	
-	User& DirectMessage::Recipient() { return m_recipient; }
+	std::shared_ptr<User>& DirectMessage::Recipient() { return m_recipient; }
 }

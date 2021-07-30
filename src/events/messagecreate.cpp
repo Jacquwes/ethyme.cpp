@@ -2,9 +2,9 @@
 
 namespace Ethyme::Events
 {
-	MessageCreate::MessageCreate(Structures::Message& message)
+	MessageCreate::MessageCreate(std::shared_ptr<Structures::Message>& message)
 		: m_message{ message }
 	{}
 
-	Structures::Message& MessageCreate::Message() { return m_message; }
+	std::shared_ptr<Structures::Message>& MessageCreate::Message() { return m_message; }
 }

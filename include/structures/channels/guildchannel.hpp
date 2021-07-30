@@ -13,17 +13,17 @@ namespace Ethyme
 
 		namespace Channels
 		{
-			class GuildChannel : public Channel
+			class GuildChannel : public virtual Channel
 			{
 			public:
-				GuildChannel(nlohmann::json const& data, Ethyme::Client& client);
+				GuildChannel(nlohmann::json const& data, std::shared_ptr<Ethyme::Client> client);
 
-				Structures::Guild& Guild();
+				std::shared_ptr<Structures::Guild>& Guild();
 				std::string const& Name() const;
 				uint16_t const& Position() const;
 
 			private:
-				Structures::Guild& m_guild;
+				std::shared_ptr<Structures::Guild>& m_guild;
 				std::string m_name;
 				uint16_t m_position;
 			};

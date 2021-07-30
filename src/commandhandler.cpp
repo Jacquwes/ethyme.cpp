@@ -12,7 +12,7 @@ namespace Ethyme
 			[&](Events::Event& event) -> cppcoro::task<>
 			{
 				auto& message = (*(Events::MessageCreate*)&event).Message();
-				auto& content = message.Content();
+				auto& content = message->Content();
 				std::vector<std::string> arguments = { "" };
 
 				// check prefix
@@ -154,11 +154,11 @@ namespace Ethyme
 
 				if (!errors.empty())
 				{
-					std::string errorMessage = "<@" + message.Author().Id().ToString() + ">, your command couldn't be processed:\n";
+					std::string errorMessage = "<@" + message->Author()->Id().ToString() + ">, your command couldn't be processed:\n";
 					for (auto& error : errors)
 						errorMessage += error + "\n";
-					message.Channel().Send(errorMessage);
-					return;
+					co_await message->Channel()->Send(errorMessage);
+					co_return;
 				}
 
 				co_await command.second.Callback()(message, command.second.Arguments());

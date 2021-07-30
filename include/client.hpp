@@ -18,14 +18,6 @@
 
 namespace Ethyme
 {
-	typedef websocketpp::client<websocketpp::config::asio_tls_client> WebsocketClient;
-	typedef websocketpp::lib::shared_ptr<websocketpp::lib::asio::ssl::context> context_ptr;
-	typedef websocketpp::config::asio_client::message_type::ptr message_ptr;
-
-	using websocketpp::lib::placeholders::_1;
-	using websocketpp::lib::placeholders::_2;
-	using websocketpp::lib::bind;
-
 	/**
 	 * @brief Possible events types
 	*/
@@ -39,7 +31,7 @@ namespace Ethyme
 	/**
 	 * @brief Represent an Ethyme Client. Use it to communicate with Discord.
 	*/
-	class Client
+	class Client : public std::enable_shared_from_this<Client>
 	{
 	public:
 		/**
@@ -98,25 +90,25 @@ namespace Ethyme
 		 * @brief Account of the Client.
 		 * @return Account of the Client.
 		*/
-		Structures::User const& User() const;
+		std::shared_ptr<Structures::User> const& User() const;
 
 		/**
 		 * @brief Collection of Channel available to the Client.
 		 * @return Channels
 		*/
-		Collections::Collection<Structures::Channels::Channel>& Channels();
+		Collections::Collection<std::shared_ptr<Structures::Channels::Channel>>& Channels();
 		/**
 		 * @brief Collection of Guild available to the Client.
 		 * @return Guilds
 		*/
-		Collections::Collection<Structures::Guild>& Guilds();
+		Collections::Collection<std::shared_ptr<Structures::Guild>>& Guilds();
 		/**
 		 * @brief Collection of User available to the Client.
 		 * @return Users
 		*/
-		Collections::Collection<Structures::User>& Users();
+		Collections::Collection<std::shared_ptr<Structures::User>>& Users();
 		
-		Structures::Channels::Channel const& UnknownChannel() const;
+		std::shared_ptr<Structures::Channels::Channel> const& UnknownChannel() const;
 
 	private:
 		enum Opcodes
@@ -129,11 +121,12 @@ namespace Ethyme
 
 		void SetupCommandHandler();
 		std::unordered_map<std::string, Command> m_commands;
+		std::shared_ptr<Client> m_shared;
 
-		Collections::Collection<Structures::Channels::Channel> m_channels;
-		Collections::Collection<Structures::Guild> m_guilds;
-		Collections::Collection<Structures::User> m_users;
-		Structures::Channels::Channel m_unknownChannel;
+		Collections::Collection<std::shared_ptr<Structures::Channels::Channel>> m_channels;
+		Collections::Collection<std::shared_ptr<Structures::Guild>> m_guilds;
+		Collections::Collection<std::shared_ptr<Structures::User>> m_users;
+		std::shared_ptr<Structures::Channels::Channel> m_unknownChannel;
 
 		static std::string GenerateRandomId();
 
@@ -142,9 +135,9 @@ namespace Ethyme
 		uint32_t m_intents;
 		std::string m_prefix;
 		std::string m_token;
-		Structures::User m_user;
+		std::shared_ptr<Structures::User> m_user;
 
-		WebsocketClient m_ws;
+		websocketpp::client<websocketpp::config::asio_tls_client> m_ws;
 		websocketpp::lib::error_code ec;
 		std::shared_ptr<void> m_handler;
 		
@@ -155,7 +148,7 @@ namespace Ethyme
 
 		ConnectionState m_connectionState;
 
-		context_ptr OnTlsInit(const char*, websocketpp::connection_hdl);
-		void OnWebsocketMessage(WebsocketClient*, websocketpp::connection_hdl, message_ptr);
+		std::shared_ptr<websocketpp::lib::asio::ssl::context> OnTlsInit(const char*, websocketpp::connection_hdl);
+		void OnWebsocketMessage(websocketpp::client<websocketpp::config::asio_tls_client>*, websocketpp::connection_hdl, websocketpp::config::asio_client::message_type::ptr);
 	};
 }

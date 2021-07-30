@@ -18,15 +18,15 @@ namespace Ethyme::Structures
 	class Member : public Entity
 	{
 	public:
-		Member(nlohmann::json const& data, Ethyme::Client& client);
+		Member(nlohmann::json const& data, std::shared_ptr<Ethyme::Client> client);
 
 		std::optional<std::string> const& Nickname() const;
-		Collections::Collection<Role, true>& Roles();
-		Structures::User& User();
+		Collections::Collection<std::shared_ptr<Role>>& Roles();
+		std::shared_ptr<Structures::User>& User();
 
 	private:
 		std::optional<std::string> m_nickname;
-		Collections::Collection<Role, true> m_roles;
-		Structures::User& m_user;
+		Collections::Collection<std::shared_ptr<Role>> m_roles;
+		std::shared_ptr<Structures::User>& m_user;
 	};
 }

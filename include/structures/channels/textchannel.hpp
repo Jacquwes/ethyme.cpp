@@ -12,17 +12,17 @@ namespace Ethyme::Structures
 		/**
 		 * @brief Represent all text channels.
 		*/
-		class TextChannel : public Channel
+		class TextChannel : public virtual Channel
 		{
 		public:
-			TextChannel(nlohmann::json const& data, Ethyme::Client& client);
+			TextChannel(nlohmann::json const& data, std::shared_ptr<Ethyme::Client> client);
 			virtual ~TextChannel() = default;
 
 			/**
 			 * @brief Send a message to the channel.
 			 * @param content Content of the message.
 			*/
-			cppcoro::task<Message> Send(std::string const& content) const;
+			cppcoro::task<std::shared_ptr<Message>> Send(std::string const& content) const;
 		};
 	}
 }

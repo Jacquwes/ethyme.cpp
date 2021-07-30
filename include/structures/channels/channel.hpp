@@ -28,7 +28,7 @@ namespace Ethyme::Structures::Channels
 		 * @param id Id of the channel
 		 * @param client You guessed it right, Client's instance
 		*/
-		Channel(nlohmann::json const& data, Ethyme::Client& client);
+		Channel(nlohmann::json const& data, std::shared_ptr<Ethyme::Client> client);
 		/**
 		 * @brief Channel's type
 		 * @return Channel's type

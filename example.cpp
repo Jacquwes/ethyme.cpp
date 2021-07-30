@@ -30,9 +30,9 @@ int main()
 			auto messageEvent = event.As<Ethyme::Events::MessageCreate>();
 			auto message = messageEvent.Message();
 
-			if (!message.Author().Bot()
-				&& message.Content() == "!ping")
-				co_await message.Channel().Send("pong hahaha");
+			if (!message->Author()->Bot()
+				&& message->Content() == "!ping")
+				co_await message->Channel()->Send("pong hahaha");
 		},
 		"handler ID" // optional, random if not specified.
 	);
@@ -42,7 +42,7 @@ int main()
 		[&](Ethyme::Events::Event& event) -> cppcoro::task<>
 		{
 			auto readyEvent = event.As<Ethyme::Events::Ready>();
-			Logger::Info(std::string(readyEvent.Client().User()) + " is online!");
+			Logger::Info(std::string(*readyEvent.Client()->User()) + " is online!");
 			co_return;
 		}
 	);

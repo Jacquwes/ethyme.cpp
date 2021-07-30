@@ -13,12 +13,12 @@ namespace Ethyme
 		class DirectMessage : public TextChannel
 		{
 		public:
-			DirectMessage(nlohmann::json const& data, Ethyme::Client& client);
+			DirectMessage(nlohmann::json const& data, std::shared_ptr<Ethyme::Client> client);
 
-			User& Recipient();
+			std::shared_ptr<User>& Recipient();
 
 		private:
-			User& m_recipient;
+			std::shared_ptr<User>& m_recipient;
 		};
 	} // namespace Structures::Channels
 } // namespace Ethyme

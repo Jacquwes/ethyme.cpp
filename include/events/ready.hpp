@@ -20,15 +20,15 @@ namespace Ethyme::Events
 		 * @brief Event's constructor
 		 * @param client Ready Client's instance
 		*/
-		Ready(Ethyme::Client const& client);
+		Ready(std::shared_ptr<Ethyme::Client> client);
 
 		/**
 		 * @brief Client
 		 * @return Ready Client's instance
 		*/
-		Ethyme::Client const& Client() const;
+		std::shared_ptr<Ethyme::Client> Client() const;
 
 	private:
-		Ethyme::Client const& m_client;
+		std::shared_ptr<Ethyme::Client> m_client;
 	};
 }

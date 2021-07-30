@@ -12,7 +12,7 @@ namespace Ethyme
 		class GuildNews : public GuildText
 		{
 		public:
-			GuildNews(nlohmann::json const& data, Ethyme::Client& client);
+			GuildNews(nlohmann::json const& data, std::shared_ptr<Ethyme::Client> client);
 		};
 	}
 }

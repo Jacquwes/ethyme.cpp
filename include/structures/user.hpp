@@ -16,7 +16,7 @@ namespace Ethyme::Structures
 	class User : public Entity
 	{
 	public:
-		User(nlohmann::json const& data, Ethyme::Client& client);
+		User(nlohmann::json const& data, std::shared_ptr<Ethyme::Client> client);
 
 		bool const& Bot() const;
 		std::string const& Discriminator() const;

@@ -18,8 +18,6 @@ include_directories(${BOOST_RANDOM_INCLUDE_DIR})
 link_libraries(${BOOST_RANDOM_LIBRARY})
 
 add_library (${PROJECT_NAME}
-	"src/ethyme.cpp"
-	
 	"include/common.hpp"
 	"include/constants.hpp"
 

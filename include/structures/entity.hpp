@@ -21,7 +21,7 @@ namespace Ethyme::Structures
 		 * @param id ID of the entity
 		 * @param client Client's instance
 		*/
-		Entity(std::string const& id, Ethyme::Client& client, bool const& partial = false, nlohmann::json const& data = {});
+		Entity(std::string const& id, std::shared_ptr<Ethyme::Client> client, bool const& partial = false, nlohmann::json const& data = {});
 		/**
 		 * @brief Inheritable
 		*/
@@ -36,7 +36,7 @@ namespace Ethyme::Structures
 		 * @brief Client's instance
 		 * @return Client's instance
 		*/
-		constexpr inline Ethyme::Client& Client() const { return m_client; }
+		inline std::shared_ptr<Ethyme::Client> Client() const { return m_client; }
 
 		constexpr inline virtual void Parse(nlohmann::json const& data = {}) {}
 
@@ -57,7 +57,7 @@ namespace Ethyme::Structures
 	private:
 		nlohmann::json m_data;
 		Snowflake m_id;
-		Ethyme::Client& m_client;
+		std::shared_ptr<Ethyme::Client> m_client;
 		bool m_partial;
 	};
 }

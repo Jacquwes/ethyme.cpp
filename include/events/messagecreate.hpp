@@ -22,15 +22,15 @@ namespace Ethyme::Events
 		 * @param data Raw event data
 		 * @param client Client's instance
 		*/
-		MessageCreate(Structures::Message& message);
+		MessageCreate(std::shared_ptr<Structures::Message>& message);
 
 		/**
 		 * @brief Message
 		 * @return Message received by the Client
 		*/
-		Structures::Message& Message();
+		std::shared_ptr<Structures::Message>& Message();
 
 	private:
-		Structures::Message& m_message;
+		std::shared_ptr<Structures::Message>& m_message;
 	};
 }

@@ -12,7 +12,7 @@ namespace Ethyme
 		class GuildCategory : public GuildChannel
 		{
 		public:
-			GuildCategory(nlohmann::json const& data, Ethyme::Client& client);
+			GuildCategory(nlohmann::json const& data, std::shared_ptr<Ethyme::Client> client);
 		};
 	} // namespace Structures::Channels
 } // namespace Strucutres::Ethyme

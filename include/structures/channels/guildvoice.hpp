@@ -12,7 +12,7 @@ namespace Ethyme
 		class GuildVoice : public GuildChannel
 		{
 		public:
-			GuildVoice(nlohmann::json const& data, Ethyme::Client& client);
+			GuildVoice(nlohmann::json const& data, std::shared_ptr<Ethyme::Client> client);
 		};
 	}
 }

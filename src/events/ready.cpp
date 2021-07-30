@@ -4,9 +4,9 @@
 
 namespace Ethyme::Events
 {
-	Ready::Ready(Ethyme::Client const& client)
+	Ready::Ready(std::shared_ptr<Ethyme::Client> client)
 		: m_client{ client }
 	{}
 
-	Ethyme::Client const& Ready::Client() const { return m_client; }
+	std::shared_ptr<Ethyme::Client> Ready::Client() const { return m_client; }
 }
