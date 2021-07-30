@@ -21,17 +21,24 @@ namespace Ethyme
 		, m_connectionState{ ConnectionState::Disconnected }
 		, m_heartbeatInterval{ 0 }
 		, m_sequenceNumber{ 0 }
-		, m_user{ std::make_shared<Structures::User>(nlohmann::json::parse(cpr::Get(
-			cpr::Url(Constants::API::CurrentUser),
-			cpr::Header{ { "Authorization", m_token } }
-		).text), m_shared) }
 		, m_commands{}
 		, m_channels{ m_shared, Constants::API::Channels }
 		, m_users{ m_shared, Constants::API::Users }
 		, m_guilds{ m_shared, Constants::API::Guilds }
 		, m_intents{ intents }
 		, m_unknownChannel{ std::make_shared<Structures::Channels::Channel>(nlohmann::json(), m_shared) }
+
 	{
+		auto request = cpr::Get(
+			cpr::Url(Constants::API::CurrentUser),
+			cpr::Header{ { "Authorization", m_token } }
+		);
+		
+		if (request.status_code == 401)
+			throw Exception("This token is invalid.", Exception::ErrorCode::InvalidToken);
+
+		m_user = std::make_shared<Structures::User>(nlohmann::json::parse(request.text), m_shared);
+
 		if (useCommands)
 			SetupCommandHandler();
 	}

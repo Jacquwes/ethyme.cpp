@@ -13,6 +13,7 @@
 #include "events/ready.hpp"
 
 #include "structures/channels/channel.hpp"
+#include "structures/exception.hpp"
 #include "structures/guild.hpp"
 #include "structures/user.hpp"
 
