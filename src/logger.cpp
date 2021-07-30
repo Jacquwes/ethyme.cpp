@@ -13,7 +13,13 @@ namespace Ethyme
 			return;
 
 		auto t = std::time(nullptr);
+#ifdef _WIN32
+		tm tm;
+		localtime_s(&tm, &t);
+#else
 		auto tm = *std::localtime(&t);
+#endif
+		
 		std::ostringstream time; time << std::put_time(&tm, "[%y/%m/%d %H:%M:%S]");
 		std::cout << time.str() << " ";
 		switch (logLevel)

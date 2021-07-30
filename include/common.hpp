@@ -1,6 +1,7 @@
 #pragma once
 
 #pragma warning( disable : 4267 )
+#pragma warning( disable : 4834 )
 
 #define BOOST_ASIO_DISABLE_STD_COROUTINE
 #define _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS
