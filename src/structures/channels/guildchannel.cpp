@@ -12,6 +12,21 @@ namespace Ethyme::Structures::Channels
 		, m_position{ data["position"].get<uint16_t>() }
 	{}
 
+	cppcoro::task<> GuildChannel::Delete()
+	{
+		cpr::Delete(
+			cpr::Url{ Constants::API::Channels + Id().ToString() },
+			cpr::Header{
+				{ "Authorization", Client()->Token() },
+				{ "Content-Type", "application/json" }
+			}
+		);
+
+		Client()->Channels().RemoveById(Id());
+
+		co_return;
+	}
+
 	std::shared_ptr<Structures::Guild>& GuildChannel::Guild() { return m_guild; }
 	std::string const& GuildChannel::Name() const { return m_name; }
 	uint16_t const& GuildChannel::Position() const { return m_position; }

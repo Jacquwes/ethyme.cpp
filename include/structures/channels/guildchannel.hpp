@@ -18,6 +18,7 @@ namespace Ethyme
 			public:
 				GuildChannel(nlohmann::json const& data, std::shared_ptr<Ethyme::Client> client);
 
+				cppcoro::task<> Delete();
 				std::shared_ptr<Structures::Guild>& Guild();
 				std::string const& Name() const;
 				uint16_t const& Position() const;
