@@ -1,3 +1,5 @@
+!! Outdated because of recent massive API changes.
+
 # ethyme.cpp
 
 A C++20 wrapper for Discord's API. Uses websocketpp and cpr.
